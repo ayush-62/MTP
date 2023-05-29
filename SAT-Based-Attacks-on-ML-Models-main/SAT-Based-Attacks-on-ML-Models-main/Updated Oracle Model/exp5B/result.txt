@@ -1,0 +1,294 @@
+False True True True False True True True True True 0.5242829322814941
+False True True True False False True False True True 1.0375556945800781
+False True False True False True True True True True 1.552558422088623
+False True False True False False True False True True 2.066969394683838
+False True True False False True True True True True 2.583070755004883
+False True True False False True True False True True 3.099374771118164
+False True True False False False True True True True 3.6160569190979004
+False True False False False True True True True True 4.131355047225952
+False True False False False False True False True True 4.6472578048706055
+False True True True False True True True True False 5.162499666213989
+False True True True False False True False True False 5.681743860244751
+False False False False True False False False False False 6.199220418930054
+True False False False False False False False False False 6.716789722442627
+False False True True False True True True True True 7.234226942062378
+False True True True False True True True False True 7.754224538803101
+False False False True False True True True True True 8.273684978485107
+False True False True False True True True False True 8.794719934463501
+False False True False False True True False True True 9.313826560974121
+False True True True False True True False False True 9.833574533462524
+False False False False False False True True True True 10.352744579315186
+False True False True False True True False False True 10.87403678894043
+False False True True False False True False True True 11.394759893417358
+False True True True False False True True False True 11.916527032852173
+False False False True False True True False True True 12.438206911087036
+False False False False False False True False True True 12.961772680282593
+False False True True False True True True False True 13.48335886001587
+False True False True False True True True True False 14.007271766662598
+False True False False False True True False True False 14.53036117553711
+False False True True False True True True True False 15.054614782333374
+False False False True False True True False True False 15.578830003738403
+False False True False False False True True True False 16.10217046737671
+False False False False False False True True True False 16.626583576202393
+False False True False False True True False True False 17.15133762359619
+False False False False False True True False True False 17.676278829574585
+False True False False False False True False True False 18.203260898590088
+False False True True False False True False True False 18.730111598968506
+False False False True False False True False True False 19.256697416305542
+False False True False False False True True False True 19.78244137763977
+False False False True False False True False False True 20.309611320495605
+False False True True False True True True False False 20.836824417114258
+False False False True False True True True False False 21.364003896713257
+False False True False False True True False False True 21.891831398010254
+False False True False False False True False True False 22.419806957244873
+False True True False False False True False False True 22.948063850402832
+False False False False False False True False True False 23.477986335754395
+False False True False False True True True False False 24.00771164894104
+False True False False False True True True False True 24.537511825561523
+False True True True False False True True False False 25.06785273551941
+False False False False False True True True False True 25.59848976135254
+False True False False False True True False False True 26.129985332489014
+False False False False False False True False False True 26.66183352470398
+False True True True False True True False False False 27.193565607070923
+False False True True False False True True False False 27.728867530822754
+False False True False False False True True False False 28.262848377227783
+False True False True False False True True False False 28.797528982162476
+False False True False False False True False False False 29.331828355789185
+False False False True False False True True False False 29.867234468460083
+False True False False False True True False False False 30.403801202774048
+False False False True False False True False False False 30.940077781677246
+False True False False False False True True False False 31.47581648826599
+False False False False False True True True False False 32.0124716758728
+False False False False False False True False False False 32.549325942993164
+False True True True False True False True True True 33.08635115623474
+False True False True False True False True False True 33.62405252456665
+False True True True False True False False True True 34.16240954399109
+False True False True False True False False True True 34.7019944190979
+False True True True False True False True True False 35.24058699607849
+False True True True False True False False True False 35.77953624725342
+False True False True False True False True True False 36.319859743118286
+False True True False False True False True True True 36.86042046546936
+False True False True False True False False True False 37.40104389190674
+False True True False False True False False True True 37.9434814453125
+False True False False False True False False True True 38.4848415851593
+False True True False False True False True True False 39.02900242805481
+False True False False False True False False True False 39.5713427066803
+False True True True False True False False False True 40.11324381828308
+False True False False False True False False False True 40.65691113471985
+False True True True False True False True False False 41.19942021369934
+False True True True False True False False False False 41.7434401512146
+False True False True False True False True False False 42.287250995635986
+False True True False False True False True False False 42.8326141834259
+False True False True False True False False False False 43.37630248069763
+False True True False False True False False False False 43.92129707336426
+False True False False False True False False False False 44.46726322174072
+False True True True False False False True True True 45.01237869262695
+False True True True False False False False True True 45.56036043167114
+False True False True False False False True True True 46.10626769065857
+False True False True False False False False True True 46.65506553649902
+False True True True False False False True True False 47.20345711708069
+False True True True False False False False True False 47.750725746154785
+False True True False False False False True True True 48.300302505493164
+False True True False False False False False True True 48.85008931159973
+False True False True False False False True True False 49.39933967590332
+False True False True False False False False True False 49.94844675064087
+False True False False False False False True True True 50.498546838760376
+False True False False False False False False True True 51.05097532272339
+False True True False False False False True True False 51.602214336395264
+False False True False False True False True True True 52.15360689163208
+False True False False False False False False True False 52.70668172836304
+False True True True False False False True False True 53.26056170463562
+False True True True False False False False False True 53.8137845993042
+False True False True False False False True False True 54.36840510368347
+False True False True False False False False False True 54.92362642288208
+False True True False False False False True False True 55.47436714172363
+False True True True False False False True False False 56.02710485458374
+False True False True False False False False False False 56.57949995994568
+False True True False False False False False False True 57.13211274147034
+False True False False False False False True False True 57.685184478759766
+False True False False False False False False False True 58.24054765701294
+False True True False False False False True False False 58.794819355010986
+False True True False False False False False False False 59.349090814590454
+False True False False False False False True False False 59.905267000198364
+False True False False False False False False False False 60.46123242378235
+False False True True False False False True True True 61.02171516418457
+False False True True False True False False True True 61.5813148021698
+False False True False False True False False True True 62.14028358459473
+False False True True False True False True True False 62.701176166534424
+False False True False False False False False True True 63.26358151435852
+False False False True False True False True True True 63.824989557266235
+False False False True False False False True True True 64.38594698905945
+False False False False False True False True True True 64.94897532463074
+False False False False False False False False True True 65.51010179519653
+False False True True False False False True True False 66.07332396507263
+False False False True False True False True True False 66.63729333877563
+False False True True False True False False True False 67.20122194290161
+False False True True False False False False True False 67.76463294029236
+False False True False False True False True True False 68.32928228378296
+False False True False False False False False True False 68.89428615570068
+False False False True False False False True True False 69.45868921279907
+False False False True False True False False True False 70.02231359481812
+False False False False False False False False True False 70.58842515945435
+False False True True False True False True False True 71.15546679496765
+False False True True False True False True False False 71.72212076187134
+False False True True False False False True False True 72.2894561290741
+False False True True False False False True False False 72.85758948326111
+False False False True False True False True False True 73.42719912528992
+False False False True False True False True False False 73.9962170124054
+False False False True False False False True False True 74.5654091835022
+False False False True False False False True False False 75.13561844825745
+False False True True False True False False False True 75.70613956451416
+False False True True False True False False False False 76.27672076225281
+False False True True False False False False False True 76.84740471839905
+False False True True False False False False False False 77.4180998802185
+False False False True False True False False False True 77.98847532272339
+False False False True False True False False False False 78.56119656562805
+False False False True False False False False False True 79.13396286964417
+False False False True False False False False False False 79.70763778686523
+False False True False False True False True False True 80.28526067733765
+False False False False False True False True False True 80.86152529716492
+False False True False False False False True False True 81.44971632957458
+False False False False False False False True False True 82.02659821510315
+False False True False False True False False False True 82.60425925254822
+False False False False False True False False False True 83.18104720115662
+False False True False False False False False False True 83.75963425636292
+False False False False False False False False False True 84.33768701553345
+False False True False False True False True False False 84.91624712944031
+False False True False False False False True False False 85.49447870254517
+False False True False False True False False False False 86.07246780395508
+False False True False False False False False False False 86.65163135528564
+False False False False False True False True False False 87.23183536529541
+False False False False False True False False False False 87.8128592967987
+False False False False False False False True False False 88.39454221725464
+sat
+[layer1node2v1__1 = True,
+ layer3node2v2__0 = True,
+ layer1node9v1__3 = True,
+ layer2node10v1__8 = True,
+ layer1node6v2__3 = True,
+ layer1node8v2__7 = True,
+ layer2node2v1__1 = True,
+ layer1node5v1__7 = True,
+ layer2node8v2__8 = True,
+ layer1node10v2__3 = True,
+ layer2node7v2__6 = True,
+ layer1node1v1__7 = True,
+ layer1node7v1__8 = True,
+ layer2node7v1__1 = True,
+ layer2node3v2__6 = True,
+ layer2node4v2__2 = True,
+ layer2node1v2__7 = True,
+ layer3node6v2__0 = True,
+ layer2node3v1__3 = True,
+ outv2__5 = True,
+ layer2node2v2__8 = True,
+ layer2node5v2__9 = True,
+ layer2node6v1__0 = True,
+ layer2node8v2__4 = True,
+ layer2node3v2__7 = True,
+ layer1node2v1__3 = True,
+ layer2node2v1__5 = True,
+ layer2node5v1__6 = True,
+ layer2node5v1__7 = True,
+ layer3node4v1__0 = True,
+ layer2node3v2__5 = True,
+ outv2__19 = True,
+ outv1__2 = True,
+ layer1node3v1__8 = True,
+ layer2node2v1__0 = False,
+ layer2node8v2__0 = True,
+ layer1node2v2__5 = True,
+ layer2node3v1__6 = True,
+ layer2node10v2__2 = True,
+ layer2node8v2__6 = True,
+ layer2node4v1__4 = False,
+ layer1node3v2__2 = True,
+ layer1node10v2__7 = True,
+ layer1node7v2__7 = True,
+ layer2node4v2__0 = True,
+ layer1node10v2__8 = True,
+ inp__3 = True,
+ layer2node1v1__7 = True,
+ layer2node6v2__1 = True,
+ layer2node1v2__2 = True,
+ layer1node7v1__6 = True,
+ layer2node7v2__8 = True,
+ layer2node5v2__0 = True,
+ layer2node7v1__6 = True,
+ layer1node9v2__6 = True,
+ layer1node4v2__7 = True,
+ layer1node6v2__9 = True,
+ layer1node7v2__2 = True,
+ outv2__13 = True,
+ outv1__20 = True,
+ layer1node7v1__0 = True,
+ layer1node1v1__2 = True,
+ layer2node10v2__0 = True,
+ layer2node1v2__8 = True,
+ layer1node9v2__7 = True,
+ layer2node10v2__8 = True,
+ layer1node3v2__9 = True,
+ outv2__12 = True,
+ layer1node4v1__4 = True,
+ layer1node5v1__2 = True,
+ layer1node9v2__0 = True,
+ layer1node2v2__2 = True,
+ layer1node8v2__5 = True,
+ layer1node6v1__3 = True,
+ layer1node2v1__9 = True,
+ layer2node9v1__6 = True,
+ outv2__18 = True,
+ layer1node8v2__6 = True,
+ layer2node7v2__2 = True,
+ layer2node7v1__7 = True,
+ layer2node1v1__1 = True,
+ layer2node8v1__2 = True,
+ layer2node6v2__9 = True,
+ layer1node4v1__3 = True,
+ layer1node6v2__6 = True,
+ layer3node7v2__0 = True,
+ layer2node2v1__6 = True,
+ layer2node8v1__7 = True,
+ layer2node8v2__3 = True,
+ layer2node7v1__3 = True,
+ layer2node9v2__9 = True,
+ layer1node1v1__8 = True,
+ inp__8 = True,
+ layer1node1v2__2 = True,
+ layer1node9v1__8 = True,
+ layer1node3v2__3 = True,
+ layer2node2v2__5 = True,
+ layer3node4v2__0 = True,
+ layer1node4v2__0 = True,
+ layer1node3v2__0 = True,
+ layer2node2v2__3 = True,
+ layer2node5v1__5 = True,
+ layer2node3v1__7 = False,
+ layer1node1v2__9 = True,
+ layer2node2v2__6 = True,
+ layer2node10v2__3 = True,
+ layer2node8v2__5 = True,
+ layer1node8v1__3 = True,
+ outv2__8 = True,
+ layer2node4v2__3 = True,
+ layer1node7v2__8 = True,
+ layer3node5v2__0 = True,
+ layer1node1v2__4 = True,
+ layer2node7v2__3 = False,
+ layer1node1v2__7 = True,
+ layer1node4v1__9 = True,
+ outv2__2 = True,
+ layer1node4v2__4 = True,
+ layer1node4v2__9 = True,
+ layer1node2v2__1 = True,
+ layer1node3v1__7 = True,
+ outv1__7 = True,
+ layer2node5v2__1 = True,
+ layer2node4v2__7 = False,
+ layer1node1v2__6 = True,
+ layer2node1v1__2 = False,
+ layer1node7v1__2 = True,
+ inp__7 = True,
+ layer1node1v1__3 = True,
+ ...]
+Finished in 89.05637836456299

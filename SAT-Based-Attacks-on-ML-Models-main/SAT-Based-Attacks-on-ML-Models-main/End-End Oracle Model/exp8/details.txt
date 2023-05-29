@@ -1,0 +1,8 @@
+structure: 2*2*1
+bias: all nodes at layer 2
+non-linearity: all nodes at layer 2
+total keys: 8
+
+SMT Attack:
+
+    infinite time.

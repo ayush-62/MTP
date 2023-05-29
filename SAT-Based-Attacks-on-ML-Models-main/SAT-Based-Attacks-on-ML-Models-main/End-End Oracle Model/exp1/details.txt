@@ -1,0 +1,8 @@
+Neural Network: 2*1 for testing the sat code
+
+Total keys: 2 weights, 0 biases
+
+Smt Attack:
+
+
+Tau-Break Attack:

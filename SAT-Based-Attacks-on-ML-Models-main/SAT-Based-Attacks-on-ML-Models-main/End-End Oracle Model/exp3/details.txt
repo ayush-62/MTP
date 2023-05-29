@@ -1,0 +1,25 @@
+NN: 2*2*1
+Non Linearity: None
+
+Total Keys: 6 weights, 0 biases
+
+SMT Attack:
+    0 -1 0.010739803314208984
+    -3 -1 0.06845235824584961
+    sat
+    Model: [
+    Input : [0, 0]
+    L1Wv1: [ [-1, -24], [39, 1] ]
+    L2Wv1: [ [1], [-1] ]
+    Output1: [0]
+
+    L1Wv2: [ [23, 0], [-1, -1] ]
+    L2Wv2: [ [1], [-39] ]
+    Output2: [0]
+    ]
+    Finished in 32.9748854637146
+
+Note: There can be many possible output models that satisfy the oracle.
+
+Tau Break Attack:
+    

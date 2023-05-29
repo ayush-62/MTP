@@ -1,0 +1,32 @@
+0 0 0.014093875885009766
+12.0 13.0 188.0
+-1 -1 0.03023552894592285
+9.0 8.0 127.0
+0 2 0.06259322166442871
+16.0 19.0 264.0
+sat
+[out2__0 = 0,
+ out1__2 = 0,
+ layer2node2v2__0 = 8,
+ out2__1 = 0,
+ layer2node1v1__0 = 7,
+ layer2node2v1__0 = 8,
+ layer1node1v1__0 = 1,
+ layer1node1v2__0 = 1,
+ out1__1 = 0,
+ out1__0 = 0,
+ out2__2 = 0,
+ layer2node1v2__0 = 7,
+ layer1node1v1__1 = 2,
+ bias2__1 = 13,
+ bias2__0 = 12,
+ bias1__0 = 12,
+ layer1node1v2__1 = 2,
+ layer1node2v1__0 = 2,
+ layer1node2v1__1 = 3,
+ bias1__1 = 13,
+ inp__0 = 10,
+ layer1node2v2__0 = 2,
+ inp__1 = -11,
+ layer1node2v2__1 = 3]
+Finished in 0.07903385162353516

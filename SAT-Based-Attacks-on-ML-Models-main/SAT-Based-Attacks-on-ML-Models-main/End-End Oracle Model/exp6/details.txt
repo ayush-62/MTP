@@ -1,0 +1,24 @@
+structure: 2*2*1
+bias: all nodes at layer 2
+non-linearity: None
+total keys: 8
+
+SMT Attack:
+
+    1 0 0.010080099105834961
+    1 2 0.10873222351074219
+    -1 2 0.2768516540527344
+    sat
+    Model: [
+    Input : [-11, 2]
+    L1Wv1: [ [12, -1], [-1, 40] ]
+    BiasV1: [1, 186 ]
+    L2Wv1: [ [2], [1] ]
+    Output1: [11]
+
+    L1Wv2: [ [7, -2], [22, -4] ]
+    BiasV2: [-173, -1 ]
+    L2Wv2: [ [-1], [-15] ]
+    Output2: [11]
+    ]
+    Finished in 96.85102701187134
