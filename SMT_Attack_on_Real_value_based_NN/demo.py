@@ -5,7 +5,11 @@ set_option(precision=2)
 x = Real('x')
 y = Real('y')
 k = Real('k')
+i = BitVec('i' , 8)
 
+a = 10
+a = a >> 2
+print(a)
 # Create a solver
 s = Solver()
 

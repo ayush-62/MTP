@@ -1,20 +1,10 @@
 from z3 import *
 import subprocess
 import time
-# set_option(rational_to_decimal=True)
-# set_option(precision=5)
+set_option(rational_to_decimal=True)
+set_option(precision=10)
 def Cexec(init_string):
-    result = []
-    fractions = init_string.split()
-    
-    for fraction in fractions:
-        if '/' in fraction:
-            numerator, denominator = map(int, fraction.split('/'))
-            decimal = numerator / denominator
-            result.append('{:.11f}'.format(decimal))
-        else:
-            result.append(fraction)
-    out = subprocess.check_output("./a.out %s" % ' '.join(result), shell=True,)
+    out = subprocess.check_output("./a.out %s" % init_string, shell=True,)
     return list(map(float, out.decode('utf-8').split()))
 
 start_time = time.time()
