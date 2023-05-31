@@ -31,8 +31,8 @@ l1n2v2 = IntVector('layer1node2v2', 3)
 l2n1v2 = IntVector('layer2node1v2', 1)
 l2n2v2 = IntVector('layer2node2v2', 1)
 l2n3v2 = IntVector('layer2node3v2', 1)
-updated_input = IntVector('updated_input' , 2)
-updated_bias  =  IntVector('updated_bias' , 3)
+updated_input = RealVector('updated_input' , 2)
+updated_bias  =  RealVector('updated_bias' , 3)
 l1bv1 = IntVector('layer1bias1v1' , 3)
 l1bv2 = IntVector('layer1bias1v2' , 3)
 
@@ -58,33 +58,33 @@ zp_b = IntVector('zp_b' , 2)
 
 def neuralNetwork(input, l1n1, l1n2, l1b):
 
-    updated_l1n1 = []
-    updated_l1n1.append((q_w1*(l1n1[0] - zp_w[0]))/(2**(40)))
-    updated_l1n1.append((q_w1*(l1n1[1] - zp_w[0]))/(2**(40)))
-    updated_l1n1.append((q_w1*(l1n1[2] - zp_w[0]))/(2**(40)))
-    updated_l1n2 = []
-    updated_l1n2.append((q_w1*(l1n2[0] - zp_w[0])) / (2**(40)))
-    updated_l1n2.append((q_w1*(l1n2[1] - zp_w[0])) / (2**(40)))
-    updated_l1n2.append((q_w1*(l1n2[2] - zp_w[0])) / (2**(40)))
+    # updated_l1n1 = []
+    # updated_l1n1.append((q_w1*(l1n1[0] - zp_w[0]))/(2**(40)))
+    # updated_l1n1.append((q_w1*(l1n1[1] - zp_w[0]))/(2**(40)))
+    # updated_l1n1.append((q_w1*(l1n1[2] - zp_w[0]))/(2**(40)))
+    # updated_l1n2 = []
+    # updated_l1n2.append((q_w1*(l1n2[0] - zp_w[0])) / (2**(40)))
+    # updated_l1n2.append((q_w1*(l1n2[1] - zp_w[0])) / (2**(40)))
+    # updated_l1n2.append((q_w1*(l1n2[2] - zp_w[0])) / (2**(40)))
 
-    updated_bias[0] = ((q_w1*(l1b[0] - zp_b[0]))/(2**(33)))
-    updated_bias[1] = ((q_w1*(l1b[1] - zp_b[0]))/(2**(33)))
-    updated_bias[2] = ((q_w1*(l1b[2] - zp_b[0]))/(2**(33)))
+    updated_bias[0] = ((q_w1*(l1b[0] - zp_b[0])))
+    updated_bias[1] = ((q_w1*(l1b[1] - zp_b[0])))
+    updated_bias[2] = ((q_w1*(l1b[2] - zp_b[0])))
 
     
     updated_input[0] = input[0] - zp_i[0]
-    updated_input[0] = (input[1] - zp_i[0])
+    updated_input[1] = input[1] - zp_i[0]
 
-    hiddenValues = IntVector('hiddenNodeValues', 3)
-    hiddenValues[0] = (updated_input[0] * l1n1[0]) + (updated_input[1] * l1n2[0]) + updated_bias[0]
+    hiddenValues = RealVector('hiddenNodeValues', 3)
+    hiddenValues[0] = (updated_input[0] * l1n1[0]) + (updated_input[1] * l1n2[0]) + l1b[0]
     hiddenValues[0] = If(hiddenValues[0] < 0, 0, hiddenValues[0]) 
     hiddenValues[0] = hiddenValues[0] + zp_i[1]
 
-    hiddenValues[1] = (updated_input[0] * l1n1[1]) + (updated_input[1] * l1n2[1]) + updated_bias[1]
+    hiddenValues[1] = (updated_input[0] * l1n1[1]) + (updated_input[1] * l1n2[1]) + l1b[1]
     hiddenValues[1] = If(hiddenValues[1] < 0, 0, hiddenValues[1]) 
     hiddenValues[1] = hiddenValues[1] + zp_i[1]
 
-    hiddenValues[2] = (updated_input[0] * l1n1[2]) + (updated_input[1] * l1n2[2]) + updated_bias[2]
+    hiddenValues[2] = (updated_input[0] * l1n1[2]) + (updated_input[1] * l1n2[2]) + l1b[2]
     hiddenValues[2] = If(hiddenValues[2] < 0, 0, hiddenValues[2]) 
     hiddenValues[2] = hiddenValues[2] + zp_i[1]
     
@@ -116,27 +116,29 @@ s.add(l1n2v2[2]>=0 , l1n2v2[2] <= 255)
 s.add(neuralNetwork(input, l1n1v1, l1n2v1 , l1bv1) == out1)
 s.add(neuralNetwork(input, l1n1v2, l1n2v2 , l1bv2) == out2)
 
-# gg=Tactic('smt').solver()
-# ia = str(1) + " " + str(2)
-# out = Cexec(ia)
-# out_tup = tuple.tuple(out[0],out[1],out[2])
+gg=Tactic('smt').solver()
+ia = str(0) + " " + str(0)
+out = Cexec(ia)
+out_tup = tuple.tuple(out[0],out[1],out[2])
 
-# print(gg.check(neuralNetwork([4 , 3], [96 , 228 , 0] , [62 , 254 , 47] , [116 , 0 , 254]) == out_tup))
+print(gg.check(neuralNetwork([0 , 0], [96 , 228 , 0] , [62 , 254 , 47] , [116 , 0 , 254]) == out_tup))
 
 
 while s.check(out1 != out2) == sat:
     m = s.model()
     ia = str(m[input[0]]) + " " + str(m[input[1]]) + " " + str(time.time() - start_time)
     print(ia)
+    #print(m)
     out= Cexec(ia)
-    
+    # print(out)
     inp = IntVector('inp', 2)
     inp[0] = m[input[0]]
     inp[1] = m[input[1]]
     out_tup = tuple.tuple(out[0],out[1],out[2])
     s.add(neuralNetwork(inp, l1n1v1, l1n2v1, l1bv1) == out_tup)
     s.add(neuralNetwork(inp, l1n1v2, l1n2v2, l1bv2) == out_tup)
+    
 
-print(s.check(out1 == out1))
+print(s.check(out1 == out2))
 print(s.model())
 print("Finished in " + str(time.time() - start_time))

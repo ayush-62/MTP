@@ -31,11 +31,11 @@ int main(int ac, char* av[]) {
     vector<float> l1_updated_bias(3 , 0);
     for(int i = 0 ; i < 3 ; i++)
     {
-        l1_updated_bias[i] = ((q_w1*(l1bias[i] - zp_b[0]))/pow(2 , 33));
-        // cout<<"l1_updated_bias "<< i << " " << l1_updated_bias[i] <<endl;
+        l1_updated_bias[i] = ((q_w1*(l1bias[i] - zp_b[0])));
+        //cout<<"l1_updated_bias "<< i << " " << l1_updated_bias[i] <<endl;
     }
 
-    vector<int> input_updated(2 , 0);
+    vector<float> input_updated(2 , 0);
     for(int i = 0 ; i < 2 ; i++)
     {
         input_updated[i] = inputs[i] - zp_i[0];
@@ -44,15 +44,15 @@ int main(int ac, char* av[]) {
 
 
 
-    hid[0] = input_updated[0] * w[0][0] + input_updated[1] * w[1][0] + l1_updated_bias[0];
+    hid[0] = input_updated[0] * w[0][0] + input_updated[1] * w[1][0] + l1bias[0];
     if(hid[0] < 0 ) hid[0] = 0;
     hid[0] = hid[0] - zp_i[1];
 
-    hid[1] = input_updated[0] * w[0][1] + input_updated[1] * w[1][1] + l1_updated_bias[1];
+    hid[1] = input_updated[0] * w[0][1] + input_updated[1] * w[1][1] + l1bias[1];
     if(hid[1] < 0 ) hid[1] = 0;
     hid[1] = hid[1] - zp_i[1];
 
-    hid[2] = input_updated[0] * w[0][2] + input_updated[1] * w[1][2] + l1_updated_bias[2];
+    hid[2] = input_updated[0] * w[0][2] + input_updated[1] * w[1][2] + l1bias[2];
     if(hid[2] < 0 ) hid[2] = 0;
     hid[2] = hid[2] - zp_i[1];
 
