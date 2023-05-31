@@ -35,6 +35,8 @@ output1 = IntVector('out1', 1)
 output2 = IntVector('out2', 1)
 
 
+
+
 def neuralNetwork(input, l1n1, l1n2, l2n1, l2n2, l2n3):
     hiddenValues = IntVector('hiddenNodeValues', 3)
     hiddenValues[0] = (input[0] * l1n1[0]) + (input[1] * l1n2[0])

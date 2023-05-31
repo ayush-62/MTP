@@ -8,15 +8,20 @@ int main(int ac, char* av[]) {
         cin >> inputs[i - 1];
     }
 
-    vector<vector<int>> w = {{1, 2, 13}, {2, 3, 12}};
-    vector<int> hid(3);
+    vector<vector<float>> w = {{0.3572, 3,0436, -1.606}, {-0.3158, 3.5808, -0.6303}};
+    vector<float> l1bias = {-0.1541 , -2.2765 , 2.3786};
+    vector<float> hid(3);
 
     hid[0] = inputs[0] * w[0][0] + inputs[1] * w[1][0];
+    if(hid[0] < 0) hid[0] = 0;
     hid[1] = inputs[0] * w[0][1] + inputs[1] * w[1][1];
+    if(hid[1] < 0) hid[1] = 0;
     hid[2] = inputs[0] * w[0][2] + inputs[1] * w[1][2];
+    if(hid[2] < 0) hid[2] = 0;
+    
+    cout<<hid[0]<<" "<<hid[1]<<" "<<hid[2];
+    vector<float> w2 = {-0.00689, 5.1292 , -2.7963};
 
-    vector<int> w2 = {7, 8, 9};
- 
     int ans = hid[0] * w2[0] + hid[1] * w2[1] + hid[2] * w2[2];
-    cout << ans << endl;
+    // cout << ans << endl;
 }
