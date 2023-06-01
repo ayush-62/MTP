@@ -7,7 +7,7 @@ def Cexec(init_string):
     return list(map(float, out.decode('utf-8').split()))
 
 set_option(rational_to_decimal=True)
-set_option(precision=3)
+set_option(precision=15)
 
 # def print_details(model):
 #     print("Model: [")
@@ -61,40 +61,41 @@ zp_b = IntVector('zp_b' , 2)
 
 def neuralNetwork(input, l1n1, l1n2, l1b , q_b1 , zp_b , shift_b1):
 
+    valw = round(1559941072/(2**(9+31)) , 3)
+    updated_l1n1 = RealVector('updated_l1n1' , 3)
     
-    # updated_l1n1 = []
-    # updated_l1n1.append((q_w1*(l1n1[0] - zp_w[0]))/(2**(40)))
-    # updated_l1n1.append((q_w1*(l1n1[1] - zp_w[0]))/(2**(40)))
-    # updated_l1n1.append((q_w1*(l1n1[2] - zp_w[0]))/(2**(40)))
-    # updated_l1n2 = []
-    # updated_l1n2.append((q_w1*(l1n2[0] - zp_w[0])) / (2**(40)))
-    # updated_l1n2.append((q_w1*(l1n2[1] - zp_w[0])) / (2**(40)))
-    # updated_l1n2.append((q_w1*(l1n2[2] - zp_w[0])) / (2**(40)))
+    updated_l1n1[0] = ((l1n1[0] - 78)*valw)
+    updated_l1n1[1] = ((l1n1[1] - 78)*valw)
+    updated_l1n1[2] = ((l1n1[2] - 78)*valw)
 
-    # updated_bias  =  RealVector('updated_bias' , 3)
-    updated_bias = []
-    val = q_b1/(2**(shift_b1+31))
-    updated_bias.append((l1b[0]-zp_b[0])*val)
-    updated_bias.append((l1b[1]-zp_b[0])*val)
-    updated_bias.append((l1b[2]-zp_b[0])*val)
+    updated_l1n2 = RealVector('updated_l1n2' , 3)
+    updated_l1n2[0] = ((l1n2[0] - 78)*valw)
+    updated_l1n2[1] = ((l1n2[1] - 78)*valw)
+    updated_l1n2[2] = ((l1n2[2] - 78)*valw)
+
+    updated_bias  =  RealVector('updated_bias' , 3)
+    valb = round(1529762159/(2**(2+31)) , 3)
+    updated_bias[0] = ((l1b[0]-124)*valb)
+    updated_bias[1] = ((l1b[1]-124)*valb)
+    updated_bias[2] = ((l1b[2]-124)*valb)
 
     updated_input = IntVector('updated_input' , 2)
     updated_input[0] = input[0]
-    updated_input[1] = input[1]
+    updated_input[1] = input[1] 
 
     
     hiddenValues = RealVector('hiddenNodeValues', 3)
-    hiddenValues[0] = (updated_input[0] * l1n1[0]) + (updated_input[1] * l1n2[0]) + updated_bias[0]
+    hiddenValues[0] = (updated_input[0] * updated_l1n1[0]) + (updated_input[1] * updated_l1n2[0]) + l1b[0]
     hiddenValues[0] = If(hiddenValues[0] < 0, 0, hiddenValues[0]) 
-    hiddenValues[0] = hiddenValues[0] + zp_i[1]
+    hiddenValues[0] = hiddenValues[0] 
 
-    hiddenValues[1] = (updated_input[0] * l1n1[1]) + (updated_input[1] * l1n2[1]) + updated_bias[1]
+    hiddenValues[1] = (updated_input[0] * updated_l1n1[1]) + (updated_input[1] * updated_l1n2[1]) + l1b[1]
     hiddenValues[1] = If(hiddenValues[1] < 0, 0, hiddenValues[1]) 
-    hiddenValues[1] = hiddenValues[1] + zp_i[1]
+    hiddenValues[1] = hiddenValues[1] 
 
-    hiddenValues[2] = (updated_input[0] * l1n1[2]) + (updated_input[1] * l1n2[2]) + updated_bias[2]
+    hiddenValues[2] = (updated_input[0] * updated_l1n1[2]) + (updated_input[1] * updated_l1n2[2]) + l1b[2]
     hiddenValues[2] = If(hiddenValues[2] < 0, 0, hiddenValues[2]) 
-    hiddenValues[2] = hiddenValues[2] + zp_i[1]
+    hiddenValues[2] = hiddenValues[2] 
     
     # outputValues = IntVector('outputValues', 1)
     # outputValues[0] = (hiddenValues[0] * l1n1[0]) + (hiddenValues[1] * l2n2[0]) + (hiddenValues[2] * l2n3[0])
@@ -127,12 +128,12 @@ s.add(l1n2v2[2]>=0 , l1n2v2[2] <= 255)
 
 s.add(neuralNetwork(input, l1n1v1, l1n2v1 , l1bv1 , q_b1 , zp_b , shift_b1) == out1)
 s.add(neuralNetwork(input, l1n1v2, l1n2v2 , l1bv2 , q_b1 , zp_b , shift_b1) == out2)
-ia = str(1) + " " + str(1) + " " + str(time.time() - start_time)
+ia = str(255) + " " + str(1) + " " + str(time.time() - start_time)
 out= Cexec(ia)
 print(out)
 out_tup = tuple.tuple(out[0],out[1],out[2])
-print(simplify(neuralNetwork([1,1], [96 , 228 , 0], [62 , 254, 47] , [116 , 0 , 454] , 1529762159 , [124 , 1] , 2)))
-print(s.check(neuralNetwork([1,1], [96 , 228 , 0], [62 , 254, 47] , [116 , 0 , 454] , 1529762159 , [124 , 1] , 2) == out_tup))
+print(simplify(neuralNetwork([255,1], [96 , 228 , 0], [62 , 254, 47] , [116 , 0 , 454] , 1529762159 , [124 , 1] , 2)))
+print(s.check(neuralNetwork([255,1], [96 , 228 , 0], [62 , 254, 47] , [116 , 0 , 454] , 1529762159 , [124 , 1] , 2) == out_tup))
 
 while s.check(out1 != out2) == sat:
     m = s.model()
@@ -145,10 +146,10 @@ while s.check(out1 != out2) == sat:
     inp[0] = m[input[0]]
     inp[1] = m[input[1]]
     out_tup = tuple.tuple(out[0],out[1],out[2])
-    s.add(simplify(neuralNetwork(inp, l1n1v1, l1n2v1, l1bv1 , q_b1 , zp_b , shift_b1) == out_tup))
-    s.add(simplify(neuralNetwork(inp, l1n1v2, l1n2v2, l1bv2 , q_b1 , zp_b , shift_b1) == out_tup))
+    s.add((neuralNetwork(inp, l1n1v1, l1n2v1, l1bv1 , q_b1 , zp_b , shift_b1) == out_tup))
+    s.add((neuralNetwork(inp, l1n1v2, l1n2v2, l1bv2 , q_b1 , zp_b , shift_b1) == out_tup))
     
-
+print(s.check(out1 != out2))
 print(s.check(out1 == out2))
 print(s.model())
 print("Finished in " + str(time.time() - start_time))
