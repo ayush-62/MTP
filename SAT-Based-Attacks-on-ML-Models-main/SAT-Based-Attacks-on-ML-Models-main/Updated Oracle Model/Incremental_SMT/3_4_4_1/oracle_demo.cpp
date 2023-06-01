@@ -4,7 +4,7 @@ using namespace std;
 int main(int ac, char* av[]) {
     vector<int> inputs(3);
     for(int i = 1; i < 4; ++i) {
-        inputs[i - 1] = stof(string(av[i]));
+        inputs[i - 1] = stof(string(av[i]))-3;
     }
 
     vector<vector<int>> w = {{-6, 10, 5, 1}, {8, -7, 1, -1}, {4, 7, -3, -2}};

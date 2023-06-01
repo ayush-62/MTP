@@ -25,14 +25,18 @@ out1 = tuple.tuple(ov1_1,ov1_2,ov1_3,ov1_4)
 out2 = tuple.tuple(ov2_1,ov2_2,ov2_3,ov2_4)
 
 def NN(in1,in2,in3,l1n1_1,l1n1_2,l1n1_3,l1n1_4,l1n2_1,l1n2_2,l1n2_3,l1n2_4,l1n3_1,l1n3_2,l1n3_3,l1n3_4):
+	inputValues = IntVector('inputValues', 3)
+	inputValues[0] = in1-3
+	inputValues[1] = in2-3
+	inputValues[2] = in3-3
 	l2out_1,l2out_2,l2out_3,l2out_4 = Ints('l2out_1 l2out_2 l2out_3 l2out_4')
-	l2out_1 = (in1 * l1n1_1) + (in2 * l1n2_1) + (in3 * l1n3_1) 
+	l2out_1 = (inputValues[0] * l1n1_1) + (inputValues[1] * l1n2_1) + (inputValues[2] * l1n3_1) 
 	l2out_1 = If(l2out_1 < 0, 0, l2out_1)
-	l2out_2 = (in1 * l1n1_2) + (in2 * l1n2_2) + (in3 * l1n3_2) 
+	l2out_2 = (inputValues[0] * l1n1_2) + (inputValues[1] * l1n2_2) + (inputValues[2] * l1n3_2) 
 	l2out_2 = If(l2out_2 < 0, 0, l2out_2)
-	l2out_3 = (in1 * l1n1_3) + (in2 * l1n2_3) + (in3 * l1n3_3) 
+	l2out_3 = (inputValues[0] * l1n1_3) + (inputValues[1] * l1n2_3) + (inputValues[2] * l1n3_3) 
 	l2out_3 = If(l2out_3 < 0, 0, l2out_3)
-	l2out_4 = (in1 * l1n1_4) + (in2 * l1n2_4) + (in3 * l1n3_4) 
+	l2out_4 = (inputValues[0] * l1n1_4) + (inputValues[1] * l1n2_4) + (inputValues[2] * l1n3_4) 
 	l2out_4 = If(l2out_4 < 0, 0, l2out_4)
 	
 	out = tuple.tuple(l2out_1,l2out_2,l2out_3,l2out_4)

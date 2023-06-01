@@ -1,37 +1,30 @@
+import math
 from z3 import *
-set_option(rational_to_decimal=True)
-set_option(precision=2)
-# Create real variables
-x = Int('x')
-y = Real('y')
-k = Real('k')
-i = BitVec('i' , 8)
 
-a = 10
-a = a >> 2
-print(a)
-# Create a solver
-s = Solver()
+def are_equal_up_to_three_decimal_places(num1, num2):
+    tol = Z3_fpRealTol(3)  # Set the tolerance level to 3 decimal places
 
-# Add constraints to the solver
+    # Create Z3 real variables
+    x = Real('x')
+    y = Real('y')
 
-s.add(k == 1.21*3.42)
-print(k)
-#s.add(2*x - y == 1)
+    # Create constraints for approximate equality
+    constraints = [
+        FPApprox(num1, x, tol),
+        FPApprox(num2, y, tol),
+        x == y
+    ]
 
-# Check if there is a satisfying solution
-if s.check(x*y == 4.4) == sat:
-    # Get the model
-    model = s.model()
-    # Get the values of x and y from the model
-    x_value = model[x] # Get the decimal representation with 2 decimal places
-    y_value = model[y]  # Get the decimal representation with 2 decimal places
-    k = model[k].as_decimal(2)
-    
+    # Create Z3 solver and check satisfiability
+    s = Solver()
+    s.add(constraints)
+    return s.check() == sat
 
-    print("Solution found:")
-    print("x =", x_value)
-    print("y =", y_value)
-    print("k =" , k)
+# Example usage
+num1 = 1.234
+num2 = 1.2335
+
+if are_equal_up_to_three_decimal_places(num1, num2):
+    print("The numbers are approximately equal up to three decimal places.")
 else:
-    print("No solution found.")
+    print("The numbers are not approximately equal up to three decimal places.")
