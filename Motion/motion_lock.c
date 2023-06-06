@@ -1,6 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
-//key_1 = 5 , key_2 = 12 , key_3 = 6 , key_4 = 3
+//key_1 = 5 , key_2 = 12 , key_3 = 6 
 void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7, int in8, int in9, int in10, int key_1, int key_2 , int key_3 , int key_4 ,int *out1,  int *out2,  int *out3)
 {
     int mult1 = in1 * in2;
@@ -33,7 +33,7 @@ void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7
     {
     int add3 = in5 + mult8;
     int add4 = mult10 *in3;
-    int add5 = in10 / mult14;
+    int add5 = in10 ;
     }
 
     int add6 = mult1 + add1;
@@ -54,7 +54,7 @@ void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7
     int add15 = mult13 + add5;
     int add14 = mult12 + add15;
 
-    int shf2 = add14 >> key_4;
+    int shf2 = add14 >> 3;
    *out3 = add11 + shf2;
 }
 
