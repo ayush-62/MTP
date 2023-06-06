@@ -3,7 +3,6 @@ import subprocess
 import time
 
 
-#for executing the oracle ang getting the correct inputs 
 def Cexec(init_string):
     out = subprocess.check_output("./a.out %s" % init_string,shell=True,)    
     return list(map(int,out.decode('utf-8').split()))
@@ -12,7 +11,6 @@ def Cexec(init_string):
 start_time = time.time()
 
 
-#variable declaration 
 i1,i2,i3,i4,i5,i6,i7,i8,i9,i10 = Ints('i1 i2 i3 i4 i5 i6 i7 i8 i9 i10')
 o1_1,o2_1,o3_1 = Ints('o1_1 o2_1 o3_1')
 o1_2,o2_2,o3_2 = Ints('o1_2 o2_2 o3_2')
@@ -27,7 +25,7 @@ out2 = tuple.tuple(o1_2,o2_2,o3_2)
 
 
 
-#function definition 
+
 def motion(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , key_1 , key_2 , key_3 , key_4):
     mult1 = i1 * i2
     mult2 = i1 * (2*key_1)
@@ -83,11 +81,10 @@ prune_key_set = False
 
 j = 0
 
-
-#SMT solver declaration 
+ 
 s = Tactic('smt').solver()
 
-#addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
+
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_1 , key2_1 , key3_1 , key4_1) == out1)
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_2 , key2_2 , key3_2 , key4_2) == out2)
 
