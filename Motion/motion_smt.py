@@ -16,8 +16,8 @@ i1,i2,i3,i4,i5,i6,i7,i8,i9,i10 = BitVecs('i1 i2 i3 i4 i5 i6 i7 i8 i9 i10' , 32)
 # add1,add2,add3,add4,add5,add6,add7,add8,add9,add10,add11,add12,add13,add14,add15 = BitVecs('add1 add2 add3 add4 add5 add6 add7 add8 add9 add10 add11 add12 add13 add14 add15' , 32)
 o1_1,o2_1,o3_1 = BitVecs('o1_1 o2_1 o3_1' , 32)
 o1_2,o2_2,o3_2 = BitVecs('o1_2 o2_2 o3_2' , 32)
-key1_1,key2_1,key3_1 = BitVecs('key1_1 key2_1 key3_1' , 32)
-key1_2,key2_2,key3_2 = BitVecs('key1_2 key2_2 key3_2' , 32)
+key1_1,key2_1,key3_1,key4_1 = BitVecs('key1_1 key2_1 key3_1 key4_1' , 32)
+key1_2,key2_2,key3_2,key4_2 = BitVecs('key1_2 key2_2 key3_2 key4_2' , 32)
 
 tuple = Datatype('tuple')
 tuple.declare('tuple',('1', BitVecSort(32)),('2', BitVecSort(32)),('3', BitVecSort(32)))
@@ -28,7 +28,7 @@ out2 = tuple.tuple(o1_2,o2_2,o3_2)
 
 
 
-def motion(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , key_1 , key_2 , key_3):
+def motion(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , key_1 , key_2 , key_3 , key_4):
     mult1 = i1 * i2
     mult2 = i1 * (2*key_1)
     mult3 = i3 * (4 + key_2)
@@ -47,9 +47,9 @@ def motion(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , key_1 , key_2 , ke
     add1 = i1 * mult2
     add2 = (2*key_3 + 3) * mult4
 
-    add3 = If(add1 > add2, i5 * mult8, i5 + mult8)
-    add4 = If(add1 > add2, mult10 * i4, mult10 * i3)
-    add5 = If(add1 > add2, i10 * mult14, i10)
+    add3 = If(And(add1 > add2 , key_4 == 5), i5 * mult8, i5 + mult8)
+    add4 = If(And(add1 > add2 , key_4 == 5), mult10 * i4, mult10 * i3)
+    add5 = If(And(add1 > add2 , key_4 == 5), i10 * mult14, i10/mult14)
 
     out_1 , out_2 , out_3 = BitVecs('out_1 out_2 out_3' , 32)
     add6 = mult1 + add1
@@ -89,14 +89,17 @@ def motion(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , key_1 , key_2 , ke
 
 # print(simplify(motion(BitVecVal(1,32) , BitVecVal(2,32) , BitVecVal(3,32) , BitVecVal(4,32) , BitVecVal(5,32) , BitVecVal(6,32) , BitVecVal(7,32) , BitVecVal(8,32) , BitVecVal(9,32) , BitVecVal(10,32) , BitVecVal(5,32) , BitVecVal(12,32) , BitVecVal(6,32))))
 
- 
+TO_init = 2000
+TO_max = 12800
+rem_key_max = 32
+
 s = Tactic('smt').solver()
+s.set("timeout", TO_init)
 
+s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_1 , key2_1 , key3_1 , key4_1) == out1)
+s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_2 , key2_2 , key3_2 , key4_2) == out2)
 
-s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_1 , key2_1 , key3_1) == out1)
-s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_2 , key2_2 , key3_2) == out2)
-
-while s.check(out1 != out2, Or(key1_1 != key1_2 , key2_1 != key2_2 , key3_1 != key3_2)) == sat:
+while s.check(out1 != out2, Or(key1_1 != key1_2 , key2_1 != key2_2 , key3_1 != key3_2 , key4_1 != key4_2)) == sat:
     m = s.model()
     ia = str(m[i1]) + " " + str(m[i2]) + " " + str(m[i3]) + " " + str(m[i4]) + " " + str(m[i5]) + " " + str(m[i6]) + " " + str(m[i7]) + " " + str(m[i8]) + " " +str(m[i9]) + " " +str(m[i10])
     print("DIP : ",ia)
@@ -121,9 +124,34 @@ while s.check(out1 != out2, Or(key1_1 != key1_2 , key2_1 != key2_2 , key3_1 != k
     i_10 = m[i10]
 
     out_tup = tuple.tuple(out[0],out[1],out[2])
-    s.add((motion(i_1 , i_2, i_3 , i_4 , i_5 , i_6 , i_7 , i_8 , i_9 , i_10 , key1_1 , key2_1 , key3_1) == out_tup))
-    s.add((motion(i_1 , i_2, i_3 , i_4 , i_5 , i_6 , i_7 , i_8 , i_9 , i_10 , key1_2 , key2_2 , key3_2) == out_tup))
-
+    s.add((motion(i_1 , i_2, i_3 , i_4 , i_5 , i_6 , i_7 , i_8 , i_9 , i_10 , key1_1 , key2_1 , key3_1 , key4_1) == out_tup))
+    s.add((motion(i_1 , i_2, i_3 , i_4 , i_5 , i_6 , i_7 , i_8 , i_9 , i_10 , key1_2 , key2_2 , key3_2 , key4_2) == out_tup))
 
 print(s.check(out1 == out2))
 print(s.model())
+
+po_set = set()
+p = 0
+while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_2) != unsat:
+        try:
+            m = s.model()
+        except:
+            break_away = True
+            break
+        #adding the remaining possible keys 
+        po_set.add(m)
+
+        #If size crossed threshold exit
+        if len(po_set) > rem_key_max:
+            break
+
+        #adding constraints - K1 & K2 is not equal to current key fetched
+        s.add(Or(key1_1 != m[key1_1],key2_1 != m[key2_1],key3_1 != m[key3_1],key4_1 != m[key4_1]))
+        s.add(Or(key1_2 != m[key1_2],key2_2 != m[key2_2],key3_2 != m[key3_2],key4_2 != m[key4_2]))
+        p = p + 1
+
+print(" Possible keys:",p)
+for m in po_set:
+    print(str(m[key1_1]) + " " + str(m[key2_1]) + " " + str(m[key3_1]) + " " + str(m[key4_1]))
+print()
+

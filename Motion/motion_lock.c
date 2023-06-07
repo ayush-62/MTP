@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-//key_1 = 5 , key_2 = 12 , key_3 = 6 
-void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7, int in8, int in9, int in10, int key_1, int key_2 , int key_3  ,int *out1,  int *out2,  int *out3)
+//key_1 = 5 , key_2 = 12 , key_3 = 6 key_4= 5
+void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7, int in8, int in9, int in10, int key_1, int key_2 , int key_3 , int key_4 , int *out1,  int *out2,  int *out3)
 {
     int mult1 = in1 * in2;
     int mult2 = in1 * (2*key_1);
@@ -23,7 +23,7 @@ void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7
     int add3;
     int add4;
     int add5;
-    if(add1>add2)
+    if(add1>add2 && key_4 == 5)
     {
     add3 = in5 * mult8;
     add4 = mult10 * in4;
@@ -33,7 +33,7 @@ void motion( int in1,  int in2,  int in3,  int in4,  int in5,  int in6,  int in7
     {
     add3 = in5 + mult8;
     add4 = mult10 *in3;
-    add5 = in10 ;
+    add5 = in10 / mult14 ;
     }
 
     int add6 = mult1 + add1;
@@ -74,7 +74,7 @@ int main(int argc, char** argv)
 
     int out1, out2, out3;
 
-   motion(in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, 5 , 12 , 6 , &out1, &out2, &out3);
+   motion(in1, in2, in3, in4, in5, in6, in7, in8, in9, in10, 5 , 12 , 6 , 5 , &out1, &out2, &out3);
 
    printf("%d\n", out1);
    printf("%d\n", out2);
