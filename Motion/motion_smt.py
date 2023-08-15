@@ -98,7 +98,7 @@ s.set("timeout", TO_init)
 
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_1 , key2_1 , key3_1 , key4_1) == out1)
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_2 , key2_2 , key3_2 , key4_2) == out2)
-
+print(s.check(out1 != out2))
 while s.check(out1 != out2, Or(key1_1 != key1_2 , key2_1 != key2_2 , key3_1 != key3_2 , key4_1 != key4_2)) == sat:
     m = s.model()
     ia = str(m[i1]) + " " + str(m[i2]) + " " + str(m[i3]) + " " + str(m[i4]) + " " + str(m[i5]) + " " + str(m[i6]) + " " + str(m[i7]) + " " + str(m[i8]) + " " +str(m[i9]) + " " +str(m[i10])

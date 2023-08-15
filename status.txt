@@ -1,2 +1,0 @@
-changed the motion written in c to python.
-Python int type can represent integers of practically unlimited magnitude. but z3 bitvector(32) is having limited range. so output of oracle and smt is not matching. using bitvector because there is left shift and right shift operation in motion.i will update you if get any solution.

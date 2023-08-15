@@ -1,0 +1,14 @@
+"arf_code.py"
+--------------
+i1-> Variable
+Except k3,k6 Other keys are consistant.
+
+"arf_code2_without_key.py"
+--------------------------
+G1-> Variable
+Except k4 Other keys are consistant
+
+"arf_code_with_key.py"
+-----------------------
+G1->Variable
+All keys are found

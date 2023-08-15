@@ -94,7 +94,16 @@ TO_max = 12800
 rem_key_max = 32
 
 s = Tactic('smt').solver()
-s.set("timeout", TO_init)
+# s.set("timeout", TO_init)
+s.add(key1_1 > 0 , key1_1 <  2147483647)
+s.add(key2_1 > 0 , key2_1 <  2147483647)
+s.add(key3_1 > 0 , key3_1 <  2147483647)
+s.add(key4_1 > 0 , key4_1 <  2147483647)
+s.add(key1_1 > 0 , key1_2 <  2147483647)
+s.add(key2_2 > 0 , key2_2 <  2147483647)
+s.add(key3_2 > 0 , key3_2 <  2147483647)
+s.add(key4_2 > 0 , key4_2 <  2147483647)
+s.add(key1_2 > 0 , key1_2 <  2147483647)
 
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_1 , key2_1 , key3_1 , key4_1) == out1)
 s.add(motion(i1 , i2 , i3 , i4 , i5 ,  i6 , i7 , i8 , i9 , i10 , key1_2 , key2_2 , key3_2 , key4_2) == out2)

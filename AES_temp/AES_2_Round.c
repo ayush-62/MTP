@@ -81,7 +81,6 @@ void ByteSub_ShiftRow()
   statemt[15] = Sbox[statemt[11] >> 4][statemt[11] & 0xf];
   statemt[11] = Sbox[statemt[7] >> 4][statemt[7] & 0xf];
   statemt[7] = temp;
-
   statemt[0] = Sbox[statemt[0] >> 4][statemt[0] & 0xf];
   statemt[4] = Sbox[statemt[4] >> 4][statemt[4] & 0xf];
   statemt[8] = Sbox[statemt[8] >> 4][statemt[8] & 0xf];
@@ -138,7 +137,7 @@ void MixColumn_AddRoundKey (int nb, int n)
 	      ret[3 + j * 4] ^= x;
       ret[3 + j * 4] ^= statemt[1 + j * 4] ^ statemt[2 + j * 4] ^ word[3][j + nb * n];
     }
-
+    
     for (j = 0; j < nb; ++j)
     {
       statemt[j * 4] = ret[j * 4];
@@ -171,10 +170,10 @@ int main(int argc, char** argv)
       AddRoundKey(0);
       for(int i=1;i<=2;i++)
       {
-        ByteSub_ShiftRow();
+         ByteSub_ShiftRow();
         MixColumn_AddRoundKey(4, i);
       }
-      ByteSub_ShiftRow();
+       ByteSub_ShiftRow();
       AddRoundKey(10);
       printf("%d\n",statemt[0]);
       printf("%d\n",statemt[1]);

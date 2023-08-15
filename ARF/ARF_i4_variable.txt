@@ -1,0 +1,20 @@
+loop1 enter
+DIP
+2 3 3 168 7 11 13 17 19
+The key is:
+2359296 1 466977776 685244416 18884192 True False False False False True True True False True
+276824064 252645134 948190912 0 0 False True True True False True False True False False
+DIP
+2 3 3 65 7 11 13 17 19
+The key is:
+23 11 342947902 1431655733 13 True False True False True False True False True False
+23 1 650752630 1327639254 13 True False False False True False True False True False
+
+
+checking remaining keys
++------+------+------+------+------+----+----+----+----+----+----+----+----+----+-----+
+| key1 | key2 | key3 | key4 | key5 | k1 | k2 | k3 | k4 | k5 | k6 | k7 | k8 | k9 | k10 |
++------+------+------+------+------+----+----+----+----+----+----+----+----+----+-----+
++------+------+------+------+------+----+----+----+----+----+----+----+----+----+-----+
+loop3 enter
+Computation took 2 iterations and 410.079729 seconds.

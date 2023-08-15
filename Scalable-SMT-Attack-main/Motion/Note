@@ -1,0 +1,10 @@
+in1->no key found
+in2->no key found
+in3->key1,key8,key10,All boolean Key found
+in4->key5,All boolean key found
+in5->no key found
+in6->no keys
+in7->no keys
+in8,in9,in10->no keys
+in1,in2->key3 found
+with all input->other keys are found
