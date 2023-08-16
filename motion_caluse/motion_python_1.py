@@ -141,6 +141,9 @@ s.add(key6_1<=1000,key6_2<=1000)
 s.add(key7_1<=1000,key7_2<=1000)
 s.add(key9_1<=1000,key9_2<=1000)
 
+#learn clause after i1 as variable
+s.add( 7*key2_2 == 2163 +(4294967238 + 4294967292*key3_2 + 4294967295*key9_2*(35 + 5*key4_2) << key10_2))
+
 pos_set = set()
 print("loop1 enter")
 while s.check(out3 != out4, Or(key2_1 != key2_2,key4_1 != key4_2,key6_1 != key6_2,key7_1 != key7_2,key9_1 != key9_2)) == sat:

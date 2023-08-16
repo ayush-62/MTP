@@ -1,4 +1,5 @@
 from z3 import *
+from prettytable import PrettyTable
 import subprocess
 import time
 
@@ -139,6 +140,11 @@ s.add(key8_1>=0,key8_2>=0)
 s.add(key9_1>=0,key9_2>=0)
 s.add(key10_1>=0,key10_2>=0)
 
+s.add( 7*key2_2 == 2163 +(4294967238 + 4294967292*key3_2 + 4294967295*key9_2*(35 + 5*key4_2) << key10_2))
+s.add( 7*key2_1 == 2163 +(4294967238 + 4294967292*key3_1 + 4294967295*key9_1*(35 + 5*key4_1) << key10_1))
+
+t = PrettyTable(['key1','key2','key3','key4','key5','key6','key7','key8','key9','key10'])
+
 pos_set = set()
 print("loop1 enter")
 while s.check(out3 != out4, Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_2,key4_1 != key4_2,key5_1 != key5_2,key6_1 != key6_2,key7_1 != key7_2,key8_1 != key8_2,key9_1 != key9_2,key10_1!=key10_2,k1_1!=k1_2,k2_1!=k2_2,k3_1!=k3_2,k4_1!=k4_2,k5_1!=k5_2)) == sat:
@@ -153,6 +159,7 @@ while s.check(out3 != out4, Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_
     print(str(m[key1_2])+" "+str(m[key2_2])+" "+str(m[key3_2])+" "+str(m[key4_2])+" "+str(m[key5_2])+" "+str(m[key6_2])+" "+str(m[key7_2])+" "+str(m[key8_2])+" "+str(m[key9_2])+" "+str(m[key10_2])+" "+str(m[k1_2])+" "+str(m[k2_2])+" "+str(m[k3_2])+" "+str(m[k4_2])+" "+str(m[k5_2]))
     #creating the input with the DIP
     ia = str(1)+" "+str(2)+" "+str(m[in3])+" "+str(5)+" "+str(7)+" "+str(11)+" "+str(13)+" "+str(17)+" "+str(19)+" "+str(23)
+    print(s.non_units())
     #using the input to get the correct output for the DIP from the oracle 
     [oa1,oa2,oa3] = Cexec(ia)
     oa = tuple.tuple1(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32))
@@ -163,6 +170,8 @@ while s.check(out3 != out4, Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_
 
 p = 0
 print()
+for c in s.assertions():
+    print (c)
 print()
 print("checking remaining keys")
 while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_2,key5_1 == key5_2,key6_1 == key6_2,key7_1 == key7_2,key8_1 == key8_2,key9_1 == key9_2,key10_1==key10_2,k1_1==k1_2,k2_1==k2_2,k3_1==k3_2,k4_1==k4_2,k5_1==k5_2) != unsat:
@@ -173,7 +182,7 @@ while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_
         break
     #adding the remaining possible keys 
     pos_set.add(m)
-    print(str(m[key1_1].as_signed_long())+" "+str(m[key2_1].as_signed_long())+" "+str(m[key3_1].as_signed_long())+" "+str(m[key4_1].as_signed_long())+" "+str(m[key5_1].as_signed_long())+" "+str(m[key6_1].as_signed_long())+" "+str(m[key7_1].as_signed_long())+" "+str(m[key8_1].as_signed_long())+" "+str(m[key9_1].as_signed_long())+" "+str(m[key10_1].as_signed_long())+" "+str(m[k1_1])+" "+str(m[k2_1])+" "+str(m[k3_1])+" "+str(m[k4_1])+" "+str(m[k5_1]))
+    t.add_row([str(m[key1_1].as_signed_long()),str(m[key2_1].as_signed_long()),str(m[key3_1].as_signed_long()),str(m[key4_1].as_signed_long()),str(m[key5_1].as_signed_long()),str(m[key6_1]),str(m[key7_1]),str(m[key8_1]),str(m[key9_1]),str(m[key10_1])])
     #If size crossed threshold exit
     if len(pos_set) > rem_key_max:
         break
@@ -185,6 +194,7 @@ while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_
 
 
 print()
+print(t)
 print("loop2 enter")
 
 
