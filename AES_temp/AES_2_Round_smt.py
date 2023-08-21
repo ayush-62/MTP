@@ -277,7 +277,7 @@ s = Tactic('smt').solver()
 # s.add(key2_2 == 3)
 # s.add(key3_1 == 283)
 # s.add(key3_2 == 283)
-out = AES_2_Round(statemt , Sbox , word , ret ,33,106,49,58,17,168,148,174,201,253,123,132,4,193,64,44,5,2,3,8,12,8)
+out = AES_2_Round(statemt , Sbox , word , ret ,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,5,3,283,2,3,4)
 # s.add(simplify(AES_2_Round(statemt , Sbox , word ,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,5,3,283) == out))
 # print(s.check())
 

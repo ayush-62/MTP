@@ -1,4 +1,5 @@
 from z3 import *
+from prettytable import PrettyTable
 import subprocess
 import time
 

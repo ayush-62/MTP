@@ -106,20 +106,20 @@ s = Tactic('smt').solver()
 #addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
 s.add(simplify(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_1,key2_1,key3_1,key4_1,key5_1,k1_1,k2_1,k3_1,k4_1,k5_1,k6_1,k7_1,k8_1,k9_1,k10_1) == out1))
 s.add(simplify(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_2,key2_2,key3_2,key4_2,key5_2,k1_2,k2_2,k3_2,k4_2,k5_2,k6_2,k7_2,k8_2,k9_2,k10_2) == out2))
-# s.add(i1>=0,i1<=255)
+s.add(i1>=0,i1<=255)
 # s.add(i2>=0,i2<=255)
 # s.add(i3>=0,i3<=255)
-s.add(i4>=0,i4<=255)
+# s.add(i4>=0,i4<=255)
 # s.add(i6>=0,i6<=255)
 # s.add(G1>=0,G1<=255)
 # s.add(G2>=0,G2<=255)
 # s.add(GG1>=0,GG1<=255)
 # s.add(GG2>=0,GG2<=255)
 
-s.add(i1 == BitVecVal(2,32))
+# s.add(i1 == BitVecVal(2,32))
 s.add(i2 == BitVecVal(3,32))
 s.add(i3 == BitVecVal(3,32))
-# s.add(i4 == BitVecVal(5,32))
+s.add(i4 == BitVecVal(5,32))
 s.add(i6 == BitVecVal(7,32))
 s.add(G1 == BitVecVal(11,32))
 s.add(G2 == BitVecVal(13,32))
@@ -164,79 +164,81 @@ while s.check(out1 != out2, Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_
 
 p = 0
 print()
-# for c in s.assertions():
-#     print (c)
+for c in s.assertions():
+    for i in c:
+        print(i)
+        print()
 print()
 print("checking remaining keys")
-while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_2,key5_1 == key5_2,k1_1==k1_2,k2_1==k2_2,k3_1==k3_2,k4_1==k4_2,k5_1==k5_2,k6_1==k6_2,k7_1==k7_2,k8_1==k8_2,k9_1==k9_2,k10_1==k10_2) != unsat:
-    try:
-        m = s.model()
-    except:
-        break_away = True
-        break
-    #adding the remaining possible keys 
-    pos_set.add(m)
-    t.add_row([str(m[key1_1].as_signed_long()),str(m[key2_1].as_signed_long()),str(m[key3_1].as_signed_long()),str(m[key4_1].as_signed_long()),str(m[key5_1].as_signed_long()),str(m[k1_1]),str(m[k2_1]),str(m[k3_1]),str(m[k4_1]),str(m[k5_1]),str(m[k6_1]),str(m[k7_1]),str(m[k8_1]),str(m[k9_1]),str(m[k10_1])])
-    #If size crossed threshold exit
-    if len(pos_set) > rem_key_max:
-        break
+# while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_2,key5_1 == key5_2,k1_1==k1_2,k2_1==k2_2,k3_1==k3_2,k4_1==k4_2,k5_1==k5_2,k6_1==k6_2,k7_1==k7_2,k8_1==k8_2,k9_1==k9_2,k10_1==k10_2) != unsat:
+#     try:
+#         m = s.model()
+#     except:
+#         break_away = True
+#         break
+#     #adding the remaining possible keys 
+#     pos_set.add(m)
+#     t.add_row([str(m[key1_1].as_signed_long()),str(m[key2_1].as_signed_long()),str(m[key3_1].as_signed_long()),str(m[key4_1].as_signed_long()),str(m[key5_1].as_signed_long()),str(m[k1_1]),str(m[k2_1]),str(m[k3_1]),str(m[k4_1]),str(m[k5_1]),str(m[k6_1]),str(m[k7_1]),str(m[k8_1]),str(m[k9_1]),str(m[k10_1])])
+#     #If size crossed threshold exit
+#     if len(pos_set) > rem_key_max:
+#         break
 
-    #adding constraints - K1 & K2 is not equal to current key fetched
-    s.add(Or(key1_1 != m[key1_1],key2_1!=m[key2_1],key3_1!=m[key3_1],key4_1!=m[key4_1],key5_1!=m[key5_1],k1_1!=m[k1_1],k2_1!=m[k2_1],k3_1!=m[k3_1],k4_1!=m[k4_1],k5_1!=m[k5_1],k6_1!=m[k6_1],k7_1!=m[k7_1],k8_1!=m[k8_1],k9_1!=m[k9_1],k10_1!=m[k10_1]))
-    s.add(Or(key1_2 != m[key1_2],key2_2!=m[key2_2],key3_2!=m[key3_2],key4_2!=m[key4_2],key5_2!=m[key5_2],k1_2!=m[k1_2],k2_2!=m[k2_2],k3_2!=m[k3_2],k4_2!=m[k4_2],k5_2!=m[k5_2],k6_2!=m[k6_2],k7_2!=m[k7_2],k8_2!=m[k8_2],k9_2!=m[k9_2],k10_2!=m[k10_2]))
-    p = p + 1
+#     #adding constraints - K1 & K2 is not equal to current key fetched
+#     s.add(Or(key1_1 != m[key1_1],key2_1!=m[key2_1],key3_1!=m[key3_1],key4_1!=m[key4_1],key5_1!=m[key5_1],k1_1!=m[k1_1],k2_1!=m[k2_1],k3_1!=m[k3_1],k4_1!=m[k4_1],k5_1!=m[k5_1],k6_1!=m[k6_1],k7_1!=m[k7_1],k8_1!=m[k8_1],k9_1!=m[k9_1],k10_1!=m[k10_1]))
+#     s.add(Or(key1_2 != m[key1_2],key2_2!=m[key2_2],key3_2!=m[key3_2],key4_2!=m[key4_2],key5_2!=m[key5_2],k1_2!=m[k1_2],k2_2!=m[k2_2],k3_2!=m[k3_2],k4_2!=m[k4_2],k5_2!=m[k5_2],k6_2!=m[k6_2],k7_2!=m[k7_2],k8_2!=m[k8_2],k9_2!=m[k9_2],k10_2!=m[k10_2]))
+#     p = p + 1
 
 
-print(t)
+# print(t)
 # print("loop2 enter")
 
 
 # # #creating remaining key set list
-# pos_l = list(pos_set)
+pos_l = list(pos_set)
 
 # #defining a new SMT solver
-# g = Tactic('smt').solver()
+g = Tactic('smt').solver()
 
-# #addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
-# g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1) == out1)
-# g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2) == out2)
+#addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
+g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1) == out1)
+g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2) == out2)
 
 print("loop3 enter")
 
-#Algorithm 3 - SMT on key set 
-# while len(pos_l) > 1:
-#     #Taking two keys from the key set
-#     m1 = pos_l[0]
-#     m2 = pos_l[1]
-#     #after the push the constaints added can be removed using pop()
-#     g.push()
-#     #adding constraints - K1 is equal to the first key taken from the list i.e. m1, and K2 is m2
-#     g.add(key1_1 == m1[key1_1],key2_1==m1[key2_1],key3_1==m1[key3_1],key4_1==m1[key4_1],key5_1==m1[key5_1],key6_1==m1[key6_1],key7_1==m1[key7_1],key8_1==m1[key8_1],key9_1==m1[key9_1])
-#     g.add(key1_2 == m2[key1_2],key2_2==m2[key2_2],key3_2==m2[key3_2],key4_2==m2[key4_2],key5_2==m2[key5_2],key6_2==m2[key6_2],key7_2==m2[key7_2],key8_2==m2[key8_2],key9_2==m2[key9_2])
+# Algorithm 3 - SMT on key set 
+while len(pos_l) > 1:
+    #Taking two keys from the key set
+    m1 = pos_l[0]
+    m2 = pos_l[1]
+    #after the push the constaints added can be removed using pop()
+    g.push()
+    #adding constraints - K1 is equal to the first key taken from the list i.e. m1, and K2 is m2
+    g.add(key1_1 == m1[key1_1],key2_1==m1[key2_1],key3_1==m1[key3_1],key4_1==m1[key4_1],key5_1==m1[key5_1],key6_1==m1[key6_1],key7_1==m1[key7_1],key8_1==m1[key8_1],key9_1==m1[key9_1])
+    g.add(key1_2 == m2[key1_2],key2_2==m2[key2_2],key3_2==m2[key3_2],key4_2==m2[key4_2],key5_2==m2[key5_2],key6_2==m2[key6_2],key7_2==m2[key7_2],key8_2==m2[key8_2],key9_2==m2[key9_2])
 
-#     #checking for DIP
-#     if g.check(out1 != out2) == sat:
-#         #model to get the DIP.
-#         m = g.model()
-#         ia = str(m[i1]) + " " + str(m[i2]) + " " + str(m[i3]) + " " + str(m[i4])+ " " + str(m[i6]) + " " + str(m[G1]) + " " + str(m[G2]) + " " + str(m[G3]) + " " + str(m[G4]) + " " + str(m[GG1]) + " " + str(m[GG2])
-#         [oa1,oa2,oa3,oa4] = Cexec(ia)
-#         oa = tuple.tuple(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32),BitVecVal(oa4,32))
-#         #checking m1 is correct key or not is correct or not
-#         if g.check(findOutput(m[i1],m[i2],m[i3],m[i4],m[i6],m[G1],m[G2],m[GG1],m[GG2],m1[key1_2],m1[key2_2],m1[key3_2],m1[key4_2],m1[key5_2],m1[key6_2],m1[key7_2],m1[key8_2],m1[key9_2]) == oa) == unsat:
-#             pos_l.remove(m1)
-#         #checking m2 is correct key or not
-#         if g.check(findOutput(m[i1],m[i2],m[i3],m[i4],m[i6],m[G1],m[G2],m[GG1],m[GG2],m2[key1_2],m2[key2_2],m2[key3_2],m2[key4_2],m2[key5_2],m2[key6_2],m2[key7_2],m2[key8_2],m2[key9_2]) == oa) == unsat:
-#             pos_l.remove(m2)
-#     #no DIP found - keys are from same equivalence class
-#     else:
-#         pos_l.remove(m1)
-#     #here the constaints added are removed - as the next two keys will be taken from the remaining key set
-#     g.pop()
+    #checking for DIP
+    if g.check(out1 != out2) == sat:
+        #model to get the DIP.
+        m = g.model()
+        ia = str(m[i1]) + " " + str(m[i2]) + " " + str(m[i3]) + " " + str(m[i4])+ " " + str(m[i6]) + " " + str(m[G1]) + " " + str(m[G2]) + " " + str(m[G3]) + " " + str(m[G4]) + " " + str(m[GG1]) + " " + str(m[GG2])
+        [oa1,oa2,oa3,oa4] = Cexec(ia)
+        oa = tuple.tuple(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32),BitVecVal(oa4,32))
+        #checking m1 is correct key or not is correct or not
+        if g.check(findOutput(m[i1],m[i2],m[i3],m[i4],m[i6],m[G1],m[G2],m[GG1],m[GG2],m1[key1_2],m1[key2_2],m1[key3_2],m1[key4_2],m1[key5_2],m1[key6_2],m1[key7_2],m1[key8_2],m1[key9_2]) == oa) == unsat:
+            pos_l.remove(m1)
+        #checking m2 is correct key or not
+        if g.check(findOutput(m[i1],m[i2],m[i3],m[i4],m[i6],m[G1],m[G2],m[GG1],m[GG2],m2[key1_2],m2[key2_2],m2[key3_2],m2[key4_2],m2[key5_2],m2[key6_2],m2[key7_2],m2[key8_2],m2[key9_2]) == oa) == unsat:
+            pos_l.remove(m2)
+    #no DIP found - keys are from same equivalence class
+    else:
+        pos_l.remove(m1)
+    #here the constaints added are removed - as the next two keys will be taken from the remaining key set
+    g.pop()
 
-# print("The final key is:")
-# m = pos_l[0]
-# print("key1 = " + str(m[key1_1]) + "\n" + "key2 = " + str(m[key2_1]) + "\n" + "key3 = " + str(m[key3_1]) + "\n" + "key4 = " + str(m[key4_1]) + "\n" + "key5 = " + str(m[key5_1])+ "\n" + "key6 = " + str(m[key6_1])+ "\n" + "key7 = " + str(m[key7_1])+ "\n" + "key8 = " + str(m[key8_1])+ "\n" + "key9 = " + str(m[key9_1]))
-# print()
+print("The final key is:")
+m = pos_l[0]
+print("key1 = " + str(m[key1_1]) + "\n" + "key2 = " + str(m[key2_1]) + "\n" + "key3 = " + str(m[key3_1]) + "\n" + "key4 = " + str(m[key4_1]) + "\n" + "key5 = " + str(m[key5_1])+ "\n" + "key6 = " + str(m[key6_1])+ "\n" + "key7 = " + str(m[key7_1])+ "\n" + "key8 = " + str(m[key8_1])+ "\n" + "key9 = " + str(m[key9_1]))
+print()
 
 
 end_time = time.time()

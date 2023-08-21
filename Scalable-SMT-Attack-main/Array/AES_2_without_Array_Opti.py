@@ -201,11 +201,11 @@ j = 0
 
 s = Tactic('smt').solver()
 
-s.add(simplify(findOutput(key1_1,key2_1,key3_1,key4_1,nb,n)) == out1)
-s.add(simplify(findOutput(key1_2,key2_2,key3_2,key4_2,nb,n)) == out2)
+# s.add(simplify(findOutput(key1_1,key2_1,key3_1,key4_1,nb,n)) == out1)
+# s.add(simplify(findOutput(key1_2,key2_2,key3_2,key4_2,nb,n)) == out2)
 
-#s.add(simplify(sub(key1_1,nb,n)) == out3)
-#s.add(simplify(sub(key1_2,nb,n)) == out4)
+s.add(simplify(sub(key1_1,nb,n)) == out3)
+s.add(simplify(sub(key1_2,nb,n)) == out4)
 s.add(nb == 4)
 s.add(n >= 0, n < 15)
 
@@ -225,7 +225,7 @@ print("loop1 enter")
 #print(s.check(out1 != out2, Or(k1_1 != k1_2,k2_1 != k2_2 , k3_1 != k3_2 ,k4_1 != k4_2,k5_1 != k5_2 ,key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_2)))
 
 start=time.time()
-while s.check(out1 != out2, Or(key1_1!=key1_2,key2_1!=key2_2,key3_1!=key3_2,key4_1!=key4_2)) == sat:
+while s.check(out3 != out4, Or(key1_1!=key1_2,key2_1!=key2_2,key3_1!=key3_2,key4_1!=key4_2)) == sat:
     m = s.model()
     #print(m)
     print(str(m[key1_1])+" "+str(m[key2_1])+" "+str(m[key3_1])+" "+str(m[key4_1]))
@@ -263,7 +263,7 @@ while s.check(key1_1==key1_2,key2_1==key2_2,key3_1==key3_2,key4_1==key4_2) != un
 print("done")
 pos_l = list(pos_set)
 
-'''g = Tactic('smt').solver()
+g = Tactic('smt').solver()
 
 g.add(simplify(findOutput(k1_1,key1_1,key2_1,key3_1,nb,n)) == out1)
 g.add(simplify(findOutput(k1_2,key1_2,key2_2,key3_2,nb,n)) == out2)
@@ -284,8 +284,8 @@ while len(pos_l) > 1:
         m = g.model()
         #print(str(m[nb])+"  "+str(m[n]))
         ia = str(m[nb]) + " " + str(m[n])
-        [oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16,oa17,oa18,oa19,oa20,oa21,oa22,oa23,oa24,oa25,oa26,oa27,oa28,oa29,oa30,oa31,oa32] = Cexec(ia)
-        oa = tuple.tuple1(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32),BitVecVal(oa4,32),BitVecVal(oa5,32),BitVecVal(oa6,32),BitVecVal(oa7,32),BitVecVal(oa8,32),BitVecVal(oa9,32),BitVecVal(oa10,32),BitVecVal(oa11,32),BitVecVal(oa12,32),BitVecVal(oa13,32),BitVecVal(oa14,32),BitVecVal(oa15,32),BitVecVal(oa16,32),BitVecVal(oa17,32),BitVecVal(oa18,32),BitVecVal(oa19,32),BitVecVal(oa20,32),BitVecVal(oa21,32),BitVecVal(oa22,32),BitVecVal(oa23,32),BitVecVal(oa24,32),BitVecVal(oa25,32),BitVecVal(oa26,32),BitVecVal(oa27,32),BitVecVal(oa28,32),BitVecVal(oa29,32),BitVecVal(oa30,32),BitVecVal(oa31,32),BitVecVal(oa32,32))
+        [oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16] = Cexec(ia)
+        oa = tuple.tuple1(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32),BitVecVal(oa4,32),BitVecVal(oa5,32),BitVecVal(oa6,32),BitVecVal(oa7,32))
         if g.check(simplify(findOutput(m1[key1_2],m1[key2_2],m1[key3_2],m[nb],m[n])) == oa) == unsat:
             pos_l.remove(m1)
         if g.check(simplify(findOutput(m2[key1_2],m2[key2_2],m2[key3_2],m[nb],m[n])) == oa) == unsat:
@@ -307,4 +307,3 @@ taken = end_time - start_time
 
 print("Computation took %d iterations and %f seconds." % (j, taken))      
 
-'''
