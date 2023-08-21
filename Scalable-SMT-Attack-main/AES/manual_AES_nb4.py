@@ -23,7 +23,7 @@ oo0_2,oo1_2,oo2_2,oo3_2 = BitVecs('oo0_2 oo1_2 oo2_2 oo3_2',32)
 k1_2,k2_2,k3_2,k4_2,k5_2 = Bools('k1_2 k2_2 k3_2 k4_2 k5_2')'''
 key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1 = BitVecs('key1_1 key2_1 key3_1 key4_1 key5_1 key6_1 key7_1 key8_1 key9_1 key10_1' , 32)
 key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2 = BitVecs('key1_2 key2_2 key3_2 key4_2 key5_2 key6_2 key7_2 key8_2 key9_2 key10_2' , 32)
-inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15 = BitVecs('inp1 inp2 inp3 inp4 inp5 inp6 inp7 inp8 inp9 inp10 inp11 inp12 inp13 inp14 inp15',32)
+inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16 = BitVecs('inp1 inp2 inp3 inp4 inp5 inp6 inp7 inp8 inp9 inp10 inp11 inp12 inp13 inp14 inp15 inp16',32)
 
 
 tuple = Datatype('tuple')
@@ -85,7 +85,7 @@ def findOutput1(inp3,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
     S = Store(S,BitVecVal(0,32),BitVecVal(statemt[0],32))
     S = Store(S,BitVecVal(1,32),BitVecVal(statemt[1],32))
     S = Store(S,BitVecVal(2,32),BitVecVal(statemt[2],32))
-    S = Store(S,BitVecVal(3,32),BitVecVal(statemt[3],32))
+    S = Store(S,BitVecVal(3,32),BitVecVal(inp3,32))
     S = Store(S,BitVecVal(4,32),BitVecVal(statemt[4],32))
     S = Store(S,BitVecVal(5,32),BitVecVal(statemt[5],32))
     S = Store(S,BitVecVal(6,32),BitVecVal(statemt[6],32))
@@ -125,7 +125,7 @@ def findOutput1(inp3,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
     S = Store(S,BitVecVal(0,32),BitVecVal(25,32))
     S = Store(S,BitVecVal(1,32),BitVecVal(83,32))
     S = Store(S,BitVecVal(2,32),BitVecVal(16,32))
-    S = Store(S,BitVecVal(3,32),BitVecVal(23,32))
+    S = Store(S,BitVecVal(3,32),S[3]^W[3][0])
     S = Store(S,BitVecVal(4,32),BitVecVal(63,32))
     S = Store(S,BitVecVal(5,32),BitVecVal(244,32))
     S = Store(S,BitVecVal(6,32),BitVecVal(169,32))
@@ -2041,8 +2041,8 @@ def findOutput1(inp3,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
     o14 = S[14]
     o15 = S[15]
     #return o5
-    # return tuple.tuple1(o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15)
-    return S
+    return tuple.tuple1(o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15)
+    # return S
 
 
 def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,key4,key5):
@@ -2078,97 +2078,88 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     n=BitVecVal(0,32)
     nb=BitVecVal(4,32)
 
-    S = Store(S, j * 4 , i1^W[0][j + nb * n])
-    S = Store(S, 1 + j * 4 ,i2^W[1][j + nb * n])
-    S = Store(S, 2 + j * 4 ,i3^W[2][j + nb * n])
-    S = Store(S, 3 + j * 4 ,i4^W[3][j + nb * n])
-
-    j = j + 1
-
-    S = Store(S, j * 4 , i5^W[0][j + nb * n])
-    S = Store(S, 1 + j * 4 ,i6^W[1][j + nb * n])
-    S = Store(S, 2 + j * 4 ,i7^W[2][j + nb * n])
-    S = Store(S, 3 + j * 4 ,i8^W[3][j + nb * n])
-
-    j = j + 1
-
-    S = Store(S, j * 4 , i9^W[0][j + nb * n])
-    S = Store(S, 1 + j * 4 ,i10^W[1][j + nb * n])
-    S = Store(S, 2 + j * 4 ,i11^W[2][j + nb * n])
-    S = Store(S, 3 + j * 4 ,i12^W[3][j + nb * n])
-
-    j = j + 1
-
-    S = Store(S, j * 4 , i13^W[0][j + nb * n])
-    S = Store(S, 1 + j * 4 ,i14^W[1][j + nb * n])
-    S = Store(S, 2 + j * 4 ,i15^W[2][j + nb * n])
-    S = Store(S, 3 + j * 4 ,i16^W[3][j + nb * n])
+    S = Store(S,BitVecVal(0,32),BitVecVal(25,32))
+    S = Store(S,BitVecVal(1,32),BitVecVal(83,32))
+    S = Store(S,BitVecVal(2,32),BitVecVal(16,32))
+    S = Store(S,BitVecVal(3,32),S[3]^W[3][0])
+    S = Store(S,BitVecVal(4,32),BitVecVal(63,32))
+    S = Store(S,BitVecVal(5,32),BitVecVal(244,32))
+    S = Store(S,BitVecVal(6,32),BitVecVal(169,32))
+    S = Store(S,BitVecVal(7,32),BitVecVal(160,32))
+    S = Store(S,BitVecVal(8,32),BitVecVal(191,32))
+    S = Store(S,BitVecVal(9,32),BitVecVal(178,32))
+    S = Store(S,BitVecVal(10,32),BitVecVal(25,32))
+    S = Store(S,BitVecVal(11,32),BitVecVal(190,32))
+    S = Store(S,BitVecVal(12,32),BitVecVal(80,32))
+    S = Store(S,BitVecVal(13,32),BitVecVal(226,32))
+    S = Store(S,BitVecVal(14,32),BitVecVal(1,32))
+    S = Store(S,BitVecVal(15,32),BitVecVal(102,32))
 
 
     # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
-    s1_0,s1_1,s1_2,s1_3,s1_4,s1_5,s1_6,s1_7,s1_8,s1_9,s1_10,s1_11,s1_12,s1_13,s1_14,s1_15=BitVecs('s1_0 s1_1 s1_2 s1_3 s1_4 s1_5 s1_6 s1_7 s1_8 s1_9 s1_10 s1_11 s1_12 s1_13 s1_14 s1_15',32)
-    s1_0b,s1_1b,s1_2b,s1_3b,s1_4b,s1_5b,s1_6b,s1_7b,s1_8b,s1_9b,s1_10b,s1_11b,s1_12b,s1_13b,s1_14b,s1_15b=BitVecs('s1_0b s1_1b s1_2b s1_3b s1_4b s1_5b s1_6b s1_7b s1_8b s1_9b s1_10b s1_11b s1_12b s1_13b s1_14b s1_15b',32)
+    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+
+    s9_1 = S[1] >> 4
+    s9_1b = S[1] & 0xf
+    s9_5 = S[key1] >> 4
+    s9_5b = S[key1] & 0xf
+    s9_9 = S[9] >> 4
+    s9_9b = S[9] & 0xf
+    s9_13= S[13] >> 4
+    s9_13b= S[13] & 0xf
 
 
-    s1_1 = S[1] >> 4
-    s1_1b = S[1] & 0xf
-    s1_5 = S[key1] >> 4
-    s1_5b = S[5] & 0xf
-    s1_9 = S[9] >> 4
-    s1_9b = S[9] & 0xf
-    s1_13 = S[13] >> 4
-    s1_13b = S[13] & 0xf
+    s9_2 = S[2] >> 4
+    s9_2b = S[2] & 0xf
+    s9_10= S[key2] >> 4
+    s9_10b= S[key2] & 0xf
+    s9_6 = S[6] >> 4
+    s9_6b = S[6] & 0xf
+    s9_14 = S[14] >> 4
+    s9_14b = S[14] & 0xf
 
-    s1_2 = S[2] >> 4
-    s1_2b = S[2] & 0xf
-    s1_10 = S[10] >> 4
-    s1_10b=S[key2] & 0xf
-    s1_6 = S[6] >> 4
-    s1_6b = S[6] & 0xf
-    s1_14 = S[14] >> 4
-    s1_14b = S[14] & 0xf
+    s9_3 = S[3] >> 4
+    s9_3b = S[3] & 0xf
+    s9_15 = S[key3] >> 4
+    s9_15b = S[key3] & 0xf
+    s9_11 = S[11] >> 4
+    s9_11b = S[11] & 0xf
+    s9_7= S[7] >> 4
+    s9_7b= S[7] & 0xf
 
-    s1_3 = S[3] >> 4
-    s1_3b = S[3] & 0xf
-    s1_15 = S[15] >> 4
-    s1_15b=S[key3] & 0xf
-    s1_11 = S[11] >> 4
-    s1_11b = S[11] & 0xf
-    s1_7 = S[7] >> 4
-    s1_7b = S[7] & 0xf
+    s9_0=S[0] >> 4
+    s9_0b=S[0] & 0xf
+    s9_4 = S[4] >> 4
+    s9_4b = S[4] & 0xf
+    s9_8 = S[8] >> 4
+    s9_8b = S[8] & 0xf
+    s9_12 = S[12] >> 4
+    s9_12b = S[12] & 0xf
 
-    s1_0=S[0] >> 4
-    s1_0b=S[0] & 0xf
-    s1_4 = S[4] >> 4
-    s1_4b = S[4] & 0xf
-    s1_8 = S[8] >> 4
-    s1_8b = S[8] & 0xf
-    s1_12 = S[12] >> 4
-    s1_12b = S[12] & 0xf
-
-    temp = I[s1_1][s1_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s1_5][s1_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s1_9][s1_9b])
-    S = Store(S, BitVecVal(9, 32),I[s1_13][s1_13b])
+    temp = I[s9_1][s9_1b] 
+    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s1_2][s1_2b]
-    S = Store(S, BitVecVal(2, 32), I[s1_10][s1_10b]) #key2=10
+    temp = I[s9_2][s9_2b]
+    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
     S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s1_6][s1_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s1_14][s1_14b])
+    temp = I[s9_6][s9_6b] 
+    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s1_3][s1_3b]
-    S = Store(S, BitVecVal(3, 32), I[s1_15][s1_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s1_11][s1_11b])
-    S = Store(S, BitVecVal(11, 32), I[s1_7][s1_7b]) 
+    temp = I[s9_3][s9_3b]
+    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s1_0][s1_0b])
-    S = Store(S, BitVecVal(4, 32), I[s1_4][s1_4b])
-    S = Store(S, BitVecVal(8, 32), I[s1_8][s1_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s1_12][s1_12b])
+    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
 
     # ------------------------ MixColumn AddRoundKey ---------------------------------
@@ -2199,7 +2190,7 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     ret = Store(ret, 2 + j * 4, If(ret[2 + j * 4] >> 8 == 1, ret[2 + j * 4] ^ 283, ret[2 + j * 4]))
     x = S[3 + j * 4]
     x = x ^ (x << 1)
-    ret = Store(ret, 2 + j * 4, If( x >> 8 == 1, ret[2 + j * 4] ^ (x ^ key4), ret[2 + j * 4] ^ x)) #key4 283
+    ret = Store(ret, 2 + j * 4, If( x >> 8 == 1, ret[2 + j * 4] ^ (x ^ 283), ret[2 + j * 4] ^ x)) #key4 283
     ret = Store(ret, 2 + j * 4, ret[2 + j * 4] ^ (S[j * 4] ^ S[1 + j * 4] ^ W[2][j + nb * n]))
 
     ret = Store(ret, key5 + j * 4, S[3 + j * 4] << 1) #key5 3
@@ -2251,6 +2242,8 @@ s = Tactic('smt').solver()
 #o0_2,o1_2,o2_2,o3_2,o4_2,o5_2,o6_2,o7_2,o8_2,o9_2,o10_2,o11_2,o12_2,o13_2,o14_2,o15_2=findOutput(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2)
 '''s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
 s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)'''
+
+#key1 = 5, key2 = 10 , key3 = 15 , key4 = 283 , key5 = 3 , key6 = 5 , key7 = 4 , key8 = 7 , key9 = 8 , key10 = 10
 s.add(key1_1>=0,key1_1<=15)
 s.add(key1_2>=0,key1_2<=15)
 s.add(key2_1>=0,key2_1<=15)
@@ -2295,18 +2288,29 @@ s.add(i16>=0,i16<=255)
 # [oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16]= Cexec(ia)
 #,BitVecVal(oa11,8),BitVecVal(oa12,8),BitVecVal(oa13,8),BitVecVal(oa14,8),BitVecVal(oa15,8),BitVecVal(oa16,8),BitVecVal(oa17,8),BitVecVal(oa18,8),BitVecVal(oa19,8),BitVecVal(oa20,8),BitVecVal(oa21,8),BitVecVal(oa22,8),BitVecVal(oa23,8),BitVecVal(oa24,8),BitVecVal(oa25,8),BitVecVal(oa26,8),BitVecVal(oa27,8),BitVecVal(oa28,8),BitVecVal(oa29,8),BitVecVal(oa30,8),BitVecVal(oa31,8),BitVecVal(oa8,8)
 # oa = tuple.tuple1(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32),BitVecVal(oa4,32),BitVecVal(oa5,32),BitVecVal(oa6,32),BitVecVal(oa7,32),BitVecVal(oa8,32),BitVecVal(oa9,32),BitVecVal(oa10,32),BitVecVal(oa11,32),BitVecVal(oa12,32),BitVecVal(oa13,32),BitVecVal(oa14,32),BitVecVal(oa15,32),BitVecVal(oa16,32))
-S = findOutput1(inp3,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
-for i in range(16):
-    print(simplify(Select(S,i)).sexpr())
+# S = findOutput1(inp3,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
+# for i in range(16):
+#     print(simplify(Select(S,i)).sexpr())
 # print(s.check())
-# print((simplify(findOutput1(1,5,10,15,283,3,5,4,7,8,10))))
+# print((simplify(findOutput1(6,5,10,15,283,3,5,4,7,8,10))))
 # exit()
 
 # s.add(simplify(findOutput1(inp3,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1))==out1)
 # s.add(simplify(findOutput1(inp3,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2))==out2)
+# statemt = [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
 
 
-# if(s.check(out1 != out2) == sat):
-#     m = s.model()
-#     print(m[inp3])
+# print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,10,15,283,3)))
+# print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,10,15,283,3)))
+
+
+s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_1,key2_1,key3_1,key4_1,key5_1) == out3))
+s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_2,key2_2,key3_2,key4_2,key5_2) == out4))
+
+# s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
+# s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)
+
+if(s.check(out3 != out4) == sat):
+    m = s.model()
+    print(m[inp3])
 
