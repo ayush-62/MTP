@@ -2072,28 +2072,64 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
             j += 1
         W = Store(W, BitVecVal(i, 32), tm2)
         i += 1
-    #print(S[0])
+    
+    S = Store(S,BitVecVal(0,32),i1)
+    S = Store(S,BitVecVal(1,32),i2)
+    S = Store(S,BitVecVal(2,32),i3)
+    S = Store(S,BitVecVal(3,32),i4)
+    S = Store(S,BitVecVal(4,32),i5)
+    S = Store(S,BitVecVal(5,32),i6)
+    S = Store(S,BitVecVal(6,32),i7)
+    S = Store(S,BitVecVal(7,32),i8)
+    S = Store(S,BitVecVal(8,32),i9)
+    S = Store(S,BitVecVal(9,32),i10)
+    S = Store(S,BitVecVal(10,32),i11)
+    S = Store(S,BitVecVal(11,32),i12)
+    S = Store(S,BitVecVal(12,32),i13)
+    S = Store(S,BitVecVal(13,32),i14)
+    S = Store(S,BitVecVal(14,32),i15)
+    S = Store(S,BitVecVal(15,32),i16)
 
     # ------------------ Add Round Key ----------------
     n=BitVecVal(0,32)
     nb=BitVecVal(4,32)
 
-    S = Store(S,BitVecVal(0,32),BitVecVal(25,32))
-    S = Store(S,BitVecVal(1,32),BitVecVal(83,32))
-    S = Store(S,BitVecVal(2,32),BitVecVal(16,32))
-    S = Store(S,BitVecVal(3,32),S[3]^W[3][0])
-    S = Store(S,BitVecVal(4,32),BitVecVal(63,32))
-    S = Store(S,BitVecVal(5,32),BitVecVal(244,32))
-    S = Store(S,BitVecVal(6,32),BitVecVal(169,32))
-    S = Store(S,BitVecVal(7,32),BitVecVal(160,32))
-    S = Store(S,BitVecVal(8,32),BitVecVal(191,32))
-    S = Store(S,BitVecVal(9,32),BitVecVal(178,32))
-    S = Store(S,BitVecVal(10,32),BitVecVal(25,32))
-    S = Store(S,BitVecVal(11,32),BitVecVal(190,32))
-    S = Store(S,BitVecVal(12,32),BitVecVal(80,32))
-    S = Store(S,BitVecVal(13,32),BitVecVal(226,32))
-    S = Store(S,BitVecVal(14,32),BitVecVal(1,32))
-    S = Store(S,BitVecVal(15,32),BitVecVal(102,32))
+    # S = Store(S,BitVecVal(0,32),BitVecVal(25,32))
+    # S = Store(S,BitVecVal(1,32),BitVecVal(83,32))
+    # S = Store(S,BitVecVal(2,32),BitVecVal(16,32))
+    # S = Store(S,BitVecVal(3,32),S[3]^W[3][0])
+    # S = Store(S,BitVecVal(4,32),BitVecVal(63,32))
+    # S = Store(S,BitVecVal(5,32),BitVecVal(244,32))
+    # S = Store(S,BitVecVal(6,32),BitVecVal(169,32))
+    # S = Store(S,BitVecVal(7,32),BitVecVal(160,32))
+    # S = Store(S,BitVecVal(8,32),BitVecVal(191,32))
+    # S = Store(S,BitVecVal(9,32),BitVecVal(178,32))
+    # S = Store(S,BitVecVal(10,32),BitVecVal(25,32))
+    # S = Store(S,BitVecVal(11,32),BitVecVal(190,32))
+    # S = Store(S,BitVecVal(12,32),BitVecVal(80,32))
+    # S = Store(S,BitVecVal(13,32),BitVecVal(226,32))
+    # S = Store(S,BitVecVal(14,32),BitVecVal(1,32))
+    # S = Store(S,BitVecVal(15,32),BitVecVal(102,32))
+
+    S = Store(S, 0 , S[0]^W[0][0])
+    S = Store(S, 1 , S[1]^W[1][0])
+    S = Store(S, 2 , S[2]^W[2][0])
+    S = Store(S, 3 , S[3]^W[3][0])
+
+    S = Store(S, 4 , S[4]^W[0][1])
+    S = Store(S, 5 , S[5]^W[1][1])
+    S = Store(S, 6 , S[6]^W[2][1])
+    S = Store(S, 7 , S[7]^W[3][1])
+
+    S = Store(S, 8 , S[8]^W[0][2])
+    S = Store(S, 9 , S[9]^W[1][2])
+    S = Store(S, 10 , S[10]^W[2][2])
+    S = Store(S, 11 , S[11]^W[3][2])
+
+    S = Store(S, 12 , S[12]^W[0][3])
+    S = Store(S, 13 , S[13]^W[1][3])
+    S = Store(S, 14 , S[14]^W[2][3])
+    S = Store(S, 15 , S[15]^W[3][3])
 
 
     # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
@@ -2165,46 +2201,59 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     # ------------------------ MixColumn AddRoundKey ---------------------------------
 
     
-    ret = Array('ret', BitVecSort(32), BitVecSort(32))
-    x = BitVecVal(0, 32)
-    j = BitVecVal(0, 32)
+    # ret = Array('ret', BitVecSort(32), BitVecSort(32))
+    # x = BitVecVal(0, 32)
+    # j = BitVecVal(0, 32)
 
-    nb = BitVecVal(4,32)
-    n = BitVecVal(1,32)
+    # nb = BitVecVal(4,32)
+    # n = BitVecVal(1,32)
 
-    ret = Store(ret, j * 4, S[j * 4] << 1)
-    ret = Store(ret, j * 4, If(ret[j * 4] >> 8 == 1, ret[j * 4] ^ 283, ret[j * 4]))
-    x = S[1 + j * 4]
-    x = x ^ (x << 1)
-    ret = Store(ret, j * 4, If( x >> 8 == 1, ret[j * 4] ^ (x ^ 283), ret[j * 4] ^ x))
-    ret = Store(ret, j * 4, ret[j * 4] ^ (S[2 + j * 4] ^ S[3 + j * 4] ^ W[0][j + nb * n]))
+    # ret = Store(ret, j * 4, S[j * 4] << 1)
+    # ret = Store(ret, j * 4, If(ret[j * 4] >> 8 == 1, ret[j * 4] ^ 283, ret[j * 4]))
+    # x = S[1 + j * 4]
+    # x = x ^ (x << 1)
+    # ret = Store(ret, j * 4, If( x >> 8 == 1, ret[j * 4] ^ (x ^ 283), ret[j * 4] ^ x))
+    # ret = Store(ret, j * 4, ret[j * 4] ^ (S[2 + j * 4] ^ S[3 + j * 4] ^ W[0][j + nb * n]))
 
-    ret = Store(ret, 1 + j * 4, S[1 + j * 4] << 1)
-    ret = Store(ret, 1 + j * 4, If(ret[1 + j * 4] >> 8 == 1, ret[1 + j * 4] ^ 283, ret[1 + j * 4]))
-    x = S[2 + j * 4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1 + j * 4, If( x >> 8 == 1, ret[1 + j * 4] ^ (x ^ 283), ret[1 + j * 4] ^ x))
-    ret = Store(ret, 1 + j * 4, ret[1 + j * 4] ^ (S[3 + j * 4] ^ S[j * 4] ^ W[1][j + nb * n]))
+    # ret = Store(ret, 1 + j * 4, S[1 + j * 4] << 1)
+    # ret = Store(ret, 1 + j * 4, If(ret[1 + j * 4] >> 8 == 1, ret[1 + j * 4] ^ 283, ret[1 + j * 4]))
+    # x = S[2 + j * 4]
+    # x = x ^ (x << 1)
+    # ret = Store(ret, 1 + j * 4, If( x >> 8 == 1, ret[1 + j * 4] ^ (x ^ 283), ret[1 + j * 4] ^ x))
+    # ret = Store(ret, 1 + j * 4, ret[1 + j * 4] ^ (S[3 + j * 4] ^ S[j * 4] ^ W[1][j + nb * n]))
 
-    ret = Store(ret, 2 + j * 4, S[2 + j * 4] << 1)
-    ret = Store(ret, 2 + j * 4, If(ret[2 + j * 4] >> 8 == 1, ret[2 + j * 4] ^ 283, ret[2 + j * 4]))
-    x = S[3 + j * 4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2 + j * 4, If( x >> 8 == 1, ret[2 + j * 4] ^ (x ^ 283), ret[2 + j * 4] ^ x)) #key4 283
-    ret = Store(ret, 2 + j * 4, ret[2 + j * 4] ^ (S[j * 4] ^ S[1 + j * 4] ^ W[2][j + nb * n]))
+    # ret = Store(ret, 2 + j * 4, S[2 + j * 4] << 1)
+    # ret = Store(ret, 2 + j * 4, If(ret[2 + j * 4] >> 8 == 1, ret[2 + j * 4] ^ 283, ret[2 + j * 4]))
+    # x = S[3 + j * 4]
+    # x = x ^ (x << 1)
+    # ret = Store(ret, 2 + j * 4, If( x >> 8 == 1, ret[2 + j * 4] ^ (x ^ 283), ret[2 + j * 4] ^ x)) #key4 283
+    # ret = Store(ret, 2 + j * 4, ret[2 + j * 4] ^ (S[j * 4] ^ S[1 + j * 4] ^ W[2][j + nb * n]))
 
-    ret = Store(ret, key5 + j * 4, S[3 + j * 4] << 1) #key5 3
-    ret = Store(ret, 3 + j * 4, If(ret[3 + j * 4] >> 8 == 1, ret[3 + j * 4] ^ 283, ret[3 + j * 4]))
-    x = S[j * 4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3 + j * 4, If( x >> 8 == 1, ret[3 + j * 4] ^ (x ^ 283), ret[3 + j * 4] ^ x))
-    ret = Store(ret, 3 + j * 4, ret[3 + j * 4] ^ (S[1 + j * 4] ^ S[2 + j * 4] ^ W[3][j + nb * n]))
+    # ret = Store(ret, key5 + j * 4, S[3 + j * 4] << 1) #key5 3
+    # ret = Store(ret, 3 + j * 4, If(ret[3 + j * 4] >> 8 == 1, ret[3 + j * 4] ^ 283, ret[3 + j * 4]))
+    # x = S[j * 4]
+    # x = x ^ (x << 1)
+    # ret = Store(ret, 3 + j * 4, If( x >> 8 == 1, ret[3 + j * 4] ^ (x ^ 283), ret[3 + j * 4] ^ x))
+    # ret = Store(ret, 3 + j * 4, ret[3 + j * 4] ^ (S[1 + j * 4] ^ S[2 + j * 4] ^ W[3][j + nb * n]))
 
-    o1=ret[0]
-    o2=ret[1]
-    o3=ret[2]
-    o4=ret[3]
-    return tuple.tuple2(o1,o2,o3,o4)
+    o0 = S[0]
+    o1 = S[1]
+    o2 = S[2]
+    o3 = S[3]
+    o4 = S[4]
+    o5 = S[5] 
+    o6 = S[6]
+    o7 = S[7]
+    o8 = S[8] 
+    o9 = S[9]
+    o10 = S[10]
+    o11 = S[11]
+    o12 = S[12]
+    o13 = S[13]
+    o14 = S[14]
+    o15 = S[15]
+    #return o5
+    return tuple.tuple1(o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15)
 
 
 #key1 = 5, key2 = 10 , key3 = 15 , key4 = 283 , key5 = 3 , key6 = 5 , key7 = 4 , key8 = 7 , key9 = 8 , key10 = 10
@@ -2252,8 +2301,8 @@ s.add(key3_1>=0,key3_1<=15)
 s.add(key3_2>=0,key3_2<=15)
 s.add(key4_1>=0,key4_1<=511)
 s.add(key4_2>=0,key4_2<=511)
-s.add(key5_1>=0,key5_1<=3)
-s.add(key5_2>=0,key5_2<=3)
+s.add(key5_1>=0,key5_1<=10)
+s.add(key5_2>=0,key5_2<=10)
 s.add(key6_1>=0,key6_1<=11)
 s.add(key6_2>=0,key6_2<=11)
 s.add(key7_1>=0,key7_1<=13)
@@ -2262,8 +2311,8 @@ s.add(key8_1>=0,key8_1<=11)
 s.add(key8_2>=0,key8_2<=11)
 s.add(key9_1>=0,key9_1<=31)
 s.add(key9_2>=0,key9_2<=31)
-s.add(key10_1>=0,key10_1<=7)
-s.add(key10_2>=0,key10_2<=7)
+s.add(key10_1>=0,key10_1<=10)
+s.add(key10_2>=0,key10_2<=10)
 s.add(i1>=0,i1<=255)
 s.add(i2>=0,i2<=255)
 s.add(i3>=0,i3<=255)
@@ -2300,17 +2349,24 @@ s.add(i16>=0,i16<=255)
 # statemt = [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
 
 
-# print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,10,15,283,3)))
-# print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,10,15,283,3)))
+print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,1,15,283,3)))
+print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,1,10,5,283,2)))
 
 
-s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_1,key2_1,key3_1,key4_1,key5_1) == out3))
-s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_2,key2_2,key3_2,key4_2,key5_2) == out4))
+# s.add(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,1,15,283,3) == out1))
+# s.add(simplify(sub(50,45,5,1,23,90,123,6,20,69,12,54,89,45,78,90,5,1,15,283,3) == out2))
 
-# s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
-# s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)
 
-if(s.check(out3 != out4) == sat):
+
+# s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_1,key2_1,key3_1,key4_1,key5_1) == out1))
+# s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_2,key2_2,key3_2,key4_2,key5_2) == out2))
+
+s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_1,key2_1,key3_1,key4_1,key5_1))==out1)
+s.add(simplify(sub(inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16,key1_2,key2_2,key3_2,key4_2,key5_2))==out2)
+
+print(s.check(out1 != out2))
+if(s.check(out1 != out2) == sat):
     m = s.model()
     print(m[inp3])
+
 
