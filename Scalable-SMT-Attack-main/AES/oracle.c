@@ -158,8 +158,8 @@ int main(int argc, char** argv)
         ByteSub_ShiftRow();
         MixColumn_AddRoundKey(4, i);
       }
-      ByteSub_ShiftRow();
-      AddRoundKey(10);
+      // ByteSub_ShiftRow();
+      // AddRoundKey(10);
       printf("%d\n",statemt[0]);
       printf("%d\n",statemt[1]);
       printf("%d\n",statemt[2]);

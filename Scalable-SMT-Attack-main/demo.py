@@ -18,42 +18,5 @@ Sbox = [[0x63, 0x7c, 0x77, 0x7b, 0xf2, 0x6b, 0x6f, 0xc5, 0x30, 0x01, 0x67, 0x2b,
         [0x70, 0x3e, 0xb5, 0x66, 0x48, 0x03, 0xf6, 0x0e, 0x61, 0x35, 0x57, 0xb9,0x86, 0xc1, 0x1d, 0x9e],
         [0xe1, 0xf8, 0x98, 0x11, 0x69, 0xd9, 0x8e, 0x94, 0x9b, 0x1e, 0x87, 0xe9,0xce, 0x55, 0x28, 0xdf],
         [0x8c, 0xa1, 0x89, 0x0d, 0xbf, 0xe6, 0x42, 0x68, 0x41, 0x99, 0x2d, 0x0f,0xb0, 0x54, 0xbb, 0x16]]
-statemt = [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
-S = Array('S', BitVecSort(32), BitVecSort(32))
-I = Array('A', BitVecSort(32), ArraySort(BitVecSort(32), BitVecSort(32)))
-tm = Array('tm', BitVecSort(32), BitVecSort(32))
-
-i = 0
-for arr in Sbox:
-    j = 0
-    for elem in arr:
-        tm = Store(tm, BitVecVal(j, 32), BitVecVal(elem, 32))
-        j += 1
-    I = Store(I, BitVecVal(i, 32), tm)
-    i += 1
-
-S = Store(S,BitVecVal(0,32),BitVecVal(statemt[0],32))
-S = Store(S,BitVecVal(1,32),BitVecVal(statemt[1],32))
-S = Store(S,BitVecVal(2,32),BitVecVal(statemt[2],32))
-S = Store(S,BitVecVal(3,32),BitVecVal(statemt[3],32))
-S = Store(S,BitVecVal(4,32),BitVecVal(statemt[4],32))
-S = Store(S,BitVecVal(5,32),BitVecVal(statemt[5],32))
-S = Store(S,BitVecVal(6,32),BitVecVal(statemt[6],32))
-S = Store(S,BitVecVal(7,32),BitVecVal(statemt[7],32))
-S = Store(S,BitVecVal(8,32),BitVecVal(statemt[8],32))
-S = Store(S,BitVecVal(9,32),BitVecVal(statemt[9],32))
-S = Store(S,BitVecVal(10,32),BitVecVal(statemt[10],32))
-S = Store(S,BitVecVal(11,32),BitVecVal(statemt[11],32))
-S = Store(S,BitVecVal(12,32),BitVecVal(statemt[12],32))
-S = Store(S,BitVecVal(13,32),BitVecVal(statemt[13],32))
-S = Store(S,BitVecVal(14,32),BitVecVal(statemt[14],32))
-S = Store(S,BitVecVal(15,32),BitVecVal(statemt[5],32))
-key1 = BitVec('key1',32)
-for i in range(100):
-    s9_5 = S[key1] >> 4
-    s9_5b = S[i%16] & 0xf
-    S = Store(S, i%16 ,I[s9_5][s9_5b])
-# S = Store(S, 0 ,S[0]+key1)
-s = Tactic('smt').solver()
-print(s.check(simplify(Select(S,0))==0))
-# print(I)
+x = BitVecVal(255,9)
+print(simplify(x>>1))
