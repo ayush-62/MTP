@@ -67,7 +67,7 @@ word = [[43,40,171,9,160,136,35,42,242,122,89,115,61,71,30,109,239,168,182,219,2
 
 
 #,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10
-def findOutput1(inp3,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
+def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
     S = Array('S', BitVecSort(32), BitVecSort(32))
     S2 = Array('S2', BitVecSort(32), BitVecSort(32))
     I = Array('A', BitVecSort(32), ArraySort(BitVecSort(32), BitVecSort(32)))
@@ -345,1593 +345,1593 @@ def findOutput1(inp3,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10):
     S = Store(S, BitVecVal(14,32), ret[14])
     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 2-----------------------------------------------------------------
+# #----------------------------------Iteration 2-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# # #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(2,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(2,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
 # #----------------------------------Iteration 3-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(3,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(3,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 4-----------------------------------------------------------------
+# #----------------------------------Iteration 4-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(4,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(4,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 5-----------------------------------------------------------------
+# #----------------------------------Iteration 5-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(5,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(5,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
 
 
-# --------------------------------Iteration 6 ----------------------------------------------------------------------------------
+# # --------------------------------Iteration 6 ----------------------------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(6,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(6,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 7-----------------------------------------------------------------
+# #----------------------------------Iteration 7-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(7,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(7,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 8-----------------------------------------------------------------
+# #----------------------------------Iteration 8-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(8,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(8,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------Iteration 9-----------------------------------------------------------------
+# #----------------------------------Iteration 9-----------------------------------------------------------------
 
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
 
-    s9_1 = S[1] >> 4
-    s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
-    s9_9 = S[9] >> 4
-    s9_9b = S[9] & 0xf
-    s9_13= S[13] >> 4
-    s9_13b= S[13] & 0xf
+#     s9_1 = S[1] >> 4
+#     s9_1b = S[1] & 0xf
+#     s9_5 = S[key1] >> 4
+#     s9_5b = S[key1] & 0xf
+#     s9_9 = S[9] >> 4
+#     s9_9b = S[9] & 0xf
+#     s9_13= S[13] >> 4
+#     s9_13b= S[13] & 0xf
 
 
-    s9_2 = S[2] >> 4
-    s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
-    s9_6 = S[6] >> 4
-    s9_6b = S[6] & 0xf
-    s9_14 = S[14] >> 4
-    s9_14b = S[14] & 0xf
+#     s9_2 = S[2] >> 4
+#     s9_2b = S[2] & 0xf
+#     s9_10= S[key2] >> 4
+#     s9_10b= S[key2] & 0xf
+#     s9_6 = S[6] >> 4
+#     s9_6b = S[6] & 0xf
+#     s9_14 = S[14] >> 4
+#     s9_14b = S[14] & 0xf
 
-    s9_3 = S[3] >> 4
-    s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
-    s9_11 = S[11] >> 4
-    s9_11b = S[11] & 0xf
-    s9_7= S[7] >> 4
-    s9_7b= S[7] & 0xf
+#     s9_3 = S[3] >> 4
+#     s9_3b = S[3] & 0xf
+#     s9_15 = S[key3] >> 4
+#     s9_15b = S[key3] & 0xf
+#     s9_11 = S[11] >> 4
+#     s9_11b = S[11] & 0xf
+#     s9_7= S[7] >> 4
+#     s9_7b= S[7] & 0xf
 
-    s9_0=S[0] >> 4
-    s9_0b=S[0] & 0xf
-    s9_4 = S[4] >> 4
-    s9_4b = S[4] & 0xf
-    s9_8 = S[8] >> 4
-    s9_8b = S[8] & 0xf
-    s9_12 = S[12] >> 4
-    s9_12b = S[12] & 0xf
+#     s9_0=S[0] >> 4
+#     s9_0b=S[0] & 0xf
+#     s9_4 = S[4] >> 4
+#     s9_4b = S[4] & 0xf
+#     s9_8 = S[8] >> 4
+#     s9_8b = S[8] & 0xf
+#     s9_12 = S[12] >> 4
+#     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
-    S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
-    S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
-    S = Store(S, BitVecVal(13, 32),temp)
+#     temp = I[s9_1][s9_1b] 
+#     S = Store(S, BitVecVal(1, 32),I[s9_5][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 32),I[s9_9][s9_9b])
+#     S = Store(S, BitVecVal(9, 32),I[s9_13][s9_13b])
+#     S = Store(S, BitVecVal(13, 32),temp)
 
-    temp = I[s9_2][s9_2b]
-    S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 32), temp)
-    temp = I[s9_6][s9_6b] 
-    S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
-    S = Store(S, BitVecVal(14, 32),temp)
+#     temp = I[s9_2][s9_2b]
+#     S = Store(S, BitVecVal(2, 32), I[s9_10][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 32), temp)
+#     temp = I[s9_6][s9_6b] 
+#     S = Store(S, BitVecVal(6, 32), I[s9_14][s9_14b])
+#     S = Store(S, BitVecVal(14, 32),temp)
 
-    temp = I[s9_3][s9_3b]
-    S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
-    S = Store(S, BitVecVal(7, 32), temp)
+#     temp = I[s9_3][s9_3b]
+#     S = Store(S, BitVecVal(3, 32), I[s9_15][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 32), I[s9_11][s9_11b])
+#     S = Store(S, BitVecVal(11, 32), I[s9_7][s9_7b]) 
+#     S = Store(S, BitVecVal(7, 32), temp)
 
-    S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
-    S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
+#     S = Store(S, BitVecVal(0, 32), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 32), I[s9_4][s9_4b])
+#     S = Store(S, BitVecVal(8, 32), I[s9_8][s9_8b]) 
+#     S = Store(S, BitVecVal(12, 32),I[s9_12][s9_12b])
 
-#-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
+# #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
-    n = BitVecVal(9,32)
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
+#     n = BitVecVal(9,32)
+#     ret = Store(ret, 0, S[0] << 1)
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
-    ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
-    ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
+#     ret = Store(ret, 1 , S[1] << 1)
+#     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
+#     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
-    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
+#     ret = Store(ret, 2, S[2] << 1)
+#     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
-    ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
+#     ret = Store(ret, 3, S[key5] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
+#     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
-    x = S[5]
-    x = x ^ (x << 1)
-    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
-    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
+#     ret = Store(ret, 4, S[4] << 1)
+#     ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+#     x = S[5]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+#     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
-    ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
-    x = x ^ (x << 1)
-    ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
-    ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
+#     ret = Store(ret, 5,  S[key6] << 1) #key6 5
+#     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
+#     x = S[6] #key7 4
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
+#     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-    ret = Store(ret, 6,  S[6] << 1)
-    ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
-    ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
-    ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
+#     ret = Store(ret, 6,  S[6] << 1)
+#     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
+#     x = S[key8] #key8 7 
+#     x = x ^ (x << 1)  
+#     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
+#     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
-    ret = Store(ret, 7,  S[7] << 1)
-    ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
-    x = S[4]
-    x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
-    ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
+#     ret = Store(ret, 7,  S[7] << 1)
+#     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
+#     x = S[4]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+#     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8, S[8] << 1)
-    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
-    x = S[9]
-    x = x ^ (x << 1)
-    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
-    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
+#     ret = Store(ret, 8, S[8] << 1)
+#     ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+#     x = S[9]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+#     ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 9,  S[9] << 1)
-    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
-    x = S[10]
-    x = x ^ (x << 1)
-    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
-    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+#     ret = Store(ret, 9,  S[9] << 1)
+#     ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+#     x = S[10]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+#     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
-    ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
-    x = S[11]
-    x = x ^ (x << 1)
-    ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
-    ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
+#     ret = Store(ret, 10,  S[key10] << 1) #key10 10
+#     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
+#     x = S[11]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
+#     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11,  S[11] << 1)
-    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
-    x = S[8]
-    x = x ^ (x << 1)
-    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
-    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
+#     ret = Store(ret, 11,  S[11] << 1)
+#     ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+#     x = S[8]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+#     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
  
-    ret = Store(ret, 12, S[12] << 1)
-    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
-    x = S[13]
-    x = x ^ (x << 1)
-    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
-    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+#     ret = Store(ret, 12, S[12] << 1)
+#     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+#     x = S[13]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+#     ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
 
-    ret = Store(ret, 13,  S[13] << 1)
-    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
-    x = S[14]
-    x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
-    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+#     ret = Store(ret, 13,  S[13] << 1)
+#     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+#     x = S[14]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+#     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
-    ret = Store(ret, 14, S[14] << 1)
-    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
-    x = S[15]
-    x = x ^ (x << 1)
-    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
-    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+#     ret = Store(ret, 14, S[14] << 1)
+#     ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+#     x = S[15]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+#     ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
 
-    ret = Store(ret, 15, S[15] << 1)
-    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
-    x = S[12]
-    x = x ^ (x << 1)
-    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
-    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+#     ret = Store(ret, 15, S[15] << 1)
+#     ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+#     x = S[12]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+#     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
     
-    S = Store(S, BitVecVal(0,32), ret[0])
-    S = Store(S, BitVecVal(1,32), ret[1])
-    S = Store(S, BitVecVal(2,32), ret[2])
-    S = Store(S, BitVecVal(3,32), ret[3])
-    S = Store(S, BitVecVal(4,32), ret[4])
-    S = Store(S, BitVecVal(5,32), ret[5])
-    S = Store(S, BitVecVal(6,32), ret[6])
-    S = Store(S, BitVecVal(7,32), ret[7])
-    S = Store(S, BitVecVal(8,32), ret[8])
-    S = Store(S, BitVecVal(9,32), ret[9])
-    S = Store(S, BitVecVal(10,32), ret[10])
-    S = Store(S, BitVecVal(11,32), ret[11])
-    S = Store(S, BitVecVal(12,32), ret[12])
-    S = Store(S, BitVecVal(13,32), ret[13])
-    S = Store(S, BitVecVal(14,32), ret[14])
-    S = Store(S, BitVecVal(15,32), ret[15])
+#     S = Store(S, BitVecVal(0,32), ret[0])
+#     S = Store(S, BitVecVal(1,32), ret[1])
+#     S = Store(S, BitVecVal(2,32), ret[2])
+#     S = Store(S, BitVecVal(3,32), ret[3])
+#     S = Store(S, BitVecVal(4,32), ret[4])
+#     S = Store(S, BitVecVal(5,32), ret[5])
+#     S = Store(S, BitVecVal(6,32), ret[6])
+#     S = Store(S, BitVecVal(7,32), ret[7])
+#     S = Store(S, BitVecVal(8,32), ret[8])
+#     S = Store(S, BitVecVal(9,32), ret[9])
+#     S = Store(S, BitVecVal(10,32), ret[10])
+#     S = Store(S, BitVecVal(11,32), ret[11])
+#     S = Store(S, BitVecVal(12,32), ret[12])
+#     S = Store(S, BitVecVal(13,32), ret[13])
+#     S = Store(S, BitVecVal(14,32), ret[14])
+#     S = Store(S, BitVecVal(15,32), ret[15])
 
-#----------------------------------ByteshiftRow--------------------------------------------------------------
+# #----------------------------------ByteshiftRow--------------------------------------------------------------
 
     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',32)
     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',32)
@@ -2330,14 +2330,17 @@ s.add(i16>=0,i16<=255)
 # for i in range(16):
 #     print(simplify(Select(S,i)).sexpr())
 # print(s.check())
-# print((simplify(findOutput1(6,5,10,15,283,3,5,4,7,8,10))))
+print((simplify(findOutput1(5,10,15,283,3,5,4,7,8,10))))
 # exit()
 
-# s.add(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1))==out1)
-# s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2))==out2)
-# statemt = [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
-
-
+oa = tuple.tuple1(BitVecVal(10,32),BitVecVal(66,32),BitVecVal(15,32),BitVecVal(210,32),BitVecVal(62,32),BitVecVal(119,32),BitVecVal(231,32),BitVecVal(201,32),BitVecVal(162,32),BitVecVal(76,32),BitVecVal(192,32),BitVecVal(172,32),BitVecVal(190,32),BitVecVal(152,32),BitVecVal(45,32),BitVecVal(189,32))
+# s.add(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1))==oa)
+# s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2))==oa)
+# # statemt = [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
+# print(s.check())
+oa = tuple.tuple1(BitVecVal(113,32),BitVecVal(92,32),BitVecVal(215,32),BitVecVal(61,32),BitVecVal(148,32),BitVecVal(176,32),BitVecVal(70,32),BitVecVal(171,32),BitVecVal(140,32),BitVecVal(192,32),BitVecVal(174,32),BitVecVal(37,32),BitVecVal(170,32),BitVecVal(22,32),BitVecVal(60,32),BitVecVal(168,32))
+m = solve(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2)==oa))
+print(m.key1_2)
 # print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,5,1,15,283,3)))
 # print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,1,10,5,283,2)))
 
@@ -2347,15 +2350,13 @@ s.add(i16>=0,i16<=255)
 
 
 
-# s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_1,key2_1,key3_1,key4_1,key5_1) == out1))
-# s.add(simplify(sub(50,45,5,inp3,23,90,123,6,20,69,12,54,89,45,78,90,key1_2,key2_2,key3_2,key4_2,key5_2) == out2))
-
-s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
-s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)
+# s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
+# s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)
 
 # print(s.check(out3 != out4))
-if(s.check(out3 != out4) == sat):
-    m = s.model()
-    print(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16])
-
-
+# if(s.check(out3 != out4) == sat):
+#     m = s.model()
+#     print(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16])
+# end_time = time.time()
+# taken = end_time - start_time
+# print("Computation took  %f seconds." % taken)
