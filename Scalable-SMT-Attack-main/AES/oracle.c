@@ -153,7 +153,7 @@ int main(int argc, char** argv)
       statemt[15] = atoi(argv[16]);
 
       AddRoundKey(0);
-      for(int i=1;i<=1;i++)
+      for(int i=1;i<=9;i++)
       {
         ByteSub_ShiftRow();
         MixColumn_AddRoundKey(4, i);
