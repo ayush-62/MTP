@@ -66,7 +66,7 @@ word = [[43,40,171,9,160,136,35,42,242,122,89,115,61,71,30,109,239,168,182,219,2
        ,[22,166,136,60,23,177,57,5,242,67,122,127,125,62,68,59,65,127,59,0,248,135,188,188,122,253,65,253,14,243,178,79,33,210,96,47,243,33,65,110,168,137,200,166,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
 
 
-def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,key4,key5):
+def sub(i1,key1,key2,key3,key4,key5):
     S = Array('S', BitVecSort(10), BitVecSort(10))
     S2 = Array('S2', BitVecSort(10), BitVecSort(10))
     I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
@@ -96,21 +96,6 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     
     
     S = Store(S,BitVecVal(0,10),i1)
-    S = Store(S,BitVecVal(1,10),i2)
-    S = Store(S,BitVecVal(2,10),i3)
-    S = Store(S,BitVecVal(3,10),i4)
-    S = Store(S,BitVecVal(4,10),i5)
-    S = Store(S,BitVecVal(5,10),i6)
-    S = Store(S,BitVecVal(6,10),i7)
-    S = Store(S,BitVecVal(7,10),i8)
-    S = Store(S,BitVecVal(8,10),i9)
-    S = Store(S,BitVecVal(9,10),i10)
-    S = Store(S,BitVecVal(10,10),i11)
-    S = Store(S,BitVecVal(11,10),i12)
-    S = Store(S,BitVecVal(12,10),i13)
-    S = Store(S,BitVecVal(13,10),i14)
-    S = Store(S,BitVecVal(14,10),i15)
-    S = Store(S,BitVecVal(15,10),i16)
 
     # ------------------ Add Round Key ----------------
     n=BitVecVal(0,10)
@@ -136,24 +121,6 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     S = Store(S, 14 , 79)
     S = Store(S, 15 , 55)
 
-    o0 = S[0]
-    o1 = S[1]
-    o2 = S[2]
-    o3 = S[3]
-    o4 = S[4]
-    o5 = S[5] 
-    o6 = S[6]
-    o7 = S[7]
-    o8 = S[8] 
-    o9 = S[9]
-    o10 = S[10]
-    o11 = S[11]
-    o12 = S[12]
-    o13 = S[13]
-    o14 = S[14]
-    o15 = S[15]
-    #return o5
-    return tuple.tuple1(o0,o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15)
 
 
     # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
@@ -269,3 +236,22 @@ def sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1,key2,key3,ke
     o3=ret[2]
     o4=ret[3]
     return tuple.tuple2(o1,o2,o3,o4)
+
+s = Tactic('smt').solver()
+
+oa = [170, 66, 41, 19]
+
+oa = tuple.tuple2(BitVecVal(170,10), BitVecVal(66, 10), BitVecVal(41, 10), BitVecVal(19, 10))
+
+solve(sub(220,key1_1,key2_1,key3_1,key4_1,key5_1) == oa)
+exit()
+# s.add(simplify(sub(220,key1_2,key2_2,key3_2,key4_2,key5_2)) == oa)
+
+s.add(simplify(sub(i1,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
+s.add(simplify(sub(i1,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)
+
+
+
+if(s.check(out3 != out4,Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_2,key4_1!=key4_2,key5_1!=key5_2,key6_1!=key6_2,key7_1!=key7_2,key8_1!=key8_2,key9_1!=key9_2,key10_1!=key10_2)) == sat):
+    m = s.model()
+    print(m[i1])
