@@ -2324,8 +2324,8 @@ s.add(i16>=0,i16<=255)
 
 
 
-print(simplify(sub(0,23,32,13,65,0,11,32,78,65,23,11,32,8,0,11,5,1,15,283,3)))
-exit()
+# print(simplify(sub(0,23,32,13,65,0,11,32,78,65,23,11,32,8,0,11,5,1,15,283,3)))
+# exit()
 # print(simplify(sub(50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90,1,10,5,283,2)))
 
 
@@ -2334,6 +2334,8 @@ exit()
 
 oa = tuple.tuple1(BitVecVal(10,32),BitVecVal(66,32),BitVecVal(15,32),BitVecVal(210,32),BitVecVal(62,32),BitVecVal(119,32),BitVecVal(231,32),BitVecVal(201,32),BitVecVal(162,32),BitVecVal(76,32),BitVecVal(192,32),BitVecVal(172,32),BitVecVal(190,32),BitVecVal(152,32),BitVecVal(45,32),BitVecVal(189,32))
 s.add(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1))==oa)
+print(s.sexpr())
+exit()
 s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2))==oa)
 
 s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_1,key2_1,key3_1,key4_1,key5_1))==out3)
