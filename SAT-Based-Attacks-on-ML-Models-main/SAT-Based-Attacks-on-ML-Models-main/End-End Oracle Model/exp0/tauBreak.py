@@ -85,7 +85,7 @@ while not prune_key_set:
 
         s.add(simplify(neuralNetwork(inp, l1n1v1, l1n2v1, l2n1v1, l2n2v1, l2n3v1, l2bv1, l3bv1)[0] == out))
         s.add(simplify(neuralNetwork(inp, l1n1v2, l1n2v2, l2n1v2, l2n2v2, l2n3v2, l2bv2, l3bv2)[0] == out))
-        iterations = iterations + 1
+        added_new_constraints = True
 
     print("loop1 ended")
     p = 0
