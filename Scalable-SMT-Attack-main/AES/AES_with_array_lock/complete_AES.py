@@ -3,12 +3,12 @@ import subprocess
 import time
 
 def Cexec(init_string):
-    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)  
+    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)
     return list(map(int,out.decode('utf-8').split()))
-    
-    
+
+
 start_time = time.time()
-#,o11_1,o12_1,o13_1,o14_1,o15_1,o16_1,o17_1,o18_1,o19_1,o20_1,o21_1,o22_1,o23_1,o24_1,o25_1,o26_1,o27_1,o28_1,o29_1,o30_1,o31_1 
+#,o11_1,o12_1,o13_1,o14_1,o15_1,o16_1,o17_1,o18_1,o19_1,o20_1,o21_1,o22_1,o23_1,o24_1,o25_1,o26_1,o27_1,o28_1,o29_1,o30_1,o31_1
 # ,o11_2,o12_2,o13_2,o14_2,o15_2,o16_2,o17_2,o18_2,o19_2,o20_2,o21_2,o22_2,o23_2,o24_2,o25_2,o26_2,o27_2,o28_2,o29_2,o30_2,o31_2
 #  o11_1 o12_1 o13_1 o14_1 o15_1 o16_1 o17_1 o18_1 o19_1 o20_1 o21_1 o22_1 o23_1 o24_1 o25_1 o26_1 o27_1 o28_1 o29_1 o30_1 o31_1'
 #o11_2 o12_2 o13_2 o14_2 o15_2 o16_2 o17_2 o18_2 o19_2 o20_2 o21_2 o22_2 o23_2 o24_2 o25_2 o26_2 o27_2 o28_2 o29_2 o30_2 o31_2
@@ -73,9 +73,9 @@ def AddRoundKey(statemt , Sbox , word ,n):
         statemt = Store(statemt,1 + j * 4, statemt[1 + j * 4]^word[1][j + nb * n])
         statemt = Store(statemt,2 + j * 4, statemt[2 + j * 4]^word[2][j + nb * n])
         statemt = Store(statemt,3 + j * 4,statemt[3 + j * 4]^word[3][j + nb * n])
-    for i in range(16):
-        statemt = Store(statemt,i,simplify(statemt[i]))
-    statemt = simplify(statemt)
+    # for i in range(16):
+    #     statemt = Store(statemt,i,simplify(statemt[i]))
+    # statemt = simplify(statemt)
     return statemt
 ret = Array('ret', BitVecSort(10), BitVecSort(10))
 
@@ -120,7 +120,7 @@ def ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4):
     s10_12 = S[12] >> 4
     s10_12b = S[12] & 0xf
 
-    temp = I[s10_1][s10_1b] 
+    temp = I[s10_1][s10_1b]
     S = Store(S, BitVecVal(1, 10),I[s10_5][s10_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s10_9][s10_9b])
     S = Store(S, BitVecVal(9, 10),I[s10_13][s10_13b])
@@ -129,20 +129,23 @@ def ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4):
     temp = I[s10_2][s10_2b]
     S = Store(S, BitVecVal(2, 10), I[s10_10][s10_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s10_6][s10_6b] 
+    temp = I[s10_6][s10_6b]
     S = Store(S, BitVecVal(6, 10), I[s10_14][s10_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s10_3][s10_3b]
     S = Store(S, BitVecVal(3, 10), I[s10_15][s10_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s10_11][s10_11b])
-    S = Store(S, BitVecVal(11, 10), I[s10_7][s10_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s10_7][s10_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s10_0][s10_0b])
     S = Store(S, BitVecVal(4, 10), I[s10_4][s10_4b])
-    S = Store(S, BitVecVal(8, 10), I[s10_8][s10_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s10_8][s10_8b])
     S = Store(S, BitVecVal(12, 10),I[s10_12][s10_12b])
+
+    # for i in range(16):
+    #     print(simplify(Select(S,i)))
 
     return S
 
@@ -166,10 +169,10 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ key4), ret[2] ^ x)) #key4 283
+    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][36]))
 
-    ret = Store(ret, key5, S[3] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -183,17 +186,17 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][37]))
 
-    ret = Store(ret, 5,  S[key6+4] << 1) #key6 1
+    ret = Store(ret, 5,  S[5] << 1) #key6 1
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[2 + 1 * key7] #key7 4
+    x = S[6] #key7 4
     x = x ^ (x << 1)
     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][37]))
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8 + 4] #key8 3 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 3
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][37]))
 
@@ -201,7 +204,7 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][37]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -218,7 +221,7 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][38]))
 
-    ret = Store(ret, key10 + 8,  S[10] << 1) #key10 2
+    ret = Store(ret, 10,  S[10] << 1) #key10 2
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -231,7 +234,7 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][38]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -243,7 +246,7 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][39]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -276,11 +279,14 @@ def MixColumn_AddRoundKey(S, I , W, nb, n ,ret,key4,key5,key6,key7,key8,key9,key
     S = Store(S, BitVecVal(13,10), ret[13])
     S = Store(S, BitVecVal(14,10), ret[14])
     S = Store(S, BitVecVal(15,10), ret[15])
+    # for i in range(16):
+    #     print(simplify(Select(S,i)))
+    # exit()
     return [S, ret]
 
 
 def AES_2_Round(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in11 , in12 , in13 , in14 , in15 , in16 , key1 , key2 , key3 , key4 , key5 , key6, key7, key8 , key9, key10):
-    
+
     S = Array('S', BitVecSort(10), BitVecSort(10))
     S2 = Array('S2', BitVecSort(10), BitVecSort(10))
     I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
@@ -329,19 +335,21 @@ def AES_2_Round(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
         W = Store(W, BitVecVal(i, 10), tm2)
         i += 1
 
-    
-    
 
+
+    # print(simplify(Select(Select(W,0),0)))
+    # exit()
     S = AddRoundKey(S , I , W , 0)
-    for i in range(10):
-        S =  ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4)
-        rv =  MixColumn_AddRoundKey(S, I , W, 4, i+1 , ret , key4 , key5 , key6 , key7 , key8 , key9 ,key10)
-        S = rv[0]
-        ret = rv[1] 
-          
-    S =  ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4) 
-    return S
-    S =  AddRoundKey(S , I , W , 10)
+    # for i in range(10):
+    #     # print("----------------------------------------------------------------------------------ByteSub_ShiftRow-------------------------------------------------------------------------------------------------------")
+    #     S =  ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4)
+    #     # print("----------------------------------------------------------------------------------MixColumn_AddRoundKey-------------------------------------------------------------------------------------------------------")
+    #     rv =  MixColumn_AddRoundKey(S, I , W, 4, i+1 , ret , key4 , key5 , key6 , key7 , key8 , key9 ,key10)
+    #     S = rv[0]
+    #     ret = rv[1]
+    #
+    # S =  ByteSub_ShiftRow(S, I , W , key1 , key2 , key3 , key4)
+    # S =  AddRoundKey(S , I , W , 10)
     o1,o2,o3,o4,o5,o6,o7,o8,o9,o10,o11,o12,o13,o14,o15,o16 = BitVecs('o1 o2 o3 o4 o5 o6 o7 o8 o9 o10 o11 o12 o13 o14 o15 o16', 10)
     o1 = simplify(Select(S,0))
     o2 = simplify(Select(S,1))

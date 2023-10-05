@@ -1,18 +1,18 @@
-from z3 import *
+    from z3 import *
 import subprocess
 import time
 
 
-#for executing the oracle ang getting the correct inputs 
+#for executing the oracle ang getting the correct inputs
 def Cexec(init_string):
-    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)    
+    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)
     return list(map(int,out.decode('utf-8').split()))
-    
-    
+
+
 start_time = time.time()
 
 
-#variable declaration 
+#variable declaration
 in1,in2,in3,in4,in5,in6,in7,in8,in9,in10 = BitVecs('in1 in2 in3 in4 in5 in6 in7 in8 in9 in10',32)
 o1_1,o2_1,o3_1 = BitVecs('o1_1 o2_1 o3_1',32)
 o1_2,o2_2,o3_2 = BitVecs('o1_2 o2_2 o3_2',32)
@@ -36,7 +36,7 @@ TO_max = 12800
 rem_key_max = 32
 
 
-#function definition 
+#function definition
 def findOutput(in1,in2,in3,in4,in5,in6,in7,in8,in9,in10,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,k1,k2,k3,k4,k5):
     mult1 = in1 * in2
     mult2 = in1 * (in3 + key1) #key1=3
@@ -90,16 +90,16 @@ prune_key_set = False
 j = 0
 gg=Tactic('smt').solver()
 ia = str(1) + " " + str(2) + " " + str(3) + " " + str(4) +" "+ str(5)+ " " + str(6) + " " + str(7) + " " + str(8) + " " + str(9)+" "+str(10)
-#using the input to get the correct output for the DIP from the oracle 
+#using the input to get the correct output for the DIP from the oracle
 [oa1,oa2,oa3] = Cexec(ia)
 oa = tuple.tuple(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32))
 print(gg.check(findOutput(1,2,3,4,5,6,7,8,9,10,3,5,7,11,13,17,19,11,2,3,True,False,True,False,True)==oa))
 
 
-#SMT solver declaration 
+#SMT solver declaration
 s = Tactic('smt').solver()
 
-#addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
+#addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively
 s.add(findOutput(in1,in2,in3,in4,in5,in6,in7,in8,in9,in10,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,k1_1,k2_1,k3_1,k4_1,k5_1) == out1)
 s.add(findOutput(in1,in2,in3,in4,in5,in6,in7,in8,in9,in10,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,k1_2,k2_2,k3_2,k4_2,k5_2) == out2)
 '''s.add(i1>=0,i1<=255)
@@ -136,7 +136,7 @@ while s.check(out1 != out2, Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_
     print(str(m[key1_2])+" "+str(m[key2_2])+" "+str(m[key3_2])+" "+str(m[key4_2])+" "+str(m[key5_2])+" "+str(m[key6_2])+" "+str(m[key7_2])+" "+str(m[key8_2])+" "+str(m[key9_2])+" "+str(m[key10_2])+" "+str(m[k1_2])+" "+str(m[k2_2])+" "+str(m[k3_2])+" "+str(m[k4_2])+" "+str(m[k5_2]))
     #creating the input with the DIP
     ia = str(m[in1])+" "+str(m[in2])+" "+str(m[in3])+" "+str(m[in4])+" "+str(m[in5])+" "+str(m[in6])+" "+str(m[in7])+" "+str(m[in8])+" "+str(m[in9])+" "+str(m[in10])
-    #using the input to get the correct output for the DIP from the oracle 
+    #using the input to get the correct output for the DIP from the oracle
     [oa1,oa2,oa3] = Cexec(ia)
     oa = tuple.tuple(BitVecVal(oa1,32),BitVecVal(oa2,32),BitVecVal(oa3,32))
     #constraints added with the DIP
@@ -154,7 +154,7 @@ while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_
     except:
         break_away = True
         break
-    #adding the remaining possible keys 
+    #adding the remaining possible keys
     pos_set.add(m)
     print(str(m[key1_1].as_signed_long())+" "+str(m[key2_1].as_signed_long())+" "+str(m[key3_1].as_signed_long())+" "+str(m[key4_1].as_signed_long())+" "+str(m[key5_1].as_signed_long())+" "+str(m[key6_1].as_signed_long())+" "+str(m[key7_1].as_signed_long())+" "+str(m[key8_1].as_signed_long())+" "+str(m[key9_1].as_signed_long())+" "+str(m[key10_1].as_signed_long())+" "+str(m[k1_1])+" "+str(m[k2_1])+" "+str(m[k3_1])+" "+str(m[k4_1])+" "+str(m[k5_1]))
     #If size crossed threshold exit
@@ -177,13 +177,13 @@ print("loop2 enter")
 # #defining a new SMT solver
 # g = Tactic('smt').solver()
 
-# #addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively 
+# #addition of constraints - the outputs from the function using K1 and K2 are out1 and out2 respectively
 # g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1) == out1)
 # g.add(findOutput(i1,i2,i3,i4,i6,G1,G2,GG1,GG2,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2) == out2)
 
 # print("loop3 enter")
 
-# #Algorithm 3 - SMT on key set 
+# #Algorithm 3 - SMT on key set
 # while len(pos_l) > 1:
 #     #Taking two keys from the key set
 #     m1 = pos_l[0]
@@ -222,4 +222,4 @@ print("loop2 enter")
 end_time = time.time()
 taken = end_time - start_time
 
-print("Computation took %d iterations and %f seconds." % (j, taken))   
+print("Computation took %d iterations and %f seconds." % (j, taken))

@@ -3,12 +3,12 @@ import subprocess
 import time
 
 def Cexec(init_string):
-    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)  
+    out = subprocess.check_output("./a.out %s" % init_string,shell=True,)
     return list(map(int,out.decode('utf-8').split()))
-    
-    
+
+
 start_time = time.time()
-#,o11_1,o12_1,o13_1,o14_1,o15_1,o16_1,o17_1,o18_1,o19_1,o20_1,o21_1,o22_1,o23_1,o24_1,o25_1,o26_1,o27_1,o28_1,o29_1,o30_1,o31_1 
+#,o11_1,o12_1,o13_1,o14_1,o15_1,o16_1,o17_1,o18_1,o19_1,o20_1,o21_1,o22_1,o23_1,o24_1,o25_1,o26_1,o27_1,o28_1,o29_1,o30_1,o31_1
 # ,o11_2,o12_2,o13_2,o14_2,o15_2,o16_2,o17_2,o18_2,o19_2,o20_2,o21_2,o22_2,o23_2,o24_2,o25_2,o26_2,o27_2,o28_2,o29_2,o30_2,o31_2
 #  o11_1 o12_1 o13_1 o14_1 o15_1 o16_1 o17_1 o18_1 o19_1 o20_1 o21_1 o22_1 o23_1 o24_1 o25_1 o26_1 o27_1 o28_1 o29_1 o30_1 o31_1'
 #o11_2 o12_2 o13_2 o14_2 o15_2 o16_2 o17_2 o18_2 o19_2 o20_2 o21_2 o22_2 o23_2 o24_2 o25_2 o26_2 o27_2 o28_2 o29_2 o30_2 o31_2
@@ -870,7 +870,7 @@ ret = Store(ret,BitVecVal(15, 10),BitVecVal(0, 10))
 
 
 #,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10
-def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
+def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in11 , in12 , in13 , in14 , in15 , in16 ,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     # S = Array('S', BitVecSort(10), BitVecSort(10))
     # S2 = Array('S2', BitVecSort(10), BitVecSort(10))
     # I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
@@ -882,7 +882,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     #     ret = Store(ret,i,0)
 
     # # DIP1 =  73,91,20,4,9,16,0,13,4,13,46,0,15,6,9,19
-    
+
     # ## Initializing the `Sbox` array ##
     # i = 0
     # for arr in Sbox:
@@ -905,96 +905,124 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     # #print(S[0])
 
 # ------------------ Add Round Key ----------------
-    
-    S = Store(S,BitVecVal(0,10),BitVecVal(98,10))
-    S = Store(S,BitVecVal(1,10),BitVecVal(37,10))
-    S = Store(S,BitVecVal(2,10),BitVecVal(1,10))
-    S = Store(S,BitVecVal(3,10),BitVecVal(18,10))
-    S = Store(S,BitVecVal(4,10),BitVecVal(33,10))
-    S = Store(S,BitVecVal(5,10),BitVecVal(190,10))
-    S = Store(S,BitVecVal(6,10),BitVecVal(210,10))
-    S = Store(S,BitVecVal(7,10),BitVecVal(171,10))
-    S = Store(S,BitVecVal(8,10),BitVecVal(175,10))
-    S = Store(S,BitVecVal(9,10),BitVecVal(250,10))
-    S = Store(S,BitVecVal(10,10),BitVecVal(59,10))
-    S = Store(S,BitVecVal(11,10),BitVecVal(136,10))
-    S = Store(S,BitVecVal(12,10),BitVecVal(6,10))
-    S = Store(S,BitVecVal(13,10),BitVecVal(201,10))
-    S = Store(S,BitVecVal(14,10),BitVecVal(70,10))
-    S = Store(S,BitVecVal(15,10),BitVecVal(47,10))
-  
+
+    S = Store(S, 0, in1)
+    S = Store(S, 1, in2)
+    S = Store(S, 2, in3)
+    S = Store(S, 3, in4)
+    S = Store(S, 4, in5)
+    S = Store(S, 5, in6)
+    S = Store(S, 6, in7)
+    S = Store(S, 7, in8)
+    S = Store(S, 8, in9)
+    S = Store(S, 9, in10)
+    S = Store(S, 10, in11)
+    S = Store(S, 11, in12)
+    S = Store(S, 12, in13)
+    S = Store(S, 13, in14)
+    S = Store(S, 14, in15)
+    S = Store(S, 15, in16)
+
+
+    S = Store(S, 0 , S[0]^W[0][0])
+    S = Store(S, 1 , S[1]^W[1][0])
+    S = Store(S, 2 , S[2]^W[2][0])
+    S = Store(S, 3 , S[3]^W[3][0])
+
+    S = Store(S, 4 , S[4]^W[0][1])
+    S = Store(S, 5 , S[5]^W[1][1])
+    S = Store(S, 6 , S[6]^W[2][1])
+    S = Store(S, 7 , S[7]^W[3][1])
+
+    S = Store(S, 8 , S[8]^W[0][2])
+    S = Store(S, 9 , S[9]^W[1][2])
+    S = Store(S, 10 , S[10]^W[2][2])
+    S = Store(S, 11 , S[11]^W[3][2])
+
+    S = Store(S, 12 , S[12]^W[0][3])
+    S = Store(S, 13 , S[13]^W[1][3])
+    S = Store(S, 14 , S[14]^W[2][3])
+    S = Store(S, 15 , S[15]^W[3][3])
+
 
 # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
 
-<<<<<<< HEAD
-    # for i in range(15):
-    #     print(simplify(Select(S,i)))
-    # print("------------")
-=======
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
     s1_0,s1_1,s1_2,s1_3,s1_4,s1_5,s1_6,s1_7,s1_8,s1_9,s1_10,s1_11,s1_12,s1_13,s1_14,s1_15=BitVecs('s1_0 s1_1 s1_2 s1_3 s1_4 s1_5 s1_6 s1_7 s1_8 s1_9 s1_10 s1_11 s1_12 s1_13 s1_14 s1_15',10)
     s1_0b,s1_1b,s1_2b,s1_3b,s1_4b,s1_5b,s1_6b,s1_7b,s1_8b,s1_9b,s1_10b,s1_11b,s1_12b,s1_13b,s1_14b,s1_15b=BitVecs('s1_0b s1_1b s1_2b s1_3b s1_4b s1_5b s1_6b s1_7b s1_8b s1_9b s1_10b s1_11b s1_12b s1_13b s1_14b s1_15b',10)
 
-    s1_5 = S[key1] >> 4
-    s1_5b = S[key1] & 0xf
-    
-    s1_10= S[key2] >> 4
-    s1_10b= S[key2] & 0xf
- 
-    s1_15 = S[key3] >> 4
-    s1_15b = S[key3] & 0xf
-    
+    s1_1 = S[1] >> 4
+    s1_1b = S[1] & 0xf
+    s1_5 = S[5] >> 4
+    s1_5b = S[5] & 0xf
+    s1_9 = S[9] >> 4
+    s1_9b = S[9] & 0xf
+    s1_13= S[13] >> 4
+    s1_13b= S[13] & 0xf
+
+
+    s1_2 = S[2] >> 4
+    s1_2b = S[2] & 0xf
+    s1_10= S[10] >> 4
+    s1_10b= S[10] & 0xf
+    s1_6 = S[6] >> 4
+    s1_6b = S[6] & 0xf
+    s1_14 = S[14] >> 4
+    s1_14b = S[14] & 0xf
+
+    s1_3 = S[3] >> 4
+    s1_3b = S[3] & 0xf
+    s1_15 = S[15] >> 4
+    s1_15b = S[15] & 0xf
+    s1_11 = S[11] >> 4
+    s1_11b = S[11] & 0xf
+    s1_7= S[7] >> 4
+    s1_7b= S[7] & 0xf
+
+    s1_0=S[0] >> 4
+    s1_0b=S[0] & 0xf
+    s1_4 = S[4] >> 4
+    s1_4b = S[4] & 0xf
+    s1_8 = S[8] >> 4
+    s1_8b = S[8] & 0xf
+    s1_12 = S[12] >> 4
+    s1_12b = S[12] & 0xf
+
+    temp = I[s1_1][s1_1b]
     S = Store(S, BitVecVal(1, 10),I[s1_5][s1_5b]) #key1=5
-<<<<<<< HEAD
-    S = Store(S, BitVecVal(5, 10),0x2d)
-    S = Store(S, BitVecVal(9, 10),0xdd)
-    S = Store(S, BitVecVal(13, 10),0x3f)
+    S = Store(S, BitVecVal(5, 10),I[s1_9][s1_9b])
+    S = Store(S, BitVecVal(9, 10),I[s1_13][s1_13b])
+    S = Store(S, BitVecVal(13, 10),temp)
 
-
+    temp = I[s1_2][s1_2b]
     S = Store(S, BitVecVal(2, 10), I[s1_10][s1_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 10), 0x7c)
-=======
-    S = Store(S, BitVecVal(5, 10),BitVecVal(45, 10))
-    S = Store(S, BitVecVal(9, 10),BitVecVal(221, 10))
-    S = Store(S, BitVecVal(13, 10),BitVecVal(63, 10))
+    S = Store(S, BitVecVal(10, 10), temp)
+    temp = I[s1_6][s1_6b]
+    S = Store(S, BitVecVal(6, 10), I[s1_14][s1_14b])
+    S = Store(S, BitVecVal(14, 10),temp)
 
-
-    S = Store(S, BitVecVal(2, 10), I[s1_10][s1_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 10), BitVecVal(124, 10))
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
-  
-    S = Store(S, BitVecVal(6, 10), BitVecVal(90, 10))
-    S = Store(S, BitVecVal(14, 10),BitVecVal(181, 10))
-
-  
+    temp = I[s1_3][s1_3b]
     S = Store(S, BitVecVal(3, 10), I[s1_15][s1_15b]) #key3=15
-<<<<<<< HEAD
-    S = Store(S, BitVecVal(15, 10), 0xc4)
-    S = Store(S, BitVecVal(11, 10), 0x62) 
-    S = Store(S, BitVecVal(7, 10), 0xc9)
-=======
-    S = Store(S, BitVecVal(15, 10), BitVecVal(196, 10))
-    S = Store(S, BitVecVal(11, 10), BitVecVal(98, 10)) 
-    S = Store(S, BitVecVal(7, 10), BitVecVal(201, 10))
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
+    S = Store(S, BitVecVal(15, 10), I[s1_11][s1_11b])
+    S = Store(S, BitVecVal(11, 10), I[s1_7][s1_7b])
+    S = Store(S, BitVecVal(7, 10), temp)
 
-    S = Store(S, BitVecVal(0, 10), BitVecVal(170, 10))
-    S = Store(S, BitVecVal(4, 10), BitVecVal(253, 10))
-    S = Store(S, BitVecVal(8, 10), BitVecVal(121, 10)) 
-    S = Store(S, BitVecVal(12, 10),BitVecVal(111, 10))
+    S = Store(S, BitVecVal(0, 10), I[s1_0][s1_0b])
+    S = Store(S, BitVecVal(4, 10), I[s1_4][s1_4b])
+    S = Store(S, BitVecVal(8, 10), I[s1_8][s1_8b])
+    S = Store(S, BitVecVal(12, 10),I[s1_12][s1_12b])
 
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
     n = BitVecVal(1,10)
-    ret = Store(ret, 0, S[0] << 1)
+    ret = If(key1 == 1,Store(ret, 0, S[0] << 1),Store(ret, 0, S[2] << 1))
     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
     x = S[1]
     x = x ^ (x << 1)
     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
+    ret = If(key2 == 2 , Store(ret, 1 , S[1 ] << 1), Store(ret, 1 , S[3] << 1))
     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
     x = S[2]
     x = x ^ (x << 1)
@@ -1008,58 +1036,97 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
     ret = Store(ret, 3, If( x >> 8 == 1, ret[3] ^ (x ^ 283), ret[3] ^ x))
     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
-    ret = Store(ret,4,BitVecVal(141,10))
+    ret = Store(ret, 4, S[4] << 1)
+    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+    x = S[5]
+    x = x ^ (x << 1)
+    ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
+    ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
-   
-
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
-
-    
 
     ret = Store(ret, 7,  S[7] << 1)
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
-    ret = Store(ret, 8,BitVecVal(179,10))
-    ret = Store(ret, 9,BitVecVal(157,10))
+    ret = Store(ret, 8, S[8] << 1)
+    ret = Store(ret, 8, If( ret[8] >> 8 == 1, ret[8] ^ 283, ret[8]))
+    x = S[9]
+    x = x ^ (x << 1)
+    ret = Store(ret, 8, If( x >> 8 == 1, ret[8] ^ (x ^ 283), ret[8] ^ x))
+    ret = Store(ret, 8, ret[8] ^ (S[10] ^ S[11] ^ W[0][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 9,  S[9] << 1)
+    ret = Store(ret, 9, If( ret[9] >> 8 == 1, ret[9] ^ 283, ret[9]))
+    x = S[10]
+    x = x ^ (x << 1)
+    ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
+    ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
+
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
     ret = Store(ret, 10, If( x >> 8 == 1, ret[10] ^ (x ^ 283), ret[10] ^ x))
     ret = Store(ret, 10, ret[10] ^ (S[8] ^ S[9] ^ W[2][2+4*n]))
 
-    ret = Store(ret, 11, BitVecVal(215,10))
-    ret = Store(ret, 12, BitVecVal(196,10))
-    ret = Store(ret, 13,  BitVecVal(125,10))
-    ret = Store(ret, 14, BitVecVal(0,10))
+    ret = Store(ret, 11,  S[11] << 1)
+    ret = Store(ret, 11, If(ret[11] >> 8 == 1, ret[11] ^ 283, ret[11]))
+    x = S[8]
+    x = x ^ (x << 1)
+    ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
+    ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
 
-    ret = Store(ret, 15, BitVecVal(173,10))
-    
+    ret = Store(ret, 12, S[12] << 1)
+    ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
+    x = S[13]
+    x = x ^ (x << 1)
+    ret = Store(ret, 12, If(x >> 8 == 1, ret[12] ^ (x ^ 283), ret[12] ^ x))
+    ret = Store(ret, 12, ret[12] ^ (S[14] ^ S[15] ^ W[0][3+4*n]))
+
+    ret = Store(ret, 13,  S[13] << 1)
+    ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
+    x = S[14]
+    x = x ^ (x << 1)
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
+    ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
+
+    ret = Store(ret, 14, S[14] << 1)
+    ret = Store(ret, 14, If(ret[14] >> 8 == 1, ret[14] ^ 283, ret[14]))
+    x = S[15]
+    x = x ^ (x << 1)
+    ret = Store(ret, 14, If( x >> 8 == 1, ret[14] ^ (x ^ 283), ret[14] ^ x))
+    ret = Store(ret, 14,  ret[14] ^ (S[12] ^ S[13] ^ W[2][3+4*n]))
+
+    ret = Store(ret, 15, S[15] << 1)
+    ret = Store(ret, 15, If(ret[15] >> 8 == 1, ret[15] ^ 283, ret[15]))
+    x = S[12]
+    x = x ^ (x << 1)
+    ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
+    ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -1084,21 +1151,18 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s2_1 = S[1] >> 4
     s2_1b = S[1] & 0xf
-    s2_5 = S[key1] >> 4
-    s2_5b = S[key1] & 0xf
-<<<<<<< HEAD
-    s2_9 = 9
-    s2_9b = 13
-    s2_13= 7
-    s2_13b= 13
+    s2_5 = S[5] >> 4
+    s2_5b = S[5] & 0xf
+    s2_9 = S[9] >> 4
+    s2_9b = S[9] & 0xf
+    s2_13= S[13] >> 4
+    s2_13b= S[13] & 0xf
 
-=======
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
 
     s2_2 = S[2] >> 4
     s2_2b = S[2] & 0xf
-    s2_10= S[key2] >> 4
-    s2_10b= S[key2] & 0xf
+    s2_10= S[10] >> 4
+    s2_10b= S[10] & 0xf
     s2_6 = S[6] >> 4
     s2_6b = S[6] & 0xf
     s2_14 = S[14] >> 4
@@ -1106,19 +1170,15 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s2_3 = S[3] >> 4
     s2_3b = S[3] & 0xf
-    s2_15 = S[key3] >> 4
-    s2_15b = S[key3] & 0xf
-<<<<<<< HEAD
+    s2_15 = S[15] >> 4
+    s2_15b = S[15] & 0xf
     s2_11 = S[11] >> 4
     s2_11b = S[11] & 0xf
-=======
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
     s2_7= S[7] >> 4
     s2_7b= S[7] & 0xf
 
     s2_0=S[0] >> 4
     s2_0b=S[0] & 0xf
-<<<<<<< HEAD
     s2_4 = S[4] >> 4
     s2_4b = S[4] & 0xf
     s2_8 = S[8] >> 4
@@ -1126,50 +1186,30 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s2_12 = S[12] >> 4
     s2_12b = S[12] & 0xf
 
-    temp = I[s2_1][s2_1b] 
+    temp = I[s2_1][s2_1b]
     S = Store(S, BitVecVal(1, 10),I[s2_5][s2_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s2_9][s2_9b])
     S = Store(S, BitVecVal(9, 10),I[s2_13][s2_13b])
-=======
- 
-
-   
-
-    temp = I[s2_1][s2_1b] 
-    S = Store(S, BitVecVal(1, 10),I[s2_5][s2_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 10),BitVecVal(94, 10))
-    S = Store(S, BitVecVal(9, 10),BitVecVal(255, 10))
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
     S = Store(S, BitVecVal(13, 10),temp)
 
     temp = I[s2_2][s2_2b]
     S = Store(S, BitVecVal(2, 10), I[s2_10][s2_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s2_6][s2_6b] 
+    temp = I[s2_6][s2_6b]
     S = Store(S, BitVecVal(6, 10), I[s2_14][s2_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s2_3][s2_3b]
     S = Store(S, BitVecVal(3, 10), I[s2_15][s2_15b]) #key3=15
-<<<<<<< HEAD
     S = Store(S, BitVecVal(15, 10), I[s2_11][s2_11b])
-=======
-    S = Store(S, BitVecVal(15, 10), BitVecVal(14, 10))
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
-    S = Store(S, BitVecVal(11, 10), I[s2_7][s2_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s2_7][s2_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s2_0][s2_0b])
-<<<<<<< HEAD
     S = Store(S, BitVecVal(4, 10), I[s2_4][s2_4b])
-    S = Store(S, BitVecVal(8, 10), I[s2_8][s2_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s2_8][s2_8b])
     S = Store(S, BitVecVal(12, 10),I[s2_12][s2_12b])
-=======
-    S = Store(S, BitVecVal(4, 10), BitVecVal(93, 10))
-    S = Store(S, BitVecVal(8, 10), BitVecVal(109, 10)) 
-    S = Store(S, BitVecVal(12, 10),BitVecVal(28, 10))
-    
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
+
 
 # #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
@@ -1180,7 +1220,6 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
-
 
     ret = Store(ret, 1 , S[1] << 1)
     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
@@ -1196,7 +1235,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1210,7 +1249,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -1219,8 +1258,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -1228,7 +1267,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -1245,7 +1284,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -1258,7 +1297,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -1270,7 +1309,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -1286,7 +1325,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -1311,8 +1350,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s3_1 = S[1] >> 4
     s3_1b = S[1] & 0xf
-    s3_5 = S[key1] >> 4
-    s3_5b = S[key1] & 0xf
+    s3_5 = S[5] >> 4
+    s3_5b = S[5] & 0xf
     s3_9 = S[9] >> 4
     s3_9b = S[9] & 0xf
     s3_13= S[13] >> 4
@@ -1321,8 +1360,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s3_2 = S[2] >> 4
     s3_2b = S[2] & 0xf
-    s3_10= S[key2] >> 4
-    s3_10b= S[key2] & 0xf
+    s3_10= S[10] >> 4
+    s3_10b= S[10] & 0xf
     s3_6 = S[6] >> 4
     s3_6b = S[6] & 0xf
     s3_14 = S[14] >> 4
@@ -1330,8 +1369,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s3_3 = S[3] >> 4
     s3_3b = S[3] & 0xf
-    s3_15 = S[key3] >> 4
-    s3_15b = S[key3] & 0xf
+    s3_15 = S[15] >> 4
+    s3_15b = S[15] & 0xf
     s3_11 = S[11] >> 4
     s3_11b = S[11] & 0xf
     s3_7= S[7] >> 4
@@ -1346,7 +1385,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s3_12 = S[12] >> 4
     s3_12b = S[12] & 0xf
 
-    temp = I[s3_1][s3_1b] 
+    temp = I[s3_1][s3_1b]
     S = Store(S, BitVecVal(1, 10),I[s3_5][s3_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s3_9][s3_9b])
     S = Store(S, BitVecVal(9, 10),I[s3_13][s3_13b])
@@ -1355,19 +1394,19 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s3_2][s3_2b]
     S = Store(S, BitVecVal(2, 10), I[s3_10][s3_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s3_6][s3_6b] 
+    temp = I[s3_6][s3_6b]
     S = Store(S, BitVecVal(6, 10), I[s3_14][s3_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s3_3][s3_3b]
     S = Store(S, BitVecVal(3, 10), I[s3_15][s3_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s3_11][s3_11b])
-    S = Store(S, BitVecVal(11, 10), I[s3_7][s3_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s3_7][s3_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s3_0][s3_0b])
     S = Store(S, BitVecVal(4, 10), I[s3_4][s3_4b])
-    S = Store(S, BitVecVal(8, 10), I[s3_8][s3_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s3_8][s3_8b])
     S = Store(S, BitVecVal(12, 10),I[s3_12][s3_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
@@ -1394,7 +1433,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1408,7 +1447,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -1417,8 +1456,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -1426,7 +1465,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -1443,7 +1482,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -1456,7 +1495,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -1468,7 +1507,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -1484,7 +1523,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -1509,8 +1548,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s4_1 = S[1] >> 4
     s4_1b = S[1] & 0xf
-    s4_5 = S[key1] >> 4
-    s4_5b = S[key1] & 0xf
+    s4_5 = S[5] >> 4
+    s4_5b = S[5] & 0xf
     s4_9 = S[9] >> 4
     s4_9b = S[9] & 0xf
     s4_13= S[13] >> 4
@@ -1519,8 +1558,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s4_2 = S[2] >> 4
     s4_2b = S[2] & 0xf
-    s4_10= S[key2] >> 4
-    s4_10b= S[key2] & 0xf
+    s4_10= S[10] >> 4
+    s4_10b= S[10] & 0xf
     s4_6 = S[6] >> 4
     s4_6b = S[6] & 0xf
     s4_14 = S[14] >> 4
@@ -1528,8 +1567,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s4_3 = S[3] >> 4
     s4_3b = S[3] & 0xf
-    s4_15 = S[key3] >> 4
-    s4_15b = S[key3] & 0xf
+    s4_15 = S[15] >> 4
+    s4_15b = S[15] & 0xf
     s4_11 = S[11] >> 4
     s4_11b = S[11] & 0xf
     s4_7= S[7] >> 4
@@ -1544,7 +1583,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s4_12 = S[12] >> 4
     s4_12b = S[12] & 0xf
 
-    temp = I[s4_1][s4_1b] 
+    temp = I[s4_1][s4_1b]
     S = Store(S, BitVecVal(1, 10),I[s4_5][s4_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s4_9][s4_9b])
     S = Store(S, BitVecVal(9, 10),I[s4_13][s4_13b])
@@ -1553,19 +1592,19 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s4_2][s4_2b]
     S = Store(S, BitVecVal(2, 10), I[s4_10][s4_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s4_6][s4_6b] 
+    temp = I[s4_6][s4_6b]
     S = Store(S, BitVecVal(6, 10), I[s4_14][s4_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s4_3][s4_3b]
     S = Store(S, BitVecVal(3, 10), I[s4_15][s4_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s4_11][s4_11b])
-    S = Store(S, BitVecVal(11, 10), I[s4_7][s4_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s4_7][s4_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s4_0][s4_0b])
     S = Store(S, BitVecVal(4, 10), I[s4_4][s4_4b])
-    S = Store(S, BitVecVal(8, 10), I[s4_8][s4_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s4_8][s4_8b])
     S = Store(S, BitVecVal(12, 10),I[s4_12][s4_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
@@ -1592,7 +1631,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1606,7 +1645,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -1615,8 +1654,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -1624,7 +1663,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -1641,7 +1680,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -1654,7 +1693,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -1666,7 +1705,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -1682,7 +1721,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -1707,8 +1746,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s5_1 = S[1] >> 4
     s5_1b = S[1] & 0xf
-    s5_5 = S[key1] >> 4
-    s5_5b = S[key1] & 0xf
+    s5_5 = S[5] >> 4
+    s5_5b = S[5] & 0xf
     s5_9 = S[9] >> 4
     s5_9b = S[9] & 0xf
     s5_13= S[13] >> 4
@@ -1717,8 +1756,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s5_2 = S[2] >> 4
     s5_2b = S[2] & 0xf
-    s5_10= S[key2] >> 4
-    s5_10b= S[key2] & 0xf
+    s5_10= S[10] >> 4
+    s5_10b= S[10] & 0xf
     s5_6 = S[6] >> 4
     s5_6b = S[6] & 0xf
     s5_14 = S[14] >> 4
@@ -1726,8 +1765,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s5_3 = S[3] >> 4
     s5_3b = S[3] & 0xf
-    s5_15 = S[key3] >> 4
-    s5_15b = S[key3] & 0xf
+    s5_15 = S[15] >> 4
+    s5_15b = S[15] & 0xf
     s5_11 = S[11] >> 4
     s5_11b = S[11] & 0xf
     s5_7= S[7] >> 4
@@ -1742,7 +1781,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s5_12 = S[12] >> 4
     s5_12b = S[12] & 0xf
 
-    temp = I[s5_1][s5_1b] 
+    temp = I[s5_1][s5_1b]
     S = Store(S, BitVecVal(1, 10),I[s5_5][s5_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s5_9][s5_9b])
     S = Store(S, BitVecVal(9, 10),I[s5_13][s5_13b])
@@ -1751,19 +1790,19 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s5_2][s5_2b]
     S = Store(S, BitVecVal(2, 10), I[s5_10][s5_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s5_6][s5_6b] 
+    temp = I[s5_6][s5_6b]
     S = Store(S, BitVecVal(6, 10), I[s5_14][s5_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s5_3][s5_3b]
     S = Store(S, BitVecVal(3, 10), I[s5_15][s5_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s5_11][s5_11b])
-    S = Store(S, BitVecVal(11, 10), I[s5_7][s5_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s5_7][s5_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s5_0][s5_0b])
     S = Store(S, BitVecVal(4, 10), I[s5_4][s5_4b])
-    S = Store(S, BitVecVal(8, 10), I[s5_8][s5_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s5_8][s5_8b])
     S = Store(S, BitVecVal(12, 10),I[s5_12][s5_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
@@ -1790,7 +1829,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1804,7 +1843,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -1813,8 +1852,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -1822,7 +1861,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -1839,7 +1878,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -1852,7 +1891,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -1864,7 +1903,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -1880,7 +1919,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -1907,8 +1946,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s6_1 = S[1] >> 4
     s6_1b = S[1] & 0xf
-    s6_5 = S[key1] >> 4
-    s6_5b = S[key1] & 0xf
+    s6_5 = S[5] >> 4
+    s6_5b = S[5] & 0xf
     s6_9 = S[9] >> 4
     s6_9b = S[9] & 0xf
     s6_13= S[13] >> 4
@@ -1917,8 +1956,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s6_2 = S[2] >> 4
     s6_2b = S[2] & 0xf
-    s6_10= S[key2] >> 4
-    s6_10b= S[key2] & 0xf
+    s6_10= S[10] >> 4
+    s6_10b= S[10] & 0xf
     s6_6 = S[6] >> 4
     s6_6b = S[6] & 0xf
     s6_14 = S[14] >> 4
@@ -1926,8 +1965,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s6_3 = S[3] >> 4
     s6_3b = S[3] & 0xf
-    s6_15 = S[key3] >> 4
-    s6_15b = S[key3] & 0xf
+    s6_15 = S[15] >> 4
+    s6_15b = S[15] & 0xf
     s6_11 = S[11] >> 4
     s6_11b = S[11] & 0xf
     s6_7= S[7] >> 4
@@ -1942,7 +1981,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s6_12 = S[12] >> 4
     s6_12b = S[12] & 0xf
 
-    temp = I[s6_1][s6_1b] 
+    temp = I[s6_1][s6_1b]
     S = Store(S, BitVecVal(1, 10),I[s6_5][s6_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s6_9][s6_9b])
     S = Store(S, BitVecVal(9, 10),I[s6_13][s6_13b])
@@ -1951,19 +1990,19 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s6_2][s6_2b]
     S = Store(S, BitVecVal(2, 10), I[s6_10][s6_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s6_6][s6_6b] 
+    temp = I[s6_6][s6_6b]
     S = Store(S, BitVecVal(6, 10), I[s6_14][s6_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s6_3][s6_3b]
     S = Store(S, BitVecVal(3, 10), I[s6_15][s6_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s6_11][s6_11b])
-    S = Store(S, BitVecVal(11, 10), I[s6_7][s6_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s6_7][s6_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s6_0][s6_0b])
     S = Store(S, BitVecVal(4, 10), I[s6_4][s6_4b])
-    S = Store(S, BitVecVal(8, 10), I[s6_8][s6_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s6_8][s6_8b])
     S = Store(S, BitVecVal(12, 10),I[s6_12][s6_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
@@ -1990,7 +2029,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2004,7 +2043,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -2013,8 +2052,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -2022,7 +2061,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -2039,7 +2078,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -2052,7 +2091,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -2064,7 +2103,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -2080,7 +2119,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -2105,8 +2144,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s7_1 = S[1] >> 4
     s7_1b = S[1] & 0xf
-    s7_5 = S[key1] >> 4
-    s7_5b = S[key1] & 0xf
+    s7_5 = S[5] >> 4
+    s7_5b = S[5] & 0xf
     s7_9 = S[9] >> 4
     s7_9b = S[9] & 0xf
     s7_13= S[13] >> 4
@@ -2115,8 +2154,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s7_2 = S[2] >> 4
     s7_2b = S[2] & 0xf
-    s7_10= S[key2] >> 4
-    s7_10b= S[key2] & 0xf
+    s7_10= S[10] >> 4
+    s7_10b= S[10] & 0xf
     s7_6 = S[6] >> 4
     s7_6b = S[6] & 0xf
     s7_14 = S[14] >> 4
@@ -2124,8 +2163,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s7_3 = S[3] >> 4
     s7_3b = S[3] & 0xf
-    s7_15 = S[key3] >> 4
-    s7_15b = S[key3] & 0xf
+    s7_15 = S[15] >> 4
+    s7_15b = S[15] & 0xf
     s7_11 = S[11] >> 4
     s7_11b = S[11] & 0xf
     s7_7= S[7] >> 4
@@ -2140,7 +2179,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s7_12 = S[12] >> 4
     s7_12b = S[12] & 0xf
 
-    temp = I[s7_1][s7_1b] 
+    temp = I[s7_1][s7_1b]
     S = Store(S, BitVecVal(1, 10),I[s7_5][s7_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s7_9][s7_9b])
     S = Store(S, BitVecVal(9, 10),I[s7_13][s7_13b])
@@ -2149,19 +2188,19 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s7_2][s7_2b]
     S = Store(S, BitVecVal(2, 10), I[s7_10][s7_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s7_6][s7_6b] 
+    temp = I[s7_6][s7_6b]
     S = Store(S, BitVecVal(6, 10), I[s7_14][s7_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s7_3][s7_3b]
     S = Store(S, BitVecVal(3, 10), I[s7_15][s7_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s7_11][s7_11b])
-    S = Store(S, BitVecVal(11, 10), I[s7_7][s7_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s7_7][s7_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s7_0][s7_0b])
     S = Store(S, BitVecVal(4, 10), I[s7_4][s7_4b])
-    S = Store(S, BitVecVal(8, 10), I[s7_8][s7_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s7_8][s7_8b])
     S = Store(S, BitVecVal(12, 10),I[s7_12][s7_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
@@ -2188,7 +2227,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2202,7 +2241,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -2211,8 +2250,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -2220,7 +2259,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -2237,7 +2276,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -2250,7 +2289,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -2262,7 +2301,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -2278,7 +2317,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -2303,8 +2342,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s8_1 = S[1] >> 4
     s8_1b = S[1] & 0xf
-    s8_5 = S[key1] >> 4
-    s8_5b = S[key1] & 0xf
+    s8_5 = S[5] >> 4
+    s8_5b = S[5] & 0xf
     s8_9 = S[9] >> 4
     s8_9b = S[9] & 0xf
     s8_13= S[13] >> 4
@@ -2313,8 +2352,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s8_2 = S[2] >> 4
     s8_2b = S[2] & 0xf
-    s8_10= S[key2] >> 4
-    s8_10b= S[key2] & 0xf
+    s8_10= S[10] >> 4
+    s8_10b= S[10] & 0xf
     s8_6 = S[6] >> 4
     s8_6b = S[6] & 0xf
     s8_14 = S[14] >> 4
@@ -2322,8 +2361,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s8_3 = S[3] >> 4
     s8_3b = S[3] & 0xf
-    s8_15 = S[key3] >> 4
-    s8_15b = S[key3] & 0xf
+    s8_15 = S[15] >> 4
+    s8_15b = S[15] & 0xf
     s8_11 = S[11] >> 4
     s8_11b = S[11] & 0xf
     s8_7= S[7] >> 4
@@ -2338,7 +2377,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s8_12 = S[12] >> 4
     s8_12b = S[12] & 0xf
 
-    temp = I[s8_1][s8_1b] 
+    temp = I[s8_1][s8_1b]
     S = Store(S, BitVecVal(1, 10),I[s8_5][s8_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s8_9][s8_9b])
     S = Store(S, BitVecVal(9, 10),I[s8_13][s8_13b])
@@ -2347,32 +2386,32 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s8_2][s8_2b]
     S = Store(S, BitVecVal(2, 10), I[s8_10][s8_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s8_6][s8_6b] 
+    temp = I[s8_6][s8_6b]
     S = Store(S, BitVecVal(6, 10), I[s8_14][s8_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s8_3][s8_3b]
     S = Store(S, BitVecVal(3, 10), I[s8_15][s8_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s8_11][s8_11b])
-    S = Store(S, BitVecVal(11, 10), I[s8_7][s8_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s8_7][s8_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s8_0][s8_0b])
     S = Store(S, BitVecVal(4, 10), I[s8_4][s8_4b])
-    S = Store(S, BitVecVal(8, 10), I[s8_8][s8_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s8_8][s8_8b])
     S = Store(S, BitVecVal(12, 10),I[s8_12][s8_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
     n = BitVecVal(8,10)
-    ret = Store(ret, 0, S[0] << 1)
+    ret = If(key3 == 1,Store(ret, 0, S[0] << 1),Store(ret, 0, S[2] << 1))
     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
     x = S[1]
     x = x ^ (x << 1)
     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
+    ret = If(key4 == 2 , Store(ret, 1 , S[1 ] << 1), Store(ret, 1 , S[3] << 1))
     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
     x = S[2]
     x = x ^ (x << 1)
@@ -2386,7 +2425,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2400,7 +2439,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -2409,8 +2448,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -2418,7 +2457,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -2435,7 +2474,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -2448,7 +2487,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -2460,7 +2499,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -2476,7 +2515,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -2501,8 +2540,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_1 = S[1] >> 4
     s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
+    s9_5 = S[5] >> 4
+    s9_5b = S[5] & 0xf
     s9_9 = S[9] >> 4
     s9_9b = S[9] & 0xf
     s9_13= S[13] >> 4
@@ -2511,8 +2550,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_2 = S[2] >> 4
     s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
+    s9_10= S[10] >> 4
+    s9_10b= S[10] & 0xf
     s9_6 = S[6] >> 4
     s9_6b = S[6] & 0xf
     s9_14 = S[14] >> 4
@@ -2520,8 +2559,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_3 = S[3] >> 4
     s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
+    s9_15 = S[15] >> 4
+    s9_15b = S[15] & 0xf
     s9_11 = S[11] >> 4
     s9_11b = S[11] & 0xf
     s9_7= S[7] >> 4
@@ -2536,7 +2575,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s9_12 = S[12] >> 4
     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
+    temp = I[s9_1][s9_1b]
     S = Store(S, BitVecVal(1, 10),I[s9_5][s9_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s9_9][s9_9b])
     S = Store(S, BitVecVal(9, 10),I[s9_13][s9_13b])
@@ -2545,32 +2584,32 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s9_2][s9_2b]
     S = Store(S, BitVecVal(2, 10), I[s9_10][s9_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s9_6][s9_6b] 
+    temp = I[s9_6][s9_6b]
     S = Store(S, BitVecVal(6, 10), I[s9_14][s9_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s9_3][s9_3b]
     S = Store(S, BitVecVal(3, 10), I[s9_15][s9_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 10), I[s9_7][s9_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s9_7][s9_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s9_0][s9_0b])
     S = Store(S, BitVecVal(4, 10), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 10), I[s9_8][s9_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s9_8][s9_8b])
     S = Store(S, BitVecVal(12, 10),I[s9_12][s9_12b])
 
 #-----------------------------------MixColumn AddRoundKey-----------------------------------------------------
 
     n = BitVecVal(9,10)
-    ret = Store(ret, 0, S[0] << 1)
+    ret = If(key5 == 1,Store(ret, 0, S[0] << 1),Store(ret, 0, S[2] << 1))
     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
     x = S[1]
     x = x ^ (x << 1)
     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
-    ret = Store(ret, 1 , S[1] << 1)
+    ret = If(key6 == 2 , Store(ret, 1 , S[1 ] << 1), Store(ret, 1 , S[3] << 1))
     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
     x = S[2]
     x = x ^ (x << 1)
@@ -2584,7 +2623,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[key5] << 1) #key5 3
+    ret = Store(ret, 3, S[3] << 1) #key5 3
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2598,7 +2637,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[key6] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1) #key6 5
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
     x = S[6] #key7 4
     x = x ^ (x << 1)
@@ -2607,8 +2646,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[key8] #key8 7 
-    x = x ^ (x << 1)  
+    x = S[7] #key8 7
+    x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
 
@@ -2616,7 +2655,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> key9 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -2633,7 +2672,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[key10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) #key10 10
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -2646,7 +2685,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 11, If( x >> 8 == 1, ret[11] ^ (x ^ 283), ret[11] ^ x))
     ret = Store(ret, 11, ret[11] ^ (S[9] ^ S[10] ^ W[3][2+4*n]))
- 
+
     ret = Store(ret, 12, S[12] << 1)
     ret = Store(ret, 12, If(ret[12] >> 8 == 1, ret[12] ^ 283, ret[12]))
     x = S[13]
@@ -2658,7 +2697,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     ret = Store(ret, 13, If(ret[13] >> 8 == 1, ret[13] ^ 283, ret[13]))
     x = S[14]
     x = x ^ (x << 1)
-    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x)) 
+    ret = Store(ret, 13, If( x >> 8 == 1, ret[13] ^ (x ^ 283), ret[13] ^ x))
     ret = Store(ret, 13, ret[13] ^ (S[15] ^ S[12] ^ W[1][3+4*n]))
 
     ret = Store(ret, 14, S[14] << 1)
@@ -2674,7 +2713,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     x = x ^ (x << 1)
     ret = Store(ret, 15, If( x >> 8 == 1, ret[15] ^ (x ^ 283), ret[15] ^ x))
     ret = Store(ret, 15, ret[15] ^ (S[13] ^ S[14] ^ W[3][3+4*n]))
-    
+
     S = Store(S, BitVecVal(0,10), ret[0])
     S = Store(S, BitVecVal(1,10), ret[1])
     S = Store(S, BitVecVal(2,10), ret[2])
@@ -2699,8 +2738,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_1 = S[1] >> 4
     s9_1b = S[1] & 0xf
-    s9_5 = S[key1] >> 4
-    s9_5b = S[key1] & 0xf
+    s9_5 = S[5] >> 4
+    s9_5b = S[5] & 0xf
     s9_9 = S[9] >> 4
     s9_9b = S[9] & 0xf
     s9_13= S[13] >> 4
@@ -2709,8 +2748,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_2 = S[2] >> 4
     s9_2b = S[2] & 0xf
-    s9_10= S[key2] >> 4
-    s9_10b= S[key2] & 0xf
+    s9_10= S[10] >> 4
+    s9_10b= S[10] & 0xf
     s9_6 = S[6] >> 4
     s9_6b = S[6] & 0xf
     s9_14 = S[14] >> 4
@@ -2718,8 +2757,8 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
 
     s9_3 = S[3] >> 4
     s9_3b = S[3] & 0xf
-    s9_15 = S[key3] >> 4
-    s9_15b = S[key3] & 0xf
+    s9_15 = S[15] >> 4
+    s9_15b = S[15] & 0xf
     s9_11 = S[11] >> 4
     s9_11b = S[11] & 0xf
     s9_7= S[7] >> 4
@@ -2734,7 +2773,7 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     s9_12 = S[12] >> 4
     s9_12b = S[12] & 0xf
 
-    temp = I[s9_1][s9_1b] 
+    temp = I[s9_1][s9_1b]
     S = Store(S, BitVecVal(1, 10),I[s9_5][s9_5b]) #key1=5
     S = Store(S, BitVecVal(5, 10),I[s9_9][s9_9b])
     S = Store(S, BitVecVal(9, 10),I[s9_13][s9_13b])
@@ -2743,44 +2782,44 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     temp = I[s9_2][s9_2b]
     S = Store(S, BitVecVal(2, 10), I[s9_10][s9_10b]) #key2=10
     S = Store(S, BitVecVal(10, 10), temp)
-    temp = I[s9_6][s9_6b] 
+    temp = I[s9_6][s9_6b]
     S = Store(S, BitVecVal(6, 10), I[s9_14][s9_14b])
     S = Store(S, BitVecVal(14, 10),temp)
 
     temp = I[s9_3][s9_3b]
     S = Store(S, BitVecVal(3, 10), I[s9_15][s9_15b]) #key3=15
     S = Store(S, BitVecVal(15, 10), I[s9_11][s9_11b])
-    S = Store(S, BitVecVal(11, 10), I[s9_7][s9_7b]) 
+    S = Store(S, BitVecVal(11, 10), I[s9_7][s9_7b])
     S = Store(S, BitVecVal(7, 10), temp)
 
     S = Store(S, BitVecVal(0, 10), I[s9_0][s9_0b])
     S = Store(S, BitVecVal(4, 10), I[s9_4][s9_4b])
-    S = Store(S, BitVecVal(8, 10), I[s9_8][s9_8b]) 
+    S = Store(S, BitVecVal(8, 10), I[s9_8][s9_8b])
     S = Store(S, BitVecVal(12, 10),I[s9_12][s9_12b])
-    
+
 
 #----------------------------------AddroundKey-----------------------------------------------------------------
 
 
-    S = Store(S, 0 , S[0]^BitVecVal(208,10))
-    S = Store(S, 1 , S[1]^BitVecVal(20,10))
-    S = Store(S, 2 , S[2]^BitVecVal(249,10))
-    S = Store(S, 3 , S[3]^BitVecVal(168,10))
+    S = Store(S, 0 , S[0]^W[0][40])
+    S = Store(S, 1 , S[1]^W[1][40])
+    S = Store(S, 2 , S[2]^W[2][40])
+    S = Store(S, 3 , S[3]^W[3][40])
 
-    S = Store(S, 4 , S[4]^BitVecVal(201,10))
-    S = Store(S, 5 , S[5]^BitVecVal(238,10))
-    S = Store(S, 6 , S[6]^BitVecVal(37,10))
-    S = Store(S, 7 , S[7]^BitVecVal(137,10))
+    S = Store(S, 4 , S[4]^W[0][41])
+    S = Store(S, 5 , S[5]^W[1][41])
+    S = Store(S, 6 , S[6]^W[2][41])
+    S = Store(S, 7 , S[7]^W[3][41])
 
-    S = Store(S, 8 , S[8]^BitVecVal(225,10))
-    S = Store(S, 9 , S[9]^BitVecVal(63,10))
-    S = Store(S, 10 , S[10]^BitVecVal(12,10))
-    S = Store(S, 11 , S[11]^BitVecVal(200,10))
+    S = Store(S, 8 , S[8]^W[0][42])
+    S = Store(S, 9 , S[9]^W[1][42])
+    S = Store(S, 10 , S[10]^W[2][42])
+    S = Store(S, 11 , S[11]^W[3][42])
 
-    S = Store(S, 12 , S[12]^BitVecVal(182,10))
-    S = Store(S, 13 , S[13]^BitVecVal(99,10))
-    S = Store(S, 14 , S[14]^BitVecVal(12,10))
-    S = Store(S, 15 , S[15]^BitVecVal(166,10))
+    S = Store(S, 12 , S[12]^W[0][43])
+    S = Store(S, 13 , S[13]^W[1][43])
+    S = Store(S, 14 , S[14]^W[2][43])
+    S = Store(S, 15 , S[15]^W[3][43])
 
 #-------------------------------------------------------------------------------------------------------------------------
     o0 = S[0]
@@ -2788,10 +2827,10 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     o2 = S[2]
     o3 = S[3]
     o4 = S[4]
-    o5 = S[5] 
+    o5 = S[5]
     o6 = S[6]
     o7 = S[7]
-    o8 = S[8] 
+    o8 = S[8]
     o9 = S[9]
     o10 = S[10]
     o11 = S[11]
@@ -2804,143 +2843,162 @@ def findOutput1(key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     # return S
 
 
-def sub(i1,key1,key2,key3,key4,key5,S,W,I,ret):
-    # S = Array('S', BitVecSort(10), BitVecSort(10))
-    # S2 = Array('S2', BitVecSort(10), BitVecSort(10))
-    # I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
-    # W = Array('W', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
-    # tm = Array('tm', BitVecSort(10), BitVecSort(10))
-    # tm2 = Array('tm2', BitVecSort(10), BitVecSort(10))
+# def sub(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9, in10 , in11 , in12 , in13 , in14 , in15 , in16 ,key1,key2,key3,key4,key5,S,W,I,ret):
+#     # S = Array('S', BitVecSort(10), BitVecSort(10))
+#     # S2 = Array('S2', BitVecSort(10), BitVecSort(10))
+#     # I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
+#     # W = Array('W', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
+#     # tm = Array('tm', BitVecSort(10), BitVecSort(10))
+#     # tm2 = Array('tm2', BitVecSort(10), BitVecSort(10))
 
-    # ## Initializing the `Sbox` array ##
-    # i = 0
-    # for arr in Sbox:
-    #     j = 0
-    #     for elem in arr:
-    #         # tm = Store(tm, BitVecVal(j, 10), BitVecVal(elem, 10))
-    #         tm[j] == BitVecVal(elem, 10)
-    #         j += 1
-    #     I = Store(I, BitVecVal(i, 10), tm)
-    #     i += 1
+#     # ## Initializing the `Sbox` array ##
+#     # i = 0
+#     # for arr in Sbox:
+#     #     j = 0
+#     #     for elem in arr:
+#     #         # tm = Store(tm, BitVecVal(j, 10), BitVecVal(elem, 10))
+#     #         tm[j] == BitVecVal(elem, 10)
+#     #         j += 1
+#     #     I = Store(I, BitVecVal(i, 10), tm)
+#     #     i += 1
 
-    #  ## Initilaizing the `word` array ##
-    # i = 0
-    # for arr in word:
-    #     j = 0
-    #     for elem in arr:
-    #         tm2 = Store(tm2, BitVecVal(j, 10), BitVecVal(elem, 10))
-    #         j += 1
-    #     W = Store(W, BitVecVal(i, 10), tm2)
-    #     i += 1
-    
-    S = Store(S,BitVecVal(0,10),i1)
-
-    # ------------------ Add Round Key ----------------
-    n=BitVecVal(0,10)
-    nb=BitVecVal(4,10)
-
-    S = Store(S, 0 , S[0]^W[0][0])
-    S = Store(S, 1 , BitVecVal(105,10))
-    S = Store(S, 2 , BitVecVal(53,10))
-    S = Store(S, 3 , BitVecVal(27,10))
-
-    S = Store(S, 4 , BitVecVal(105,10))
-    S = Store(S, 5 , BitVecVal(174,10))
-    S = Store(S, 6 , BitVecVal(217,10))
-    S = Store(S, 7 , BitVecVal(134,10))
-
-    S = Store(S, 8 , BitVecVal(229,10))
-    S = Store(S, 9 , BitVecVal(182,10))
-    S = Store(S, 10 , BitVecVal(2,10))
-    S = Store(S, 11 , BitVecVal(131,10))
-
-    S = Store(S, 12 , BitVecVal(41,10))
-    S = Store(S, 13 , BitVecVal(199,10))
-    S = Store(S, 14 , BitVecVal(79,10))
-    S = Store(S, 15 , BitVecVal(55,10))
-
-
-    # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
-    s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',10)
-    s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',10)
-
-    s9_5b = S[key1] & 0xf
-    s9_10b= S[key2] & 0xf
-    s9_15b = S[key3] & 0xf
-    s9_0 = S[0] >> 4
-    s9_0b = S[0] & 0xf
-    
-
- 
-    S = Store(S, BitVecVal(1, 10),I[10][s9_5b]) #key1=5
-    S = Store(S, BitVecVal(5, 10),78)
-    S = Store(S, BitVecVal(9, 10),198)
-    S = Store(S, BitVecVal(13, 10),249)
-
-   
-    S = Store(S, BitVecVal(2, 10), I[0][s9_10b]) #key2=10
-    S = Store(S, BitVecVal(10, 10), BitVecVal(150,10))
-
-    S = Store(S, BitVecVal(6, 10), BitVecVal(132,10))
-    S = Store(S, BitVecVal(14, 10),BitVecVal(53,10))
-
-    S = Store(S, BitVecVal(3, 10), I[3][s9_15b]) #key3=15
-    S = Store(S, BitVecVal(15, 10), BitVecVal(236,10))
-    S = Store(S, BitVecVal(11, 10), BitVecVal(68,10)) 
-    S = Store(S, BitVecVal(7, 10), BitVecVal(175,10))
-
-    S = Store(S, BitVecVal(0, 10), I[s9_0][s9_0b])
-    S = Store(S, BitVecVal(4, 10), BitVecVal(249,10))
-    S = Store(S, BitVecVal(8, 10), BitVecVal(217,10)) 
-    S = Store(S, BitVecVal(12, 10), BitVecVal(165,10))
+#     #  ## Initilaizing the `word` array ##
+#     # i = 0
+#     # for arr in word:
+#     #     j = 0
+#     #     for elem in arr:
+#     #         tm2 = Store(tm2, BitVecVal(j, 10), BitVecVal(elem, 10))
+#     #         j += 1
+#     #     W = Store(W, BitVecVal(i, 10), tm2)
+#     #     i += 1
 
 
 
-    # ------------------------ MixColumn AddRoundKey ---------------------------------
-
-    
-    ret = Array('ret', BitVecSort(10), BitVecSort(10))
-    x = BitVecVal(0, 10)
-    j = BitVecVal(0, 10)
-
-    nb = BitVecVal(4,10)
-    n = BitVecVal(1,10)
-
-    ret = Store(ret, 0, S[0] << 1)
-    ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
-    x = S[1]
-    x = x ^ (x << 1)
-    ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
-    ret = Store(ret, 0, ret[0] ^ (S[2 ] ^ S[3 ] ^ W[0][j + nb * n]))
+#     # ------------------ Add Round Key ----------------
+#     n=BitVecVal(0,10)
+#     nb=BitVecVal(4,10)
 
 
-    ret = Store(ret, 1 , S[1 ] << 1)
-    ret = Store(ret, 1 , If(ret[1 ] >> 8 == 1, ret[1 ] ^ 283, ret[1 ]))
-    x = S[2]
-    x = x ^ (x << 1)
-    ret = Store(ret, 1, If( x >> 8 == 1, ret[1 ] ^ (x ^ 283), ret[1 ] ^ x))
-    ret = Store(ret, 1, ret[1 ] ^ (S[3 ] ^ S[0] ^ W[1][j + nb * n]))
-
-    ret = Store(ret, 2, S[2 ] << 1)
-    ret = Store(ret, 2, If(ret[2 ] >> 8 == 1, ret[2 ] ^ 283, ret[2 ]))
-    x = S[3]
-    x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2 ] ^ (x ^ 283), ret[2 ] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2 ] ^ (S[0] ^ S[1 ] ^ W[2][j + nb * n]))
-
-    ret = Store(ret, key5, S[3 ] << 1) #key5 3
-    ret = Store(ret, 3, If(ret[3 ] >> 8 == 1, ret[3 ] ^ 283, ret[3 ]))
-    x = S[0]
-    x = x ^ (x << 1)
-    ret = Store(ret, 3, If( x >> 8 == 1, ret[3 ] ^ (x ^ 283), ret[3 ] ^ x))
-    ret = Store(ret, 3, ret[3 ] ^ (S[1 ] ^ S[2 ] ^ W[3][j + nb * n]))
+#     S = Store(S, 0, in1)
+#     S = Store(S, 1, in2)
+#     S = Store(S, 2, in3)
+#     S = Store(S, 3, in4)
+#     S = Store(S, 4, in5)
+#     S = Store(S, 5, in6)
+#     S = Store(S, 6, in7)
+#     S = Store(S, 7, in8)
+#     S = Store(S, 8, in9)
+#     S = Store(S, 9, in10)
+#     S = Store(S, 10, in11)
+#     S = Store(S, 11, in12)
+#     S = Store(S, 12, in13)
+#     S = Store(S, 13, in14)
+#     S = Store(S, 14, in15)
+#     S = Store(S, 15, in16)
 
 
-    o1=ret[0]
-    o2=ret[1]
-    o3=ret[2]
-    o4=ret[3]
-    return tuple.tuple2(o1,o2,o3,o4)
+#     S = Store(S, 0 , S[0]^W[0][0])
+#     S = Store(S, 1 , S[1]^W[1][0])
+#     S = Store(S, 2 , S[2]^W[2][0])
+#     S = Store(S, 3 , S[3]^W[3][0])
+
+#     S = Store(S, 4 , S[4]^W[0][1])
+#     S = Store(S, 5 , S[5]^W[1][1])
+#     S = Store(S, 6 , S[6]^W[2][1])
+#     S = Store(S, 7 , S[7]^W[3][1])
+
+#     S = Store(S, 8 , S[8]^W[0][2])
+#     S = Store(S, 9 , S[9]^W[1][2])
+#     S = Store(S, 10 , S[10]^W[2][2])
+#     S = Store(S, 11 , S[11]^W[3][2])
+
+#     S = Store(S, 12 , S[12]^W[0][3])
+#     S = Store(S, 13 , S[13]^W[1][3])
+#     S = Store(S, 14 , S[14]^W[2][3])
+#     S = Store(S, 15 , S[15]^W[3][3])
+
+
+#     # --------------------------------Iteration 1 ----------------------------------------------------------------------------------
+#     s9_0,s9_1,s9_2,s9_3,s9_4,s9_5,s9_6,s9_7,s9_8,s9_9,s9_10,s9_11,s9_12,s9_13,s9_14,s9_15=BitVecs('s9_0 s9_1 s9_2 s9_3 s9_4 s9_5 s9_6 s9_7 s9_8 s9_9 s9_10 s9_11 s9_12 s9_13 s9_14 s9_15',10)
+#     s9_0b,s9_1b,s9_2b,s9_3b,s9_4b,s9_5b,s9_6b,s9_7b,s9_8b,s9_9b,s9_10b,s9_11b,s9_12b,s9_13b,s9_14b,s9_15b=BitVecs('s9_0b s9_1b s9_2b s9_3b s9_4b s9_5b s9_6b s9_7b s9_8b s9_9b s9_10b s9_11b s9_12b s9_13b s9_14b s9_15b',10)
+
+#     s9_5b = S[5] & 0xf
+#     s9_10b= S[10] & 0xf
+#     s9_15b = S[15] & 0xf
+#     s9_0 = S[0] >> 4
+#     s9_0b = S[0] & 0xf
+
+
+
+#     S = Store(S, BitVecVal(1, 10),I[10][s9_5b]) #key1=5
+#     S = Store(S, BitVecVal(5, 10),78)
+#     S = Store(S, BitVecVal(9, 10),198)
+#     S = Store(S, BitVecVal(13, 10),249)
+
+
+#     S = Store(S, BitVecVal(2, 10), I[0][s9_10b]) #key2=10
+#     S = Store(S, BitVecVal(10, 10), BitVecVal(150,10))
+
+#     S = Store(S, BitVecVal(6, 10), BitVecVal(132,10))
+#     S = Store(S, BitVecVal(14, 10),BitVecVal(53,10))
+
+#     S = Store(S, BitVecVal(3, 10), I[3][s9_15b]) #key3=15
+#     S = Store(S, BitVecVal(15, 10), BitVecVal(236,10))
+#     S = Store(S, BitVecVal(11, 10), BitVecVal(68,10))
+#     S = Store(S, BitVecVal(7, 10), BitVecVal(175,10))
+
+#     S = Store(S, BitVecVal(0, 10), I[s9_0][s9_0b])
+#     S = Store(S, BitVecVal(4, 10), BitVecVal(249,10))
+#     S = Store(S, BitVecVal(8, 10), BitVecVal(217,10))
+#     S = Store(S, BitVecVal(12, 10), BitVecVal(165,10))
+
+
+
+#     # ------------------------ MixColumn AddRoundKey ---------------------------------
+
+
+#     ret = Array('ret', BitVecSort(10), BitVecSort(10))
+#     x = BitVecVal(0, 10)
+#     j = BitVecVal(0, 10)
+
+#     nb = BitVecVal(4,10)
+#     n = BitVecVal(1,10)
+
+#     ret = If(key1 == 1,Store(ret, 0, S[0] << 1),Store(ret, 0, S[2] << 1))
+#     ret = Store(ret, 0, If(ret[0] >> 8 == 1, ret[0] ^ 283, ret[0]))
+#     x = S[1]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
+#     ret = Store(ret, 0, ret[0] ^ (S[2 ] ^ S[3 ] ^ W[0][j + nb * n]))
+
+
+#     ret = If(key2 == 2 , Store(ret, 1 , S[1 ] << 1), Store(ret, 1 , S[3] << 1))
+#     ret = Store(ret, 1 , If(ret[1 ] >> 8 == 1, ret[1 ] ^ 283, ret[1 ]))
+#     x = S[2]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 1, If( x >> 8 == 1, ret[1 ] ^ (x ^ 283), ret[1 ] ^ x))
+#     ret = Store(ret, 1, ret[1 ] ^ (S[3 ] ^ S[0] ^ W[1][j + nb * n]))
+
+#     ret = Store(ret, 2, S[2 ] << 1)
+#     ret = Store(ret, 2, If(ret[2 ] >> 8 == 1, ret[2 ] ^ 283, ret[2 ]))
+#     x = S[3]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 2, If( x >> 8 == 1, ret[2 ] ^ (x ^ 283), ret[2 ] ^ x)) #key4 283
+#     ret = Store(ret, 2, ret[2 ] ^ (S[0] ^ S[1 ] ^ W[2][j + nb * n]))
+
+#     ret = Store(ret, 3, S[3 ] << 1) #key5 3
+#     ret = Store(ret, 3, If(ret[3 ] >> 8 == 1, ret[3 ] ^ 283, ret[3 ]))
+#     x = S[0]
+#     x = x ^ (x << 1)
+#     ret = Store(ret, 3, If( x >> 8 == 1, ret[3 ] ^ (x ^ 283), ret[3 ] ^ x))
+#     ret = Store(ret, 3, ret[3 ] ^ (S[1 ] ^ S[2 ] ^ W[3][j + nb * n]))
+
+
+#     o1=ret[0]
+#     o2=ret[1]
+#     o3=ret[2]
+#     o4=ret[3]
+#     return tuple.tuple2(o1,o2,o3,o4)
 
 
 #key1 = 5, key2 = 10 , key3 = 15 , key4 = 283 , key5 = 3 , key6 = 5 , key7 = 4 , key8 = 7 , key9 = 8 , key10 = 10
@@ -2986,7 +3044,7 @@ s.add(key2_1>=0,key2_1<=15)
 s.add(key2_2>=0,key2_2<=15)
 s.add(key3_1>=0,key3_1<=15)
 s.add(key3_2>=0,key3_2<=15)
-s.add(key4_1>=0,key4_1<=511)
+s.add(key4_1>=0,key4_1<=15)
 s.add(key4_2>=0,key4_2<=511)
 s.add(key5_1>=0,key5_1<=10)
 s.add(key5_2>=0,key5_2<=10)
@@ -3020,64 +3078,61 @@ s.add(i16>=0,i16<=255)
 
 
 # findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
-# print(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)))
+# print(simplify(findOutput1(212,0,0,0,0,1,0,0,0,0,2,0,0,0,0,4,0,0,0,0,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)))
 # print((simplify(findOutput1(5,10,15,283,3,5,4,7,8,10,S,W,I,ret))))
 # exit()
 
 
 
-# dip1 [50,45,5,6,23,90,123,6,20,69,12,54,89,45,78,90]
+# dip1 [73,91,20,4,9,16,0,13,4,13,46,0,15,6,9,19]
 # dip2 = [inp1,23,32,13,65,0,11,32,78,65,23,11,32,8,0,11]
 # print(simplify(sub(0,5,10,15,283,3)))
 # exit()
 
-oa = tuple.tuple1(BitVecVal(10,10),BitVecVal(66,10),BitVecVal(15,10),BitVecVal(210,10),BitVecVal(62,10),BitVecVal(119,10),BitVecVal(231,10),BitVecVal(201,10),BitVecVal(162,10),BitVecVal(76,10),BitVecVal(192,10),BitVecVal(172,10),BitVecVal(190,10),BitVecVal(152,10),BitVecVal(45,10),BitVecVal(189,10))
-<<<<<<< HEAD
-m = solve(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)==oa)
-print(m[key1_1])
-print(m[key2_1])
-print(m[key3_1])
-print(m[key4_1])
-print(m[key5_1])
-print(m[key6_1])
-print(m[key7_1])
-print(m[key8_1])
-print(m[key9_1])
-print(m[key10_1])
-# s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2))==oa)
-exit()
-=======
-s.add(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret))==oa)
-s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,S,W,I,ret))==oa)
->>>>>>> e644af58dbb1339e6f81302b4a9c087306cd389f
+# oa = tuple.tuple1(BitVecVal(10,10),BitVecVal(66,10),BitVecVal(15,10),BitVecVal(210,10),BitVecVal(62,10),BitVecVal(119,10),BitVecVal(231,10),BitVecVal(201,10),BitVecVal(162,10),BitVecVal(76,10),BitVecVal(192,10),BitVecVal(172,10),BitVecVal(190,10),BitVecVal(152,10),BitVecVal(45,10),BitVecVal(189,10))
+# s.add(simplify(findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret))==oa)
+# s.add(simplify(findOutput1(key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,S,W,I,ret))==oa)
 
-s.add(simplify(sub(i1,key1_1,key2_1,key3_1,key4_1,key5_1,S,W,I,ret))==out3)
-s.add(simplify(sub(i1,key1_2,key2_2,key3_2,key4_2,key5_2,S,W,I,ret))==out4)
+s.add(simplify(findOutput1(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret))==out1)
+s.add(simplify(findOutput1(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,S,W,I,ret))==out2)
 
-
-if(s.check(out3 != out4,Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_2,key4_1!=key4_2,key5_1!=key5_2,key6_1!=key6_2,key7_1!=key7_2,key8_1!=key8_2,key9_1!=key9_2,key10_1!=key10_2)) == sat):
+# s.add(simplify(sub(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_1,key2_1,key3_1,key4_1,key5_1,S,W,I,ret))==out3)
+# s.add(simplify(sub(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_2,key2_2,key3_2,key4_2,key5_2,S,W,I,ret))==out4)
+j = 0
+start = time.time()
+while(s.check(out1!=out2,   Or(key1_1 != key1_2,key2_1 != key2_2,key3_1 != key3_2,key4_1 != key4_2,key5_1 != key5_2,key6_1 != key6_2)) == sat):
     m = s.model()
-    print(m[i1])
-else :
-    print("unsat came ")
-    p=0
-    stat=time.time()
-    if(s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1==key4_2,key5_1==key5_2,key6_1==key6_2,key7_1==key7_2,key8_1==key8_2,key9_1==key9_2,key10_1==key10_2) != unsat):
+    #print(m)
+    #print(m)
+    print(str(m[i1])+" "+str(m[i2])+" "+str(m[i3])+" "+str(m[i4])+" "+str(m[i5])+" "+str(m[i6])+" "+str(m[i7])+" "+str(m[i8])+" "+str(m[i9])+" "+str(m[i10])+" "+str(m[i11])+" "+str(m[i12])+" "+str(m[i13])+" "+str(m[i14])+" "+str(m[i15])+" "+str(m[i16]))
+    print(str(m[key1_1])+" "+str(m[key2_1])+" "+str(m[key3_1])+" "+str(m[key4_1])+" "+str(m[key5_1])+" "+str(m[key6_1]))
+    print(str(m[key1_2])+" "+str(m[key2_2])+" "+str(m[key3_2])+" "+str(m[key4_2])+" "+str(m[key5_1])+" "+str(m[key6_1]))
+    ia = str(m[i1])+" "+str(m[i2])+" "+str(m[i3])+" "+str(m[i4])+" "+str(m[i5])+" "+str(m[i6])+" "+str(m[i7])+" "+str(m[i8])+" "+str(m[i9])+" "+str(m[i10])+" "+str(m[i11])+" "+str(m[i12])+" "+str(m[i13])+" "+str(m[i14])+" "+str(m[i15])+" "+str(m[i16])
+    [oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16]= Cexec(ia)
+    # BitVecVal(oa11,32),BitVecVal(oa12,32),BitVecVal(oa13,32),BitVecVal(oa14,32),BitVecVal(oa15,32),BitVecVal(oa16,32),BitVecVal(oa17,32),BitVecVal(oa18,32),BitVecVal(oa19,32),BitVecVal(oa20,32),BitVecVal(oa21,32),BitVecVal(oa22,32),BitVecVal(oa23,32),BitVecVal(oa24,32),BitVecVal(oa25,32),BitVecVal(oa26,32),BitVecVal(oa27,32),BitVecVal(oa28,32),BitVecVal(oa29,32),BitVecVal(oa30,32),BitVecVal(oa31,32),BitVecVal(oa32,32)
+    oa = tuple.tuple1(BitVecVal(oa1,10),BitVecVal(oa2,10),BitVecVal(oa3,10),BitVecVal(oa4,10),BitVecVal(oa5,10),BitVecVal(oa6,10),BitVecVal(oa7,10),BitVecVal(oa8,10),BitVecVal(oa9,10),BitVecVal(oa10,10),BitVecVal(oa11,10),BitVecVal(oa12,10),BitVecVal(oa13,10),BitVecVal(oa14,10),BitVecVal(oa15,10),BitVecVal(oa16,10))
+    # print(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],0,0,0,0,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)))
+    s.add(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)) == oa)
+    s.add(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,S,W,I,ret)) == oa)
+    # o0_1,o1_1,o2_1,o3_1s,o4_1,o5_1,o6_1,o7_1,o8_1,o9_1,o10_1,o11_1,o12_1,o13_1,o14_1,o15_1=findOutput(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16],key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
+    # o0_2,o1_2,o2_2,o3_2,o4_2,o5_2,o6_2,o7_2,o8_2,o9_2,o10_2,o11_2,o12_2,o13_2,o14_2,o15_2=findOutput(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16],key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2)
+    # s.add(o0_1==oa1,o1_1==oa2,o2_1==oa3,o3_1==oa4,o4_1==oa5,o5_1==oa6,o6_1==oa7,o7_1==oa8,o8_1==oa9,o9_1==oa10,o10_1==oa11,o11_1==oa12,o12_1==oa13,o13_1==oa14,o14_1==oa15,o15_1==oa16)
+    # s.add(o0_2==oa1,o1_2==oa2,o2_2==oa3,o3_2==oa4,o4_2==oa5,o5_2==oa6,o6_2==oa7,o7_2==oa8,o8_2==oa9,o9_2==oa10,o10_2==oa11,o11_2==oa12,o12_2==oa13,o13_2==oa14,o14_2==oa15,o15_2==oa16)
+    print("Iteration %d = %f second" %(j+1,time.time()-start))
+    j = j + 1
+print("unsat takes %d time" %(time.time()-start))
+print("loop1 complete")
+
+p=0
+stat=time.time()
+while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2, key4_1 == key4_2, key5_1 == key5_2, key6_1 == key6_2) != unsat:
+    try:
         m = s.model()
-        print("The final key is:")
-        print(m[key1_1])
-        print(m[key2_1])
-        print(m[key3_1])
-        print(m[key4_1])
-        print(m[key5_1])
-        print(m[key6_1])
-        print(m[key7_1])
-        print(m[key8_1])
-        print(m[key9_1])
-        print(m[key10_1])
-        print()
-
-end_time = time.time()
-taken = end_time - start_time
-
-print("Computation took %d iterations and %f seconds." % (j, taken))
+    except:
+        break_away = True
+        break
+    print(str(m[key1_1])+" "+str(m[key2_1])+" "+str(m[key3_1])+" "+str(m[key4_1])+" "+str(m[key5_1])+" "+str(m[key6_1])+" "+str(m[key7_1])+" "+str(m[key8_1])+" "+str(m[key9_1])+" "+str(m[key10_1]))
+    print("Iteration %d = %f second" %(p+1,time.time()-start))
+    s.add(Or(key1_1 != m[key1_1],key2_1!=m[key2_1]))
+    s.add(Or(key1_2 != m[key1_2],key2_2!=m[key2_2]))
+    p = p + 1
