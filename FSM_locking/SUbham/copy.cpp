@@ -17,6 +17,7 @@ unordered_set<string> nodes;
 unordered_map<string,string>  registerToInput  ;
 unordered_map<string,string> outputToRegister;
 unordered_map<string,vector<string> > registerToOutput;
+
 vector<string> nextStates;
 vector<string> currentStates;
 vector<string> registerList;
@@ -132,6 +133,7 @@ void constructGraph()
             outputToRegister[output_operands[i]] = gate;
         }
     }
+    
 }
 
 unordered_set<string> cycleRegistersList;
@@ -1251,6 +1253,13 @@ void print(){
         cout<<it<<" ";
     }
     cout<<endl;
+    cout<<" -----------------cycleRegistersList----------------";
+    cout<<endl;
+    for(auto it : cycleRegistersList){
+        cout<<it<<endl;
+    }
+    
+    cout<<endl;
 }
 
 
@@ -1259,129 +1268,130 @@ int main(int agrc , char** argv)
 {
     filename = argv[1];
     constructGraph();
-    // print();
-    vector<string> registers{"__________________36279" , "__________________36259" , "__________________36250","__________________36155","__________","________________0_","__________________","__________________36230"};
-    vector<string> registersOriginal{"_curr_state_reg_1_","_curr_state_reg_2_","_curr_state_reg_3_","_curr_state_reg_4_","_curr_state_reg_5_","_curr_state_reg_6_","_curr_state_reg_7_","_curr_state_reg_0_","_next_state_reg_1_","_next_state_reg_2_","_next_state_reg_3_","_next_state_reg_4_","_next_state_reg_5_","_next_state_reg_6_","_next_state_reg_7_","_next_state_reg_0_","_OP_reg_0_","_OP_reg_1_"};
-
-    // for getting the dependency of an element
-    vector<string>::iterator registersItr;
-    for(registersItr = registers.begin() ; registersItr != registers.end() ; registersItr++)
-    {
-        cout<<*registersItr<<":";
-        initiateTraceMuxElements(registerToInput[*registersItr]);
-        cout<<"\n\n";
-
-    }
-    initiateTraceMuxElements(argv[2]);
-
-    initiateDFS("___09___2017");
-
-
-    cout<<"\n\n";
-    initiateTraceMuxElements("n581");
-    cout<<"\n\n";
-    initiateTraceMuxElements("n582");
-    findPaths("__9____1926","__________________36155");
-    initiatePrintNextStateToCurrentState(argv[2]);
-    verilogToBench();
-    
-    initiateFindPath();
-   
-    cout<<"digraph G {";
-
-    getPath(argv[2]);
-
-    getPathInputToOutput("next_state_7_");
-
     initiateCheckCycle();
-    unordered_set<string>::iterator cycleRegistersListItr;
-    for(cycleRegistersListItr=cycleRegistersList.begin();cycleRegistersListItr!=cycleRegistersList.end();cycleRegistersListItr++)
-    {
-        cout<<*cycleRegistersListItr<<"\n";
-    }
+    print();
+    // vector<string> registers{"__________________36279" , "__________________36259" , "__________________36250","__________________36155","__________","________________0_","__________________","__________________36230"};
+    // vector<string> registersOriginal{"_curr_state_reg_1_","_curr_state_reg_2_","_curr_state_reg_3_","_curr_state_reg_4_","_curr_state_reg_5_","_curr_state_reg_6_","_curr_state_reg_7_","_curr_state_reg_0_","_next_state_reg_1_","_next_state_reg_2_","_next_state_reg_3_","_next_state_reg_4_","_next_state_reg_5_","_next_state_reg_6_","_next_state_reg_7_","_next_state_reg_0_","_OP_reg_0_","_OP_reg_1_"};
 
-    initiateMakePath();
-    printGraph(stateGraph);
+    // // for getting the dependency of an element
+    // vector<string>::iterator registersItr;
+    // for(registersItr = registers.begin() ; registersItr != registers.end() ; registersItr++)
+    // {
+    //     cout<<*registersItr<<":";
+    //     initiateTraceMuxElements(registerToInput[*registersItr]);
+    //     cout<<"\n\n";
 
-    printBench(reverseStateGraph);
+    // }
+    // initiateTraceMuxElements(argv[2]);
 
-    printGraphNode(argv[2]);
+    // initiateDFS("___09___2017");
 
-    unordered_map<string,vector<string> >::iterator invOutputToRegistersItr;
-    int totalPairsCount = 0;
-    for(invOutputToRegistersItr=invOutputToRegisters.begin();invOutputToRegistersItr!=invOutputToRegisters.end();invOutputToRegistersItr++)
-    {
-        cout<<invOutputToRegistersItr->first<<" "<<invOutputToRegistersItr->second.size()<<"\n";
-        totalPairsCount+=invOutputToRegistersItr->second.size();
-        for(int i=0;i<invOutputToRegistersItr->second.size();i++)
-        {
-            cout<<invOutputToRegistersItr->second[i]<<"\n";
-        }
-        cout<<"\n\n";
-    }
 
-    unordered_map<string,vector< pair<string,string> > >::iterator registerPairItr;
-    for(registerPairItr=registerPair.begin();registerPairItr!=registerPair.end();registerPairItr++)
-    {
-        int pairCount = 0;
-        // cout<<registerPairItr->first<<" "<<registerPairItr->second.size();
-        // totalPairsCount+=registerPairItr->second.size();
-        for(int i=0;i<registerPairItr->second.size();i++)
-        {
-            if(registerOccuranceCount[registerPairItr->second[i].second] == 1 && registerOccuranceCount[registerPairItr->second[i].first] == 1)
-            {
-                //cout<<registerPairItr->second[i].first<<" -> "<<registerPairItr->second[i].second<<"\n";
-                nextStates.push_back(registerPairItr->second[i].first);
-                currentStates.push_back(registerPairItr->second[i].second);           
-                pairCount++;
-            }
-        }
-        //cout<<registerPairItr->first<<" : "<<pairCount;
-        totalPairsCount+=pairCount;
-        //cout<<"\n\n";
-    }
-
-    cout<<"Total Pairs : "<<totalPairsCount;
+    // cout<<"\n\n";
+    // initiateTraceMuxElements("n581");
+    // cout<<"\n\n";
+    // initiateTraceMuxElements("n582");
+    // findPaths("__9____1926","__________________36155");
+    // initiatePrintNextStateToCurrentState(argv[2]);
+    // verilogToBench();
     
-    
-    initiateCountIntermediateRegisters();
+    // initiateFindPath();
+   
+    // cout<<"digraph G {";
 
-    initiateGetCurrentStateToNextStateCount();
+    // getPath(argv[2]);
 
-    unordered_map<string,int>::iterator registerOccuranceCountItr;
-    for(registerOccuranceCountItr=registerOccuranceCount.begin();registerOccuranceCountItr!=registerOccuranceCount.end();registerOccuranceCountItr++)
-    {
-        if(registerOccuranceCountItr->second > 1)
-            cout<<registerOccuranceCountItr->first<<"\n";
-    }
+    // getPathInputToOutput("next_state_7_");
+
+    // initiateCheckCycle();
     // unordered_set<string>::iterator cycleRegistersListItr;
-    for(cycleRegistersListItr=cycleRegistersList.begin();cycleRegistersListItr!=cycleRegistersList.end();cycleRegistersListItr++)
-    {
-        cout<<*cycleRegistersListItr<<"\n";
-    }
+    // for(cycleRegistersListItr=cycleRegistersList.begin();cycleRegistersListItr!=cycleRegistersList.end();cycleRegistersListItr++)
+    // {
+    //     cout<<*cycleRegistersListItr<<"\n";
+    // }
+
+    // initiateMakePath();
+    // printGraph(stateGraph);
+
+    // printBench(reverseStateGraph);
+
+    // printGraphNode(argv[2]);
+
+    // unordered_map<string,vector<string> >::iterator invOutputToRegistersItr;
+    // int totalPairsCount = 0;
+    // for(invOutputToRegistersItr=invOutputToRegisters.begin();invOutputToRegistersItr!=invOutputToRegisters.end();invOutputToRegistersItr++)
+    // {
+    //     cout<<invOutputToRegistersItr->first<<" "<<invOutputToRegistersItr->second.size()<<"\n";
+    //     totalPairsCount+=invOutputToRegistersItr->second.size();
+    //     for(int i=0;i<invOutputToRegistersItr->second.size();i++)
+    //     {
+    //         cout<<invOutputToRegistersItr->second[i]<<"\n";
+    //     }
+    //     cout<<"\n\n";
+    // }
+
+    // unordered_map<string,vector< pair<string,string> > >::iterator registerPairItr;
+    // for(registerPairItr=registerPair.begin();registerPairItr!=registerPair.end();registerPairItr++)
+    // {
+    //     int pairCount = 0;
+    //     // cout<<registerPairItr->first<<" "<<registerPairItr->second.size();
+    //     // totalPairsCount+=registerPairItr->second.size();
+    //     for(int i=0;i<registerPairItr->second.size();i++)
+    //     {
+    //         if(registerOccuranceCount[registerPairItr->second[i].second] == 1 && registerOccuranceCount[registerPairItr->second[i].first] == 1)
+    //         {
+    //             //cout<<registerPairItr->second[i].first<<" -> "<<registerPairItr->second[i].second<<"\n";
+    //             nextStates.push_back(registerPairItr->second[i].first);
+    //             currentStates.push_back(registerPairItr->second[i].second);           
+    //             pairCount++;
+    //         }
+    //     }
+    //     //cout<<registerPairItr->first<<" : "<<pairCount;
+    //     totalPairsCount+=pairCount;
+    //     //cout<<"\n\n";
+    // }
+
+    // cout<<"Total Pairs : "<<totalPairsCount;
     
-    bool flag = 0;
-    for(auto regItr=operatorOperand.begin();regItr!=operatorOperand.end();regItr++)
-    {
-        if(regItr->second.substr(0,2) == "df")
-        {
-            auto outToIntItr = inputToOutput.find(regItr->first);
-            if(outToIntItr == inputToOutput.end())
-                continue;
-            //cout<<regItr->first<<" : "<<outToIntItr->second.size();
-            if(outToIntItr->second.size() == 1)
-            {
-                flag = 1;
-                cout<<regItr->first<<" : "<<operatorName[regItr->first];
-            }
-        }
-        if(flag)
-        {
-            flag = 0;
-            cout<<"\n";
-        }
-    }
-    cout<<"}";
+    
+    // initiateCountIntermediateRegisters();
+
+    // initiateGetCurrentStateToNextStateCount();
+
+    // unordered_map<string,int>::iterator registerOccuranceCountItr;
+    // for(registerOccuranceCountItr=registerOccuranceCount.begin();registerOccuranceCountItr!=registerOccuranceCount.end();registerOccuranceCountItr++)
+    // {
+    //     if(registerOccuranceCountItr->second > 1)
+    //         cout<<registerOccuranceCountItr->first<<"\n";
+    // }
+    // // unordered_set<string>::iterator cycleRegistersListItr;
+    // for(cycleRegistersListItr=cycleRegistersList.begin();cycleRegistersListItr!=cycleRegistersList.end();cycleRegistersListItr++)
+    // {
+    //     cout<<*cycleRegistersListItr<<"\n";
+    // }
+    
+    // bool flag = 0;
+    // for(auto regItr=operatorOperand.begin();regItr!=operatorOperand.end();regItr++)
+    // {
+    //     if(regItr->second.substr(0,2) == "df")
+    //     {
+    //         auto outToIntItr = inputToOutput.find(regItr->first);
+    //         if(outToIntItr == inputToOutput.end())
+    //             continue;
+    //         //cout<<regItr->first<<" : "<<outToIntItr->second.size();
+    //         if(outToIntItr->second.size() == 1)
+    //         {
+    //             flag = 1;
+    //             cout<<regItr->first<<" : "<<operatorName[regItr->first];
+    //         }
+    //     }
+    //     if(flag)
+    //     {
+    //         flag = 0;
+    //         cout<<"\n";
+    //     }
+    // }
+    // cout<<"}";
     return 0;
 }
 
