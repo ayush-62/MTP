@@ -23,6 +23,10 @@ oo0_2,oo1_2,oo2_2,oo3_2 = BitVecs('oo0_2 oo1_2 oo2_2 oo3_2',10)
 k1_2,k2_2,k3_2,k4_2,k5_2 = Bools('k1_2 k2_2 k3_2 k4_2 k5_2')'''
 key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1 = BitVecs('key1_1 key2_1 key3_1 key4_1 key5_1 key6_1 key7_1 key8_1 key9_1 key10_1' , 10)
 key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2 = BitVecs('key1_2 key2_2 key3_2 key4_2 key5_2 key6_2 key7_2 key8_2 key9_2 key10_2' , 10)
+
+bkey1_1,bkey2_1,bkey3_1,bkey4_1,bkey5_1,bkey6_1,bkey7_1,bkey8_1,bkey9_1,bkey10_1 = Bools('bkey1_1 bkey2_1 bkey3_1 bkey4_1 bkey5_1 bkey6_1 bkey7_1 bkey8_1 bkey9_1 bkey10_1')
+bkey1_2,bkey2_2,bkey3_2,bkey4_2,bkey5_2,bkey6_2,bkey7_2,bkey8_2,bkey9_2,bkey10_2 = Bools('bkey1_2 bkey2_2 bkey3_2 bkey4_2 bkey5_2 bkey6_2 bkey7_2 bkey8_2 bkey9_2 bkey10_2')
+
 inp1,inp2,inp3,inp4,inp5,inp6,inp7,inp8,inp9,inp10,inp11,inp12,inp13,inp14,inp15,inp16 = BitVecs('inp1 inp2 inp3 inp4 inp5 inp6 inp7 inp8 inp9 inp10 inp11 inp12 inp13 inp14 inp15 inp16',10)
 
 
@@ -870,7 +874,7 @@ ret = Store(ret,BitVecVal(15, 10),BitVecVal(0, 10))
 
 
 #,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10
-def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in11 , in12 , in13 , in14 , in15 , in16 ,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
+def findOutput1(in1,in2,in3,in4,in5,in6,in7,in8,in9,in10,in11,in12,in13,in14,in15,in16,key1,key2,key3,key4,key5,key6,key7,key8,key9,key10,S,W,I,ret):
     # S = Array('S', BitVecSort(10), BitVecSort(10))
     # S2 = Array('S2', BitVecSort(10), BitVecSort(10))
     # I = Array('A', BitVecSort(10), ArraySort(BitVecSort(10), BitVecSort(10)))
@@ -1022,6 +1026,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 0, If( x >> 8 == 1, ret[0] ^ (x ^ 283), ret[0] ^ x))
     ret = Store(ret, 0, ret[0] ^ (S[2] ^ S[3] ^ W[0][4*n]))
 
+    
     ret = If(key2 == 2 , Store(ret, 1 , S[1 ] << 1), Store(ret, 1 , S[3] << 1))
     ret = Store(ret, 1, If(ret[1] >> 8 == 1, ret[1] ^ 283, ret[1]))
     x = S[2]
@@ -1030,6 +1035,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
     ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
@@ -1037,6 +1043,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
     ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1050,16 +1057,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
     ret = Store(ret, 4, ret[4] ^ (S[6] ^ S[7] ^ W[0][1+4*n]))
 
-    ret = Store(ret, 5,  S[5] << 1) #key6 5
+    ret = Store(ret, 5,  S[5] << 1)
     ret = Store(ret, 5, If(ret[5] >> 8 == 1, ret[5] ^ 283, ret[5]))
-    x = S[6] #key7 4
+    x = S[6] 
     x = x ^ (x << 1)
     ret = Store(ret, 5, If(x >> 8 == 1, ret[5] ^ (x ^ 283), ret[5] ^ x))
     ret = Store(ret, 5, ret[5] ^ (S[7] ^ S[4] ^ W[1][1+4*n]))
 
     ret = Store(ret, 6,  S[6] << 1)
     ret = Store(ret, 6, If( ret[6] >> 8 == 1, ret[6] ^ 283, ret[6]))
-    x = S[7] #key8 7
+    x = S[7] 
     x = x ^ (x << 1)
     ret = Store(ret, 6, If( x >> 8 == 1, ret[6] ^ (x ^ 283),  ret[6] ^ x))
     ret = Store(ret, 6, ret[6] ^ (S[4] ^ S[5] ^ W[2][1+4*n]))
@@ -1068,7 +1075,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 7, If(ret[7] >> 8 == 1, ret[7] ^ 283, ret[7]))
     x = S[4]
     x = x ^ (x << 1)
-    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) #key9 8
+    ret = Store(ret, 7, If(x >> 8 == 1, ret[7] ^ (x ^ 283), ret[7] ^ x)) 
     ret = Store(ret, 7, ret[7] ^ (S[5] ^ S[6] ^ W[3][1+4*n]))
 
     ret = Store(ret, 8, S[8] << 1)
@@ -1085,7 +1092,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 9, If( x >> 8 == 1, ret[9] ^ (x ^ 283), ret[9] ^ x))
     ret = Store(ret, 9,  ret[9] ^ (S[11] ^ S[8] ^ W[1][2+4*n]))
 
-    ret = Store(ret, 10,  S[10] << 1) #key10 10
+    ret = Store(ret, 10,  S[10] << 1) 
     ret = Store(ret, 10, If(ret[10] >> 8 == 1, ret[10] ^ 283, ret[10]))
     x = S[11]
     x = x ^ (x << 1)
@@ -1228,14 +1235,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1426,14 +1435,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1624,14 +1635,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -1822,14 +1835,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2022,14 +2037,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2220,14 +2237,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2418,14 +2437,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2616,14 +2637,16 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1] ^ (x ^ 283), ret[1] ^ x))
     ret = Store(ret, 1, ret[1] ^ (S[3] ^ S[0] ^ W[1][4*n]))
 
-    ret = Store(ret, 2, S[2] << 1)
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
     ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
     ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
     ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3] >> 8 == 1, ret[3] ^ 283, ret[3]))
     x = S[0]
     x = x ^ (x << 1)
@@ -2631,7 +2654,7 @@ def findOutput1(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9 , in10 , in1
     ret = Store(ret, 3, ret[3] ^ (S[1] ^ S[2] ^ W[3][4*n]))
 
     ret = Store(ret, 4, S[4] << 1)
-    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ 283, ret[4]))
+    ret = Store(ret, 4, If(ret[4] >> 8 == 1, ret[4] ^ key5, ret[4]))
     x = S[5]
     x = x ^ (x << 1)
     ret = Store(ret, 4, If(x >> 8 == 1, ret[4] ^ (x ^ 283), ret[4] ^ x))
@@ -2979,14 +3002,16 @@ def sub(in1 , in2 , in3 , in4 , in5 , in6 , in7 , in8 , in9, in10 , in11 , in12 
     ret = Store(ret, 1, If( x >> 8 == 1, ret[1 ] ^ (x ^ 283), ret[1 ] ^ x))
     ret = Store(ret, 1, ret[1 ] ^ (S[3 ] ^ S[0] ^ W[1][j + nb * n]))
 
-    ret = Store(ret, 2, S[2 ] << 1)
-    ret = Store(ret, 2, If(ret[2 ] >> 8 == 1, ret[2 ] ^ 283, ret[2 ]))
+    #ret = Store(ret, 2, S[2] << 1)
+    ret = If(key3 == 3 , Store(ret, 2, S[2] << 1), Store(ret, 2 , S[4] << 1))
+    ret = Store(ret, 2, If(ret[2] >> 8 == 1, ret[2] ^ 283, ret[2]))
     x = S[3]
     x = x ^ (x << 1)
-    ret = Store(ret, 2, If( x >> 8 == 1, ret[2 ] ^ (x ^ 283), ret[2 ] ^ x)) #key4 283
-    ret = Store(ret, 2, ret[2 ] ^ (S[0] ^ S[1 ] ^ W[2][j + nb * n]))
+    ret = Store(ret, 2, If( x >> 8 == 1, ret[2] ^ (x ^ 283), ret[2] ^ x)) #key4 283
+    ret = Store(ret, 2, ret[2] ^ (S[0] ^ S[1] ^ W[2][4*n]))
 
-    ret = Store(ret, 3, S[3 ] << 1) #key5 3
+    # ret = Store(ret, 3, S[3] << 1) #key5 3
+    ret = If(key4 == 4 , Store(ret, 3, S[3] << 1), Store(ret, 3 , S[4] << 1))
     ret = Store(ret, 3, If(ret[3 ] >> 8 == 1, ret[3 ] ^ 283, ret[3 ]))
     x = S[0]
     x = x ^ (x << 1)
@@ -3038,26 +3063,26 @@ s = Tactic('smt').solver()
 s.add(simplify(sub(i1,i2,i3,i4,i5,i6,i7,i8,i9,i10,i11,i12,i13,i14,i15,i16,key1_2,key2_2,key3_2,key4_2,key5_2))==out4)'''
 
 #key1 = 5, key2 = 10 , key3 = 15 , key4 = 283 , key5 = 3 , key6 = 5 , key7 = 4 , key8 = 7 , key9 = 8 , key10 = 10
-s.add(key1_1>=0,key1_1<=15)
-s.add(key1_2>=0,key1_2<=15)
-s.add(key2_1>=0,key2_1<=15)
-s.add(key2_2>=0,key2_2<=15)
-s.add(key3_1>=0,key3_1<=15)
-s.add(key3_2>=0,key3_2<=15)
-s.add(key4_1>=0,key4_1<=15)
+s.add(key1_1>=0,key1_1<=255)
+s.add(key1_2>=0,key1_2<=255)
+s.add(key2_1>=0,key2_1<=255)
+s.add(key2_2>=0,key2_2<=255)
+s.add(key3_1>=0,key3_1<=255)
+s.add(key3_2>=0,key3_2<=255)
+s.add(key4_1>=0,key4_1<=255)
 s.add(key4_2>=0,key4_2<=511)
-s.add(key5_1>=0,key5_1<=10)
-s.add(key5_2>=0,key5_2<=10)
-s.add(key6_1>=0,key6_1<=11)
-s.add(key6_2>=0,key6_2<=11)
-s.add(key7_1>=0,key7_1<=13)
-s.add(key7_2>=0,key7_2<=13)
-s.add(key8_1>=0,key8_1<=11)
-s.add(key8_2>=0,key8_2<=11)
-s.add(key9_1>=0,key9_1<=31)
-s.add(key9_2>=0,key9_2<=31)
-s.add(key10_1>=0,key10_1<=10)
-s.add(key10_2>=0,key10_2<=10)
+s.add(key5_1>=0,key5_1<=500)
+s.add(key5_2>=0,key5_2<=500)
+s.add(key6_1>=0,key6_1<=255)
+s.add(key6_2>=0,key6_2<=255)
+s.add(key7_1>=0,key7_1<=255)
+s.add(key7_2>=0,key7_2<=255)
+s.add(key8_1>=0,key8_1<=255)
+s.add(key8_2>=0,key8_2<=255)
+s.add(key9_1>=0,key9_1<=255)
+s.add(key9_2>=0,key9_2<=255)
+s.add(key10_1>=0,key10_1<=255)
+s.add(key10_2>=0,key10_2<=255)
 s.add(i1>=0,i1<=255)
 s.add(i2>=0,i2<=255)
 s.add(i3>=0,i3<=255)
@@ -3078,7 +3103,7 @@ s.add(i16>=0,i16<=255)
 
 
 # findOutput1(key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
-# print(simplify(findOutput1(212,0,0,0,0,1,0,0,0,0,2,0,0,0,0,4,0,0,0,0,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)))
+# print(simplify(findOutput1(1,2,3,4,5,6,7,8,9,100,120,2,13,14,15,16,1,2,3,4,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)))
 # print((simplify(findOutput1(5,10,15,283,3,5,4,7,8,10,S,W,I,ret))))
 # exit()
 
@@ -3099,14 +3124,14 @@ s.add(i16>=0,i16<=255)
 s.add(simplify(sub(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_1,key2_1,key3_1,key4_1,key5_1,S,W,I,ret))==out3)
 s.add(simplify(sub(i1 , i2 , i3 , i4 , i5 , i6 , i7 , i8 , i9 , i10 , i11 , i12 , i13 , i14 , i15 , i16 ,key1_2,key2_2,key3_2,key4_2,key5_2,S,W,I,ret))==out4)
 j = 0
-start = time.time()
-while(s.check(out3!=out4,   Or(key1_1 != key1_2,key2_1 != key2_2)) == sat):
+start1 = time.time()
+while(s.check(out3!=out4,   Or(key1_1 != key1_2, key2_1 != key2_2, key3_1 != key3_2, key4_1 != key4_2, key5_1 != key5_2)) == sat):
     m = s.model()
     #print(m)
     #print(m)
     print(str(m[i1])+" "+str(m[i2])+" "+str(m[i3])+" "+str(m[i4])+" "+str(m[i5])+" "+str(m[i6])+" "+str(m[i7])+" "+str(m[i8])+" "+str(m[i9])+" "+str(m[i10])+" "+str(m[i11])+" "+str(m[i12])+" "+str(m[i13])+" "+str(m[i14])+" "+str(m[i15])+" "+str(m[i16]))
-    print(str(m[key1_1])+" "+str(m[key2_1]))
-    print(str(m[key1_2])+" "+str(m[key2_2]))
+    print(str(m[key1_1])+" "+str(m[key2_1])+ " "+str(m[key3_1])+" "+str(m[key4_1])+" "+str(m[key5_1]))
+    print(str(m[key1_2])+" "+str(m[key2_2])+ " "+str(m[key3_2])+" "+str(m[key4_2])+" "+str(m[key5_2]))
     ia = str(m[i1])+" "+str(m[i2])+" "+str(m[i3])+" "+str(m[i4])+" "+str(m[i5])+" "+str(m[i6])+" "+str(m[i7])+" "+str(m[i8])+" "+str(m[i9])+" "+str(m[i10])+" "+str(m[i11])+" "+str(m[i12])+" "+str(m[i13])+" "+str(m[i14])+" "+str(m[i15])+" "+str(m[i16])
     [oa1,oa2,oa3,oa4,oa5,oa6,oa7,oa8,oa9,oa10,oa11,oa12,oa13,oa14,oa15,oa16]= Cexec(ia)
     # BitVecVal(oa11,32),BitVecVal(oa12,32),BitVecVal(oa13,32),BitVecVal(oa14,32),BitVecVal(oa15,32),BitVecVal(oa16,32),BitVecVal(oa17,32),BitVecVal(oa18,32),BitVecVal(oa19,32),BitVecVal(oa20,32),BitVecVal(oa21,32),BitVecVal(oa22,32),BitVecVal(oa23,32),BitVecVal(oa24,32),BitVecVal(oa25,32),BitVecVal(oa26,32),BitVecVal(oa27,32),BitVecVal(oa28,32),BitVecVal(oa29,32),BitVecVal(oa30,32),BitVecVal(oa31,32),BitVecVal(oa32,32)
@@ -3114,25 +3139,23 @@ while(s.check(out3!=out4,   Or(key1_1 != key1_2,key2_1 != key2_2)) == sat):
     # print(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],0,0,0,0,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)))
     s.add(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1,S,W,I,ret)) == oa)
     s.add(simplify(findOutput1(m[i1], m[i2], m[i3], m[i4], m[i5], m[i6], m[i7], m[i8], m[i9], m[i10], m[i11], m[i12], m[i13], m[i14], m[i15], m[i16],key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2,S,W,I,ret)) == oa)
-    # o0_1,o1_1,o2_1,o3_1s,o4_1,o5_1,o6_1,o7_1,o8_1,o9_1,o10_1,o11_1,o12_1,o13_1,o14_1,o15_1=findOutput(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16],key1_1,key2_1,key3_1,key4_1,key5_1,key6_1,key7_1,key8_1,key9_1,key10_1)
-    # o0_2,o1_2,o2_2,o3_2,o4_2,o5_2,o6_2,o7_2,o8_2,o9_2,o10_2,o11_2,o12_2,o13_2,o14_2,o15_2=findOutput(m[i1],m[i2],m[i3],m[i4],m[i5],m[i6],m[i7],m[i8],m[i9],m[i10],m[i11],m[i12],m[i13],m[i14],m[i15],m[i16],key1_2,key2_2,key3_2,key4_2,key5_2,key6_2,key7_2,key8_2,key9_2,key10_2)
-    # s.add(o0_1==oa1,o1_1==oa2,o2_1==oa3,o3_1==oa4,o4_1==oa5,o5_1==oa6,o6_1==oa7,o7_1==oa8,o8_1==oa9,o9_1==oa10,o10_1==oa11,o11_1==oa12,o12_1==oa13,o13_1==oa14,o14_1==oa15,o15_1==oa16)
-    # s.add(o0_2==oa1,o1_2==oa2,o2_2==oa3,o3_2==oa4,o4_2==oa5,o5_2==oa6,o6_2==oa7,o7_2==oa8,o8_2==oa9,o9_2==oa10,o10_2==oa11,o11_2==oa12,o12_2==oa13,o13_2==oa14,o14_2==oa15,o15_2==oa16)
-    print("Iteration %d = %f second" %(j+1,time.time()-start))
+  
+    print("Iteration %d = %f second" %(j+1,time.time()-start1))
     j = j + 1
-print("unsat takes %d time" %(time.time()-start))
+print("unsat takes %f time" %(time.time()-start1))
 print("loop1 complete")
 
 p=0
-stat=time.time()
-while s.check(key1_1 == key1_2,key2_1 == key2_2) != unsat:
+start2=time.time()
+while s.check(key1_1 == key1_2,key2_1 == key2_2,key3_1 == key3_2,key4_1 == key4_2, key5_1 == key5_2) != unsat:
     try:
         m = s.model()
     except:
         break_away = True
         break
-    print(str(m[key1_1])+" "+str(m[key2_1]))
-    print("Iteration %d = %f second" %(p+1,time.time()-start))
-    s.add(Or(key1_1 != m[key1_1],key2_1!=m[key2_1]))
-    s.add(Or(key1_2 != m[key1_2],key2_2!=m[key2_2]))
+    print(str(m[key1_1])+" "+str(m[key2_1])+" "+str(m[key3_1])+" "+str(m[key4_1])+" "+str(m[key5_1]))
+    print("Iteration %d = %f second" %(p+1,time.time()-start2))
+    s.add(Or(key1_1 != m[key1_1],key2_1!=m[key2_1],key3_1!=m[key3_1],key4_1!=m[key4_1]),key5_1!=m[key5_1])
+    s.add(Or(key1_2 != m[key1_2],key2_2!=m[key2_2],key3_2!=m[key3_2],key4_2!=m[key4_2]),key5_2!=m[key5_2])
     p = p + 1
+print("total time = %f", time.time() - start1)

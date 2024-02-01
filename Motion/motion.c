@@ -80,3 +80,11 @@ int main(int argc, char** argv)
 
    return 0;
 }
+
+//without locking
+int main(){
+    int x = 12;
+    int b;
+    b = x+10;
+    return b
+}

@@ -1,0 +1,1011 @@
+(declare-datatypes ((tuple 0)) (((tuple1 (|1| (_ BitVec 10)) (|2| (_ BitVec 10)) (|3| (_ BitVec 10)) (|4| (_ BitVec 10)) (|5| (_ BitVec 10)) (|6| (_ BitVec 10)) (|7| (_ BitVec 10)) (|8| (_ BitVec 10)) (|9| (_ BitVec 10)) (|10| (_ BitVec 10)) (|11| (_ BitVec 10)) (|12| (_ BitVec 10)) (|13| (_ BitVec 10)) (|14| (_ BitVec 10)) (|15| (_ BitVec 10)) (|16| (_ BitVec 10))) (tuple2 (|1| (_ BitVec 10)) (|2| (_ BitVec 10)) (|3| (_ BitVec 10)) (|4| (_ BitVec 10))))))
+(declare-fun key1_1 () (_ BitVec 10))
+(declare-fun key1_2 () (_ BitVec 10))
+(declare-fun key2_1 () (_ BitVec 10))
+(declare-fun key2_2 () (_ BitVec 10))
+(declare-fun key3_1 () (_ BitVec 10))
+(declare-fun key3_2 () (_ BitVec 10))
+(declare-fun key4_1 () (_ BitVec 10))
+(declare-fun key4_2 () (_ BitVec 10))
+(declare-fun key5_1 () (_ BitVec 10))
+(declare-fun key5_2 () (_ BitVec 10))
+(declare-fun key6_1 () (_ BitVec 10))
+(declare-fun key6_2 () (_ BitVec 10))
+(declare-fun key7_1 () (_ BitVec 10))
+(declare-fun key7_2 () (_ BitVec 10))
+(declare-fun key8_1 () (_ BitVec 10))
+(declare-fun key8_2 () (_ BitVec 10))
+(declare-fun key9_1 () (_ BitVec 10))
+(declare-fun key9_2 () (_ BitVec 10))
+(declare-fun key10_1 () (_ BitVec 10))
+(declare-fun key10_2 () (_ BitVec 10))
+(declare-fun i1 () (_ BitVec 10))
+(declare-fun i2 () (_ BitVec 10))
+(declare-fun i3 () (_ BitVec 10))
+(declare-fun i4 () (_ BitVec 10))
+(declare-fun i5 () (_ BitVec 10))
+(declare-fun i6 () (_ BitVec 10))
+(declare-fun i7 () (_ BitVec 10))
+(declare-fun i8 () (_ BitVec 10))
+(declare-fun i9 () (_ BitVec 10))
+(declare-fun i10 () (_ BitVec 10))
+(declare-fun i11 () (_ BitVec 10))
+(declare-fun i12 () (_ BitVec 10))
+(declare-fun i13 () (_ BitVec 10))
+(declare-fun i14 () (_ BitVec 10))
+(declare-fun i15 () (_ BitVec 10))
+(declare-fun i16 () (_ BitVec 10))
+(declare-fun oo3_1 () (_ BitVec 10))
+(declare-fun oo2_1 () (_ BitVec 10))
+(declare-fun oo1_1 () (_ BitVec 10))
+(declare-fun oo0_1 () (_ BitVec 10))
+(declare-fun tm15 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm14 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm13 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm12 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm11 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm10 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm9 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm8 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm7 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm6 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm5 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm4 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm3 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm2 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm1 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun tm0 () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun A () (Array (_ BitVec 10) (Array (_ BitVec 10) (_ BitVec 10))))
+(declare-fun S () (Array (_ BitVec 10) (_ BitVec 10)))
+(declare-fun ret () (Array (_ BitVec 10) (_ BitVec 10)))
+(assert (bvsge key1_1 #b0000000000))
+(assert (bvsle key1_1 #b0011111111))
+(assert (bvsge key1_2 #b0000000000))
+(assert (bvsle key1_2 #b0011111111))
+(assert (bvsge key2_1 #b0000000000))
+(assert (bvsle key2_1 #b0011111111))
+(assert (bvsge key2_2 #b0000000000))
+(assert (bvsle key2_2 #b0011111111))
+(assert (bvsge key3_1 #b0000000000))
+(assert (bvsle key3_1 #b0011111111))
+(assert (bvsge key3_2 #b0000000000))
+(assert (bvsle key3_2 #b0011111111))
+(assert (bvsge key4_1 #b0000000000))
+(assert (bvsle key4_1 #b0011111111))
+(assert (bvsge key4_2 #b0000000000))
+(assert (bvsle key4_2 #b0111111111))
+(assert (bvsge key5_1 #b0000000000))
+(assert (bvsle key5_1 #b0011111111))
+(assert (bvsge key5_2 #b0000000000))
+(assert (bvsle key5_2 #b0011111111))
+(assert (bvsge key6_1 #b0000000000))
+(assert (bvsle key6_1 #b0011111111))
+(assert (bvsge key6_2 #b0000000000))
+(assert (bvsle key6_2 #b0011111111))
+(assert (bvsge key7_1 #b0000000000))
+(assert (bvsle key7_1 #b0011111111))
+(assert (bvsge key7_2 #b0000000000))
+(assert (bvsle key7_2 #b0011111111))
+(assert (bvsge key8_1 #b0000000000))
+(assert (bvsle key8_1 #b0011111111))
+(assert (bvsge key8_2 #b0000000000))
+(assert (bvsle key8_2 #b0011111111))
+(assert (bvsge key9_1 #b0000000000))
+(assert (bvsle key9_1 #b0011111111))
+(assert (bvsge key9_2 #b0000000000))
+(assert (bvsle key9_2 #b0011111111))
+(assert (bvsge key10_1 #b0000000000))
+(assert (bvsle key10_1 #b0011111111))
+(assert (bvsge key10_2 #b0000000000))
+(assert (bvsle key10_2 #b0011111111))
+(assert (bvsge i1 #b0000000000))
+(assert (bvsle i1 #b0011111111))
+(assert (bvsge i2 #b0000000000))
+(assert (bvsle i2 #b0011111111))
+(assert (bvsge i3 #b0000000000))
+(assert (bvsle i3 #b0011111111))
+(assert (bvsge i4 #b0000000000))
+(assert (bvsle i4 #b0011111111))
+(assert (bvsge i5 #b0000000000))
+(assert (bvsle i5 #b0011111111))
+(assert (bvsge i6 #b0000000000))
+(assert (bvsle i6 #b0011111111))
+(assert (bvsge i7 #b0000000000))
+(assert (bvsle i7 #b0011111111))
+(assert (bvsge i8 #b0000000000))
+(assert (bvsle i8 #b0011111111))
+(assert (bvsge i9 #b0000000000))
+(assert (bvsle i9 #b0011111111))
+(assert (bvsge i10 #b0000000000))
+(assert (bvsle i10 #b0011111111))
+(assert (bvsge i11 #b0000000000))
+(assert (bvsle i11 #b0011111111))
+(assert (bvsge i12 #b0000000000))
+(assert (bvsle i12 #b0011111111))
+(assert (bvsge i13 #b0000000000))
+(assert (bvsle i13 #b0011111111))
+(assert (bvsge i14 #b0000000000))
+(assert (bvsle i14 #b0011111111))
+(assert (bvsge i15 #b0000000000))
+(assert (bvsle i15 #b0011111111))
+(assert (bvsge i16 #b0000000000))
+(assert (bvsle i16 #b0011111111))
+(assert (let ((a!1 (store (store (store (store tm0 #b0000000000 #b0001100011)
+                                #b0000000001
+                                #b0001111100)
+                         #b0000000010
+                         #b0001110111)
+                  #b0000000011
+                  #b0001111011))
+      (a!5 (store (store (store (store tm1 #b0000000000 #b0011001010)
+                                #b0000000001
+                                #b0010000010)
+                         #b0000000010
+                         #b0011001001)
+                  #b0000000011
+                  #b0001111101))
+      (a!9 (store (store (store (store tm2 #b0000000000 #b0010110111)
+                                #b0000000001
+                                #b0011111101)
+                         #b0000000010
+                         #b0010010011)
+                  #b0000000011
+                  #b0000100110))
+      (a!13 (store (store (store (store tm3 #b0000000000 #b0000000100)
+                                 #b0000000001
+                                 #b0011000111)
+                          #b0000000010
+                          #b0000100011)
+                   #b0000000011
+                   #b0011000011))
+      (a!18 (store (store (store (store tm4 #b0000000000 #b0000001001)
+                                 #b0000000001
+                                 #b0010000011)
+                          #b0000000010
+                          #b0000101100)
+                   #b0000000011
+                   #b0000011010))
+      (a!22 (store (store (store (store tm5 #b0000000000 #b0001010011)
+                                 #b0000000001
+                                 #b0011010001)
+                          #b0000000010
+                          #b0000000000)
+                   #b0000000011
+                   #b0011101101))
+      (a!26 (store (store (store (store tm6 #b0000000000 #b0011010000)
+                                 #b0000000001
+                                 #b0011101111)
+                          #b0000000010
+                          #b0010101010)
+                   #b0000000011
+                   #b0011111011))
+      (a!30 (store (store (store (store tm7 #b0000000000 #b0001010001)
+                                 #b0000000001
+                                 #b0010100011)
+                          #b0000000010
+                          #b0001000000)
+                   #b0000000011
+                   #b0010001111))
+      (a!35 (store (store (store (store tm8 #b0000000000 #b0011001101)
+                                 #b0000000001
+                                 #b0000001100)
+                          #b0000000010
+                          #b0000010011)
+                   #b0000000011
+                   #b0011101100))
+      (a!39 (store (store (store (store tm9 #b0000000000 #b0001100000)
+                                 #b0000000001
+                                 #b0010000001)
+                          #b0000000010
+                          #b0001001111)
+                   #b0000000011
+                   #b0011011100))
+      (a!43 (store (store (store (store tm10 #b0000000000 #b0011100000)
+                                 #b0000000001
+                                 #b0000110010)
+                          #b0000000010
+                          #b0000111010)
+                   #b0000000011
+                   #b0000001010))
+      (a!47 (store (store (store (store tm11 #b0000000000 #b0011100111)
+                                 #b0000000001
+                                 #b0011001000)
+                          #b0000000010
+                          #b0000110111)
+                   #b0000000011
+                   #b0001101101))
+      (a!52 (store (store (store (store tm12 #b0000000000 #b0010111010)
+                                 #b0000000001
+                                 #b0001111000)
+                          #b0000000010
+                          #b0000100101)
+                   #b0000000011
+                   #b0000101110))
+      (a!56 (store (store (store (store tm13 #b0000000000 #b0001110000)
+                                 #b0000000001
+                                 #b0000111110)
+                          #b0000000010
+                          #b0010110101)
+                   #b0000000011
+                   #b0001100110))
+      (a!60 (store (store (store (store tm14 #b0000000000 #b0011100001)
+                                 #b0000000001
+                                 #b0011111000)
+                          #b0000000010
+                          #b0010011000)
+                   #b0000000011
+                   #b0000010001))
+      (a!64 (store (store (store (store tm15 #b0000000000 #b0010001100)
+                                 #b0000000001
+                                 #b0010100001)
+                          #b0000000010
+                          #b0010001001)
+                   #b0000000011
+                   #b0000001101))
+      (a!69 (bvashr (concat ((_ extract 9 6) i1)
+                            (bvnot ((_ extract 5 5) i1))
+                            ((_ extract 4 4) i1)
+                            (bvnot ((_ extract 3 3) i1))
+                            ((_ extract 2 2) i1)
+                            (bvnot ((_ extract 1 0) i1)))
+                    #b0000000100))
+      (a!71 (bvashr (concat ((_ extract 9 5) i11)
+                            (bvnot ((_ extract 4 4) i11))
+                            ((_ extract 3 3) i11)
+                            (bvnot ((_ extract 2 2) i11))
+                            ((_ extract 1 1) i11)
+                            (bvnot ((_ extract 0 0) i11)))
+                    #b0000000100))
+      (a!74 (bvashr (concat ((_ extract 9 8) i6)
+                            (bvnot ((_ extract 7 7) i6))
+                            ((_ extract 6 6) i6)
+                            (bvnot ((_ extract 5 5) i6))
+                            ((_ extract 4 4) i6)
+                            (bvnot ((_ extract 3 1) i6))
+                            ((_ extract 0 0) i6))
+                    #b0000000100))
+      (a!82 (bvashr (concat ((_ extract 9 6) i16)
+                            (bvnot ((_ extract 5 2) i16))
+                            ((_ extract 1 0) i16))
+                    #b0000000100))
+      (a!93 (bvashr (concat ((_ extract 9 6) i5)
+                            (bvnot ((_ extract 5 5) i5))
+                            ((_ extract 4 4) i5)
+                            (bvnot ((_ extract 3 3) i5))
+                            ((_ extract 2 0) i5))
+                    #b0000000100))
+      (a!104 (bvashr (concat ((_ extract 9 8) i10)
+                             (bvnot ((_ extract 7 4) i10))
+                             ((_ extract 3 3) i10)
+                             (bvnot ((_ extract 2 0) i10)))
+                     #b0000000100))
+      (a!106 (bvashr (concat ((_ extract 9 8) i14)
+                             (bvnot ((_ extract 7 6) i14))
+                             ((_ extract 5 4) i14)
+                             (bvnot ((_ extract 3 0) i14)))
+                     #b0000000100))
+      (a!108 (bvashr (concat ((_ extract 9 7) i2)
+                             (bvnot ((_ extract 6 1) i2))
+                             ((_ extract 0 0) i2))
+                     #b0000000100))
+      (a!111 (bvashr (concat ((_ extract 9 5) i3)
+                             (bvnot ((_ extract 4 4) i3))
+                             ((_ extract 3 3) i3)
+                             (bvnot ((_ extract 2 2) i3))
+                             ((_ extract 1 1) i3)
+                             (bvnot ((_ extract 0 0) i3)))
+                     #b0000000100))
+      (a!113 (bvashr (concat ((_ extract 9 7) i15)
+                             (bvnot ((_ extract 6 6) i15))
+                             ((_ extract 5 4) i15)
+                             (bvnot ((_ extract 3 0) i15)))
+                     #b0000000100))
+      (a!115 (bvashr (concat ((_ extract 9 8) i7)
+                             (bvnot ((_ extract 7 6) i7))
+                             ((_ extract 5 5) i7)
+                             (bvnot ((_ extract 4 4) i7))
+                             ((_ extract 3 2) i7)
+                             (bvnot ((_ extract 1 1) i7))
+                             ((_ extract 0 0) i7))
+                     #b0000000100))
+      (a!118 (bvashr (concat ((_ extract 9 8) i12)
+                             (bvnot ((_ extract 7 7) i12))
+                             ((_ extract 6 4) i12)
+                             (bvnot ((_ extract 3 3) i12))
+                             ((_ extract 2 0) i12))
+                     #b0000000100))
+      (a!120 (bvashr (concat ((_ extract 9 8) i8)
+                             (bvnot ((_ extract 7 7) i8))
+                             ((_ extract 6 6) i8)
+                             (bvnot ((_ extract 5 5) i8))
+                             ((_ extract 4 3) i8)
+                             (bvnot ((_ extract 2 1) i8))
+                             ((_ extract 0 0) i8))
+                     #b0000000100))
+      (a!122 (bvashr (concat ((_ extract 9 5) i4)
+                             (bvnot ((_ extract 4 4) i4))
+                             ((_ extract 3 3) i4)
+                             (bvnot ((_ extract 2 1) i4))
+                             ((_ extract 0 0) i4))
+                     #b0000000100))
+      (a!125 (bvashr (concat ((_ extract 9 8) i9)
+                             (bvnot ((_ extract 7 7) i9))
+                             ((_ extract 6 6) i9)
+                             (bvnot ((_ extract 5 5) i9))
+                             ((_ extract 4 4) i9)
+                             (bvnot ((_ extract 3 3) i9))
+                             ((_ extract 2 2) i9)
+                             (bvnot ((_ extract 1 0) i9)))
+                     #b0000000100))
+      (a!127 (bvashr (concat ((_ extract 9 4) i13)
+                             (bvnot ((_ extract 3 3) i13))
+                             ((_ extract 2 1) i13)
+                             (bvnot ((_ extract 0 0) i13)))
+                     #b0000000100)))
+(let ((a!2 (store (store (store (store a!1 #b0000000100 #b0011110010)
+                                #b0000000101
+                                #b0001101011)
+                         #b0000000110
+                         #b0001101111)
+                  #b0000000111
+                  #b0011000101))
+      (a!6 (store (store (store (store a!5 #b0000000100 #b0011111010)
+                                #b0000000101
+                                #b0001011001)
+                         #b0000000110
+                         #b0001000111)
+                  #b0000000111
+                  #b0011110000))
+      (a!10 (store (store (store (store a!9 #b0000000100 #b0000110110)
+                                 #b0000000101
+                                 #b0000111111)
+                          #b0000000110
+                          #b0011110111)
+                   #b0000000111
+                   #b0011001100))
+      (a!14 (store (store (store (store a!13 #b0000000100 #b0000011000)
+                                 #b0000000101
+                                 #b0010010110)
+                          #b0000000110
+                          #b0000000101)
+                   #b0000000111
+                   #b0010011010))
+      (a!19 (store (store (store (store a!18 #b0000000100 #b0000011011)
+                                 #b0000000101
+                                 #b0001101110)
+                          #b0000000110
+                          #b0001011010)
+                   #b0000000111
+                   #b0010100000))
+      (a!23 (store (store (store (store a!22 #b0000000100 #b0000100000)
+                                 #b0000000101
+                                 #b0011111100)
+                          #b0000000110
+                          #b0010110001)
+                   #b0000000111
+                   #b0001011011))
+      (a!27 (store (store (store (store a!26 #b0000000100 #b0001000011)
+                                 #b0000000101
+                                 #b0001001101)
+                          #b0000000110
+                          #b0000110011)
+                   #b0000000111
+                   #b0010000101))
+      (a!31 (store (store (store (store a!30 #b0000000100 #b0010010010)
+                                 #b0000000101
+                                 #b0010011101)
+                          #b0000000110
+                          #b0000111000)
+                   #b0000000111
+                   #b0011110101))
+      (a!36 (store (store (store (store a!35 #b0000000100 #b0001011111)
+                                 #b0000000101
+                                 #b0010010111)
+                          #b0000000110
+                          #b0001000100)
+                   #b0000000111
+                   #b0000010111))
+      (a!40 (store (store (store (store a!39 #b0000000100 #b0000100010)
+                                 #b0000000101
+                                 #b0000101010)
+                          #b0000000110
+                          #b0010010000)
+                   #b0000000111
+                   #b0010001000))
+      (a!44 (store (store (store (store a!43 #b0000000100 #b0001001001)
+                                 #b0000000101
+                                 #b0000000110)
+                          #b0000000110
+                          #b0000100100)
+                   #b0000000111
+                   #b0001011100))
+      (a!48 (store (store (store (store a!47 #b0000000100 #b0010001101)
+                                 #b0000000101
+                                 #b0011010101)
+                          #b0000000110
+                          #b0001001110)
+                   #b0000000111
+                   #b0010101001))
+      (a!53 (store (store (store (store a!52 #b0000000100 #b0000011100)
+                                 #b0000000101
+                                 #b0010100110)
+                          #b0000000110
+                          #b0010110100)
+                   #b0000000111
+                   #b0011000110))
+      (a!57 (store (store (store (store a!56 #b0000000100 #b0001001000)
+                                 #b0000000101
+                                 #b0000000011)
+                          #b0000000110
+                          #b0011110110)
+                   #b0000000111
+                   #b0000001110))
+      (a!61 (store (store (store (store a!60 #b0000000100 #b0001101001)
+                                 #b0000000101
+                                 #b0011011001)
+                          #b0000000110
+                          #b0010001110)
+                   #b0000000111
+                   #b0010010100))
+      (a!65 (store (store (store (store a!64 #b0000000100 #b0010111111)
+                                 #b0000000101
+                                 #b0011100110)
+                          #b0000000110
+                          #b0001000010)
+                   #b0000000111
+                   #b0001101000)))
+(let ((a!3 (store (store (store (store a!2 #b0000001000 #b0000110000)
+                                #b0000001001
+                                #b0000000001)
+                         #b0000001010
+                         #b0001100111)
+                  #b0000001011
+                  #b0000101011))
+      (a!7 (store (store (store (store a!6 #b0000001000 #b0010101101)
+                                #b0000001001
+                                #b0011010100)
+                         #b0000001010
+                         #b0010100010)
+                  #b0000001011
+                  #b0010101111))
+      (a!11 (store (store (store (store a!10 #b0000001000 #b0000110100)
+                                 #b0000001001
+                                 #b0010100101)
+                          #b0000001010
+                          #b0011100101)
+                   #b0000001011
+                   #b0011110001))
+      (a!15 (store (store (store (store a!14 #b0000001000 #b0000000111)
+                                 #b0000001001
+                                 #b0000010010)
+                          #b0000001010
+                          #b0010000000)
+                   #b0000001011
+                   #b0011100010))
+      (a!20 (store (store (store (store a!19 #b0000001000 #b0001010010)
+                                 #b0000001001
+                                 #b0000111011)
+                          #b0000001010
+                          #b0011010110)
+                   #b0000001011
+                   #b0010110011))
+      (a!24 (store (store (store (store a!23 #b0000001000 #b0001101010)
+                                 #b0000001001
+                                 #b0011001011)
+                          #b0000001010
+                          #b0010111110)
+                   #b0000001011
+                   #b0000111001))
+      (a!28 (store (store (store (store a!27 #b0000001000 #b0001000101)
+                                 #b0000001001
+                                 #b0011111001)
+                          #b0000001010
+                          #b0000000010)
+                   #b0000001011
+                   #b0001111111))
+      (a!32 (store (store (store (store a!31 #b0000001000 #b0010111100)
+                                 #b0000001001
+                                 #b0010110110)
+                          #b0000001010
+                          #b0011011010)
+                   #b0000001011
+                   #b0000100001))
+      (a!37 (store (store (store (store a!36 #b0000001000 #b0011000100)
+                                 #b0000001001
+                                 #b0010100111)
+                          #b0000001010
+                          #b0001111110)
+                   #b0000001011
+                   #b0000111101))
+      (a!41 (store (store (store (store a!40 #b0000001000 #b0001000110)
+                                 #b0000001001
+                                 #b0011101110)
+                          #b0000001010
+                          #b0010111000)
+                   #b0000001011
+                   #b0000010100))
+      (a!45 (store (store (store (store a!44 #b0000001000 #b0011000010)
+                                 #b0000001001
+                                 #b0011010011)
+                          #b0000001010
+                          #b0010101100)
+                   #b0000001011
+                   #b0001100010))
+      (a!49 (store (store (store (store a!48 #b0000001000 #b0001101100)
+                                 #b0000001001
+                                 #b0001010110)
+                          #b0000001010
+                          #b0011110100)
+                   #b0000001011
+                   #b0011101010))
+      (a!54 (store (store (store (store a!53 #b0000001000 #b0011101000)
+                                 #b0000001001
+                                 #b0011011101)
+                          #b0000001010
+                          #b0001110100)
+                   #b0000001011
+                   #b0000011111))
+      (a!58 (store (store (store (store a!57 #b0000001000 #b0001100001)
+                                 #b0000001001
+                                 #b0000110101)
+                          #b0000001010
+                          #b0001010111)
+                   #b0000001011
+                   #b0010111001))
+      (a!62 (store (store (store (store a!61 #b0000001000 #b0010011011)
+                                 #b0000001001
+                                 #b0000011110)
+                          #b0000001010
+                          #b0010000111)
+                   #b0000001011
+                   #b0011101001))
+      (a!66 (store (store (store (store a!65 #b0000001000 #b0001000001)
+                                 #b0000001001
+                                 #b0010011001)
+                          #b0000001010
+                          #b0000101101)
+                   #b0000001011
+                   #b0000001111)))
+(let ((a!4 (store (store (store (store a!3 #b0000001100 #b0011111110)
+                                #b0000001101
+                                #b0011010111)
+                         #b0000001110
+                         #b0010101011)
+                  #b0000001111
+                  #b0001110110))
+      (a!8 (store (store (store (store a!7 #b0000001100 #b0010011100)
+                                #b0000001101
+                                #b0010100100)
+                         #b0000001110
+                         #b0001110010)
+                  #b0000001111
+                  #b0011000000))
+      (a!12 (store (store (store (store a!11 #b0000001100 #b0001110001)
+                                 #b0000001101
+                                 #b0011011000)
+                          #b0000001110
+                          #b0000110001)
+                   #b0000001111
+                   #b0000010101))
+      (a!16 (store (store (store (store a!15 #b0000001100 #b0011101011)
+                                 #b0000001101
+                                 #b0000100111)
+                          #b0000001110
+                          #b0010110010)
+                   #b0000001111
+                   #b0001110101))
+      (a!21 (store (store (store (store a!20 #b0000001100 #b0000101001)
+                                 #b0000001101
+                                 #b0011100011)
+                          #b0000001110
+                          #b0000101111)
+                   #b0000001111
+                   #b0010000100))
+      (a!25 (store (store (store (store a!24 #b0000001100 #b0001001010)
+                                 #b0000001101
+                                 #b0001001100)
+                          #b0000001110
+                          #b0001011000)
+                   #b0000001111
+                   #b0011001111))
+      (a!29 (store (store (store (store a!28 #b0000001100 #b0001010000)
+                                 #b0000001101
+                                 #b0000111100)
+                          #b0000001110
+                          #b0010011111)
+                   #b0000001111
+                   #b0010101000))
+      (a!33 (store (store (store (store a!32 #b0000001100 #b0000010000)
+                                 #b0000001101
+                                 #b0011111111)
+                          #b0000001110
+                          #b0011110011)
+                   #b0000001111
+                   #b0011010010))
+      (a!38 (store (store (store (store a!37 #b0000001100 #b0001100100)
+                                 #b0000001101
+                                 #b0001011101)
+                          #b0000001110
+                          #b0000011001)
+                   #b0000001111
+                   #b0001110011))
+      (a!42 (store (store (store (store a!41 #b0000001100 #b0011011110)
+                                 #b0000001101
+                                 #b0001011110)
+                          #b0000001110
+                          #b0000001011)
+                   #b0000001111
+                   #b0011011011))
+      (a!46 (store (store (store (store a!45 #b0000001100 #b0010010001)
+                                 #b0000001101
+                                 #b0010010101)
+                          #b0000001110
+                          #b0011100100)
+                   #b0000001111
+                   #b0001111001))
+      (a!50 (store (store (store (store a!49 #b0000001100 #b0001100101)
+                                 #b0000001101
+                                 #b0001111010)
+                          #b0000001110
+                          #b0010101110)
+                   #b0000001111
+                   #b0000001000))
+      (a!55 (store (store (store (store a!54 #b0000001100 #b0001001011)
+                                 #b0000001101
+                                 #b0010111101)
+                          #b0000001110
+                          #b0010001011)
+                   #b0000001111
+                   #b0010001010))
+      (a!59 (store (store (store (store a!58 #b0000001100 #b0010000110)
+                                 #b0000001101
+                                 #b0011000001)
+                          #b0000001110
+                          #b0000011101)
+                   #b0000001111
+                   #b0010011110))
+      (a!63 (store (store (store (store a!62 #b0000001100 #b0011001110)
+                                 #b0000001101
+                                 #b0001010101)
+                          #b0000001110
+                          #b0000101000)
+                   #b0000001111
+                   #b0011011111))
+      (a!67 (store (store (store (store a!66 #b0000001100 #b0010110000)
+                                 #b0000001101
+                                 #b0001010100)
+                          #b0000001110
+                          #b0010111011)
+                   #b0000001111
+                   #b0000010110)))
+(let ((a!17 (store (store (store (store A #b0000000000 a!4) #b0000000001 a!8)
+                          #b0000000010
+                          a!12)
+                   #b0000000011
+                   a!16)))
+(let ((a!34 (store (store (store (store a!17 #b0000000100 a!21)
+                                 #b0000000101
+                                 a!25)
+                          #b0000000110
+                          a!29)
+                   #b0000000111
+                   a!33)))
+(let ((a!51 (store (store (store (store a!34 #b0000001000 a!38)
+                                 #b0000001001
+                                 a!42)
+                          #b0000001010
+                          a!46)
+                   #b0000001011
+                   a!50)))
+(let ((a!68 (store (store (store (store a!51 #b0000001100 a!55)
+                                 #b0000001101
+                                 a!59)
+                          #b0000001110
+                          a!63)
+                   #b0000001111
+                   a!67)))
+(let ((a!70 (select (select a!68 a!69)
+                    (concat #b000000
+                            (bvnot ((_ extract 3 3) i1))
+                            ((_ extract 2 2) i1)
+                            (bvnot ((_ extract 1 0) i1)))))
+      (a!72 (select (select a!68 a!71)
+                    (concat #b000000
+                            ((_ extract 3 3) i11)
+                            (bvnot ((_ extract 2 2) i11))
+                            ((_ extract 1 1) i11)
+                            (bvnot ((_ extract 0 0) i11)))))
+      (a!75 (select (select a!68 a!74)
+                    (concat #b000000
+                            (bvnot ((_ extract 3 1) i6))
+                            ((_ extract 0 0) i6))))
+      (a!83 (select (select a!68 a!82)
+                    (concat #b000000
+                            (bvnot ((_ extract 3 2) i16))
+                            ((_ extract 1 0) i16))))
+      (a!94 (select (select a!68 a!93)
+                    (concat #b000000
+                            (bvnot ((_ extract 3 3) i5))
+                            ((_ extract 2 0) i5))))
+      (a!105 (select (select a!68 a!104)
+                     (concat #b000000
+                             ((_ extract 3 3) i10)
+                             (bvnot ((_ extract 2 0) i10)))))
+      (a!107 (select (select a!68 a!106)
+                     (concat #b000000 (bvnot ((_ extract 3 0) i14)))))
+      (a!109 (select (select a!68 a!108)
+                     (concat #b000000
+                             (bvnot ((_ extract 3 1) i2))
+                             ((_ extract 0 0) i2))))
+      (a!112 (select (select a!68 a!111)
+                     (concat #b000000
+                             ((_ extract 3 3) i3)
+                             (bvnot ((_ extract 2 2) i3))
+                             ((_ extract 1 1) i3)
+                             (bvnot ((_ extract 0 0) i3)))))
+      (a!114 (select (select a!68 a!113)
+                     (concat #b000000 (bvnot ((_ extract 3 0) i15)))))
+      (a!116 (select (select a!68 a!115)
+                     (concat #b000000
+                             ((_ extract 3 2) i7)
+                             (bvnot ((_ extract 1 1) i7))
+                             ((_ extract 0 0) i7))))
+      (a!119 (select (select a!68 a!118)
+                     (concat #b000000
+                             (bvnot ((_ extract 3 3) i12))
+                             ((_ extract 2 0) i12))))
+      (a!121 (select (select a!68 a!120)
+                     (concat #b000000
+                             ((_ extract 3 3) i8)
+                             (bvnot ((_ extract 2 1) i8))
+                             ((_ extract 0 0) i8))))
+      (a!123 (select (select a!68 a!122)
+                     (concat #b000000
+                             ((_ extract 3 3) i4)
+                             (bvnot ((_ extract 2 1) i4))
+                             ((_ extract 0 0) i4))))
+      (a!126 (select (select a!68 a!125)
+                     (concat #b000000
+                             (bvnot ((_ extract 3 3) i9))
+                             ((_ extract 2 2) i9)
+                             (bvnot ((_ extract 1 0) i9)))))
+      (a!128 (select (select a!68 a!127)
+                     (concat #b000000
+                             (bvnot ((_ extract 3 3) i13))
+                             ((_ extract 2 1) i13)
+                             (bvnot ((_ extract 0 0) i13))))))
+(let ((a!73 (ite (= key1_1 #b0000000001)
+                 (store ret #b0000000000 (concat ((_ extract 8 0) a!70) #b0))
+                 (store ret #b0000000000 (concat ((_ extract 8 0) a!72) #b0))))
+      (a!76 (bvashr (concat (bvxor ((_ extract 9 1) a!75)
+                                   ((_ extract 8 0) a!75))
+                            ((_ extract 0 0) a!75))
+                    #b0000001000))
+      (a!77 (bvashr (ite (= key1_1 #b0000000001)
+                         (concat ((_ extract 8 0) a!70) #b0)
+                         (concat ((_ extract 8 0) a!72) #b0))
+                    #b0000001000))
+      (a!78 (concat (ite (= key1_1 #b0000000001)
+                         ((_ extract 8 8) a!70)
+                         ((_ extract 8 8) a!72))
+                    (bvnot (ite (= key1_1 #b0000000001)
+                                ((_ extract 7 7) a!70)
+                                ((_ extract 7 7) a!72)))
+                    (ite (= key1_1 #b0000000001)
+                         ((_ extract 6 4) a!70)
+                         ((_ extract 6 4) a!72))
+                    (bvnot (ite (= key1_1 #b0000000001)
+                                ((_ extract 3 2) a!70)
+                                ((_ extract 3 2) a!72)))
+                    (ite (= key1_1 #b0000000001)
+                         ((_ extract 1 1) a!70)
+                         ((_ extract 1 1) a!72))
+                    (bvnot (ite (= key1_1 #b0000000001)
+                                ((_ extract 0 0) a!70)
+                                ((_ extract 0 0) a!72)))))
+      (a!86 (bvashr (concat (bvxor ((_ extract 9 1) a!72)
+                                   ((_ extract 8 0) a!72))
+                            ((_ extract 0 0) a!72))
+                    #b0000001000))
+      (a!87 (bvashr (ite (= key2_1 #b0000000010)
+                         (concat ((_ extract 8 0) a!75) #b0)
+                         (concat ((_ extract 8 0) a!83) #b0))
+                    #b0000001000))
+      (a!88 (concat (ite (= key2_1 #b0000000010)
+                         ((_ extract 8 8) a!75)
+                         ((_ extract 8 8) a!83))
+                    (bvnot (ite (= key2_1 #b0000000010)
+                                ((_ extract 7 7) a!75)
+                                ((_ extract 7 7) a!83)))
+                    (ite (= key2_1 #b0000000010)
+                         ((_ extract 6 4) a!75)
+                         ((_ extract 6 4) a!83))
+                    (bvnot (ite (= key2_1 #b0000000010)
+                                ((_ extract 3 2) a!75)
+                                ((_ extract 3 2) a!83)))
+                    (ite (= key2_1 #b0000000010)
+                         ((_ extract 1 1) a!75)
+                         ((_ extract 1 1) a!83))
+                    (bvnot (ite (= key2_1 #b0000000010)
+                                ((_ extract 0 0) a!75)
+                                ((_ extract 0 0) a!83)))))
+      (a!96 (bvashr (concat (bvxor ((_ extract 9 1) a!83)
+                                   ((_ extract 8 0) a!83))
+                            ((_ extract 0 0) a!83))
+                    #b0000001000))
+      (a!97 (bvashr (ite (= key3_1 #b0000000011)
+                         (concat ((_ extract 8 0) a!72) #b0)
+                         (concat ((_ extract 8 0) a!94) #b0))
+                    #b0000001000))
+      (a!98 (concat (ite (= key3_1 #b0000000011)
+                         ((_ extract 8 8) a!72)
+                         ((_ extract 8 8) a!94))
+                    (bvnot (ite (= key3_1 #b0000000011)
+                                ((_ extract 7 7) a!72)
+                                ((_ extract 7 7) a!94)))
+                    (ite (= key3_1 #b0000000011)
+                         ((_ extract 6 4) a!72)
+                         ((_ extract 6 4) a!94))
+                    (bvnot (ite (= key3_1 #b0000000011)
+                                ((_ extract 3 2) a!72)
+                                ((_ extract 3 2) a!94)))
+                    (ite (= key3_1 #b0000000011)
+                         ((_ extract 1 1) a!72)
+                         ((_ extract 1 1) a!94))
+                    (bvnot (ite (= key3_1 #b0000000011)
+                                ((_ extract 0 0) a!72)
+                                ((_ extract 0 0) a!94)))))
+      (a!110 (store (store (store (store S #b0000000001 a!75)
+                                  #b0000000101
+                                  a!105)
+                           #b0000001001
+                           a!107)
+                    #b0000001101
+                    a!109))
+      (a!131 (bvashr (ite (= key4_1 #b0000000100)
+                          (concat ((_ extract 8 0) a!83) #b0)
+                          (concat ((_ extract 8 0) a!94) #b0))
+                     #b0000001000))
+      (a!132 (concat (ite (= key4_1 #b0000000100)
+                          ((_ extract 8 8) a!83)
+                          ((_ extract 8 8) a!94))
+                     (bvnot (ite (= key4_1 #b0000000100)
+                                 ((_ extract 7 7) a!83)
+                                 ((_ extract 7 7) a!94)))
+                     (ite (= key4_1 #b0000000100)
+                          ((_ extract 6 4) a!83)
+                          ((_ extract 6 4) a!94))
+                     (bvnot (ite (= key4_1 #b0000000100)
+                                 ((_ extract 3 2) a!83)
+                                 ((_ extract 3 2) a!94)))
+                     (ite (= key4_1 #b0000000100)
+                          ((_ extract 1 1) a!83)
+                          ((_ extract 1 1) a!94))
+                     (bvnot (ite (= key4_1 #b0000000100)
+                                 ((_ extract 0 0) a!83)
+                                 ((_ extract 0 0) a!94))))))
+(let ((a!79 (ite (= a!77 #b0000000001)
+                 a!78
+                 (ite (= key1_1 #b0000000001)
+                      ((_ extract 8 0) a!70)
+                      ((_ extract 8 0) a!72))))
+      (a!89 (ite (= a!87 #b0000000001)
+                 a!88
+                 (ite (= key2_1 #b0000000010)
+                      ((_ extract 8 0) a!75)
+                      ((_ extract 8 0) a!83))))
+      (a!99 (ite (= a!97 #b0000000001)
+                 a!98
+                 (ite (= key3_1 #b0000000011)
+                      ((_ extract 8 0) a!72)
+                      ((_ extract 8 0) a!94))))
+      (a!117 (store (store (store (store a!110 #b0000000010 a!72)
+                                  #b0000001010
+                                  a!112)
+                           #b0000000110
+                           a!114)
+                    #b0000001110
+                    a!116))
+      (a!133 (ite (= a!131 #b0000000001)
+                  a!132
+                  (ite (= key4_1 #b0000000100)
+                       ((_ extract 8 0) a!83)
+                       ((_ extract 8 0) a!94)))))
+(let ((a!80 (concat (bvxor #b010001101
+                           a!79
+                           ((_ extract 9 1) a!75)
+                           ((_ extract 8 0) a!75))
+                    (bvxor #b1
+                           (ite (= a!77 #b0000000001) #b1 #b0)
+                           ((_ extract 0 0) a!75))))
+      (a!81 (concat (bvxor a!79 ((_ extract 9 1) a!75) ((_ extract 8 0) a!75))
+                    (bvxor (ite (= a!77 #b0000000001) #b1 #b0)
+                           ((_ extract 0 0) a!75))))
+      (a!90 (concat (bvxor #b010001101
+                           a!89
+                           ((_ extract 9 1) a!72)
+                           ((_ extract 8 0) a!72))
+                    (bvxor #b1
+                           (ite (= a!87 #b0000000001) #b1 #b0)
+                           ((_ extract 0 0) a!72))))
+      (a!91 (concat (bvxor a!89 ((_ extract 9 1) a!72) ((_ extract 8 0) a!72))
+                    (bvxor (ite (= a!87 #b0000000001) #b1 #b0)
+                           ((_ extract 0 0) a!72))))
+      (a!100 (concat (bvxor #b010001101
+                            a!99
+                            ((_ extract 9 1) a!83)
+                            ((_ extract 8 0) a!83))
+                     (bvxor #b1
+                            (ite (= a!97 #b0000000001) #b1 #b0)
+                            ((_ extract 0 0) a!83))))
+      (a!101 (concat (bvxor a!99 ((_ extract 9 1) a!83) ((_ extract 8 0) a!83))
+                     (bvxor (ite (= a!97 #b0000000001) #b1 #b0)
+                            ((_ extract 0 0) a!83))))
+      (a!124 (store (store (store (store a!117 #b0000000011 a!83)
+                                  #b0000001111
+                                  a!119)
+                           #b0000001011
+                           a!121)
+                    #b0000000111
+                    a!123)))
+(let ((a!84 (store a!73
+                   #b0000000000
+                   (bvxor (ite (= a!76 #b0000000001) a!80 a!81)
+                          a!72
+                          a!83
+                          #b0010100000)))
+      (a!129 (store (store (store (store a!124 #b0000000000 a!70)
+                                  #b0000000100
+                                  a!94)
+                           #b0000001000
+                           a!126)
+                    #b0000001100
+                    a!128)))
+(let ((a!85 (ite (= key2_1 #b0000000010)
+                 (store a!84 #b0000000001 (concat ((_ extract 8 0) a!75) #b0))
+                 (store a!84 #b0000000001 (concat ((_ extract 8 0) a!83) #b0))))
+      (a!130 (concat (bvxor ((_ extract 9 1) (select a!129 key5_1))
+                            ((_ extract 8 0) (select a!129 key5_1)))
+                     ((_ extract 0 0) (select a!129 key5_1))))
+      (a!134 (concat (bvxor #b010001101
+                            a!133
+                            ((_ extract 9 1) (select a!129 key5_1))
+                            ((_ extract 8 0) (select a!129 key5_1)))
+                     (bvxor #b1
+                            (ite (= a!131 #b0000000001) #b1 #b0)
+                            ((_ extract 0 0) (select a!129 key5_1)))))
+      (a!135 (concat (bvxor a!133
+                            ((_ extract 9 1) (select a!129 key5_1))
+                            ((_ extract 8 0) (select a!129 key5_1)))
+                     (bvxor (ite (= a!131 #b0000000001) #b1 #b0)
+                            ((_ extract 0 0) (select a!129 key5_1))))))
+(let ((a!92 (store a!85
+                   #b0000000001
+                   (bvxor (ite (= a!86 #b0000000001) a!90 a!91)
+                          a!83
+                          a!70
+                          #b0011111010)))
+      (a!136 (bvxor (ite (= (bvashr a!130 #b0000001000) #b0000000001)
+                         a!134
+                         a!135)
+                    a!75
+                    a!72
+                    #b0000010111)))
+(let ((a!95 (ite (= key3_1 #b0000000011)
+                 (store a!92 #b0000000010 (concat ((_ extract 8 0) a!72) #b0))
+                 (store a!92 #b0000000010 (concat ((_ extract 8 0) a!94) #b0)))))
+(let ((a!102 (store a!95
+                    #b0000000010
+                    (bvxor (ite (= a!96 #b0000000001) a!100 a!101)
+                           a!70
+                           a!75
+                           #b0011111110))))
+(let ((a!103 (ite (= key4_1 #b0000000100)
+                  (store a!102 #b0000000011 (concat ((_ extract 8 0) a!83) #b0))
+                  (store a!102 #b0000000011 (concat ((_ extract 8 0) a!94) #b0)))))
+  (= (tuple2 (select a!103 #b0000000000)
+             (select a!103 #b0000000001)
+             (select a!103 #b0000000010)
+             a!136)
+     (tuple2 oo0_1 oo1_1 oo2_1 oo3_1)))))))))))))))))))))
+

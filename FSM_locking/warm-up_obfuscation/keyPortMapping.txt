@@ -1,0 +1,2 @@
+# MSB to LSB
+{op[1]}{op[0]}{datain[7]}{datain[6]}{datain[5]}{datain[4]}{datain[3]}{datain[2]}{datain[1]}{datain[0]}

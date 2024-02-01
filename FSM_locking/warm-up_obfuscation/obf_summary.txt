@@ -1,0 +1,14 @@
+***************************************************
+Report	: Summary of Obfuscation
+Design  : toy_obf
+Date    : 09-10-2020 13:05:38
+***************************************************
+
+- Number of flip-flops before obfuscation      : 42
+- Number of comb. cells before obfuscation     : 149
+- Number of modification cells inserted        : 6
+- Number of flip-flops added                   : 15
+- Size of keys                                 : 122-bit
+- Length of key sequence                       : 16
+
+***************************************************
