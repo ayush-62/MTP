@@ -1,0 +1,148 @@
+digraph G {
+"inv_1 U57"[shape = box,style=filled,color=".6 .5 1.0"]
+"n38"->"inv_1 U57"
+"inv_1 U57"->"n31"
+"o221ai_1 U40"[shape = box,style=filled,color=".6 .5 1.0"]
+"n36"->"o221ai_1 U40"
+"n39"->"o221ai_1 U40"
+"n40"->"o221ai_1 U40"
+"n37"->"o221ai_1 U40"
+"n41"->"o221ai_1 U40"
+"o221ai_1 U40"->"N42"
+"nand2_1 U53"[shape = box,style=filled,color=".6 .5 1.0"]
+"line2"->"nand2_1 U53"
+"line1"->"nand2_1 U53"
+"nand2_1 U53"->"n44"
+"inv_1 U39"[shape = box,style=filled,color=".6 .5 1.0"]
+"reset"->"inv_1 U39"
+"inv_1 U39"->"n1"
+"dfrtp_1 \stato_reg[1]"[shape = box,style=filled,color=".7 .3 1.0"]
+"N42"->"dfrtp_1 \stato_reg[1]"
+"clock"->"dfrtp_1 \stato_reg[1]"
+"n1"->"dfrtp_1 \stato_reg[1]"
+"dfrtp_1 \stato_reg[1]"->"stato[1]"
+"nor2_1 U38"[shape = box,style=filled,color=".6 .5 1.0"]
+"n38"->"nor2_1 U38"
+"n35"->"nor2_1 U38"
+"nor2_1 U38"->"n32"
+"a21oi_1 U37"[shape = box,style=filled,color=".6 .5 1.0"]
+"n36"->"a21oi_1 U37"
+"n29"->"a21oi_1 U37"
+"n37"->"a21oi_1 U37"
+"a21oi_1 U37"->"n34"
+"nor2_1 U36"[shape = box,style=filled,color=".6 .5 1.0"]
+"n34"->"nor2_1 U36"
+"n35"->"nor2_1 U36"
+"nor2_1 U36"->"n33"
+"nor2_1 U46"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[0]"->"nor2_1 U46"
+"n39"->"nor2_1 U46"
+"nor2_1 U46"->"n48"
+"nor3_1 U54"[shape = box,style=filled,color=".6 .5 1.0"]
+"n36"->"nor3_1 U54"
+"stato[2]"->"nor3_1 U54"
+"n50"->"nor3_1 U54"
+"nor3_1 U54"->"n3"
+"o22ai_1 U35"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[2]"->"o22ai_1 U35"
+"n32"->"o22ai_1 U35"
+"stato[1]"->"o22ai_1 U35"
+"n33"->"o22ai_1 U35"
+"o22ai_1 U35"->"n2"
+"inv_1 U56"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[2]"->"inv_1 U56"
+"inv_1 U56"->"n37"
+"nand2_1 U34"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[2]"->"nand2_1 U34"
+"n31"->"nand2_1 U34"
+"nand2_1 U34"->"n30"
+"dfrtp_1 outp_reg"[shape = box,style=filled,color=".7 .3 1.0"]
+"n28"->"dfrtp_1 outp_reg"
+"clock"->"dfrtp_1 outp_reg"
+"n1"->"dfrtp_1 outp_reg"
+"dfrtp_1 outp_reg"->"outp"
+"dfrtp_1 \stato_reg[2]"[shape = box,style=filled,color=".7 .3 1.0"]
+"n2"->"dfrtp_1 \stato_reg[2]"
+"clock"->"dfrtp_1 \stato_reg[2]"
+"n1"->"dfrtp_1 \stato_reg[2]"
+"dfrtp_1 \stato_reg[2]"->"stato[2]"
+"inv_1 U60"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[0]"->"inv_1 U60"
+"inv_1 U60"->"n36"
+"a21oi_1 U42"[shape = box,style=filled,color=".6 .5 1.0"]
+"n42"->"a21oi_1 U42"
+"n29"->"a21oi_1 U42"
+"n43"->"a21oi_1 U42"
+"a21oi_1 U42"->"n40"
+"nor2_1 U48"[shape = box,style=filled,color=".6 .5 1.0"]
+"n35"->"nor2_1 U48"
+"stato[1]"->"nor2_1 U48"
+"nor2_1 U48"->"n42"
+"xor2_1 U33"[shape = box,style=filled,color=".6 .5 1.0"]
+"n29"->"xor2_1 U33"
+"n30"->"xor2_1 U33"
+"xor2_1 U33"->"n28"
+"dfrtp_1 \stato_reg[0]"[shape = box,style=filled,color=".7 .3 1.0"]
+"N41"->"dfrtp_1 \stato_reg[0]"
+"clock"->"dfrtp_1 \stato_reg[0]"
+"n1"->"dfrtp_1 \stato_reg[0]"
+"dfrtp_1 \stato_reg[0]"->"stato[0]"
+"mux2i_1 U45"[shape = box,style=filled,color=".2 .4 1.0"]
+"n47"->"mux2i_1 U45"
+"n48"->"mux2i_1 U45"
+"n37"->"mux2i_1 U45"
+"mux2i_1 U45"->"n46"
+"dfrtp_1 overflw_reg"[shape = box,style=filled,color=".7 .3 1.0"]
+"n3"->"dfrtp_1 overflw_reg"
+"clock"->"dfrtp_1 overflw_reg"
+"n1"->"dfrtp_1 overflw_reg"
+"dfrtp_1 overflw_reg"->"overflw"
+"nand2_1 U44"[shape = box,style=filled,color=".6 .5 1.0"]
+"n45"->"nand2_1 U44"
+"n46"->"nand2_1 U44"
+"nand2_1 U44"->"N41"
+"inv_1 U47"[shape = box,style=filled,color=".6 .5 1.0"]
+"n42"->"inv_1 U47"
+"inv_1 U47"->"n39"
+"inv_1 U49"[shape = box,style=filled,color=".6 .5 1.0"]
+"n44"->"inv_1 U49"
+"inv_1 U49"->"n35"
+"nor2_1 U50"[shape = box,style=filled,color=".6 .5 1.0"]
+"n38"->"nor2_1 U50"
+"n29"->"nor2_1 U50"
+"nor2_1 U50"->"n47"
+"inv_1 U59"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[1]"->"inv_1 U59"
+"inv_1 U59"->"n50"
+"o21ai_0 U41"[shape = box,style=filled,color=".6 .5 1.0"]
+"n35"->"o21ai_0 U41"
+"n37"->"o21ai_0 U41"
+"n38"->"o21ai_0 U41"
+"o21ai_0 U41"->"n41"
+"a21oi_1 U43"[shape = box,style=filled,color=".6 .5 1.0"]
+"n44"->"a21oi_1 U43"
+"n29"->"a21oi_1 U43"
+"n36"->"a21oi_1 U43"
+"a21oi_1 U43"->"n43"
+"o21ai_0 U51"[shape = box,style=filled,color=".6 .5 1.0"]
+"line2"->"o21ai_0 U51"
+"line1"->"o21ai_0 U51"
+"n44"->"o21ai_0 U51"
+"o21ai_0 U51"->"n29"
+"mux2i_1 U52"[shape = box,style=filled,color=".2 .4 1.0"]
+"n49"->"mux2i_1 U52"
+"n3"->"mux2i_1 U52"
+"n44"->"mux2i_1 U52"
+"mux2i_1 U52"->"n45"
+"nor2_1 U58"[shape = box,style=filled,color=".6 .5 1.0"]
+"n50"->"nor2_1 U58"
+"stato[0]"->"nor2_1 U58"
+"nor2_1 U58"->"n38"
+"o211ai_1 U55"[shape = box,style=filled,color=".6 .5 1.0"]
+"stato[1]"->"o211ai_1 U55"
+"n36"->"o211ai_1 U55"
+"n31"->"o211ai_1 U55"
+"n37"->"o211ai_1 U55"
+"o211ai_1 U55"->"n49"
+
+}

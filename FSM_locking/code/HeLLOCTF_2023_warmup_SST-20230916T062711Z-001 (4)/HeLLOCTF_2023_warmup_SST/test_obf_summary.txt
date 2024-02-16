@@ -1,0 +1,13 @@
+***************************************************
+Report     : Summary of Obfuscation
+Design     : test_obf
+Date       : 08-14-2023 12:30:13
+***************************************************
+
+- Number of flip-flops before obfuscation      : 5
+- Number of comb. cells before obfuscation     : 38
+- Number of flip-flops added                   : 11
+- Size of keys                                 : 31-bit
+- Length of key sequence                       : 31
+
+***************************************************
